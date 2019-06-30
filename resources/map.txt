@@ -1,0 +1,6 @@
+		NorthRoom		
+		NorthHall		
+WestRoom	WestHall	StartRoom	EastHall	EastRoom
+		SouthHall		
+		SouthRoom		
+		WinRoom		
