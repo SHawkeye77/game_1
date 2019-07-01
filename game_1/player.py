@@ -55,15 +55,26 @@ class Player:
         """ Attacks 'enemy' with the highest-damage weapon in player's inventory """
         best_weapon = None
         max_damage = 0
+
+        # Finding best weapon in your inventory
         for item in self.inventory:
             if isinstance(item, items.Weapon):  # Returns true if the item is a child class of the Weapon class
                 if item.damage >= max_damage:
                     max_damage = item.damage
                     best_weapon = item
+        damage = best_weapon.damage
 
+        # Applying damage from best weapon in inventory
         if best_weapon:  # If you have a weapon
             print("You use {} against {}!".format(best_weapon.name, enemy.name))
-            enemy.hp -= best_weapon.damage
+            x = random.randint(1, 101)  # 1-100 random number for combat mechanics
+            if 0 < x <= 15:  # Critical hit
+                print("Critical hit!")
+                damage *= 2
+            elif 15 < x <= 30: # Checks for a miss
+                print("Missed!")
+                damage = 0
+            enemy.hp -= damage
             if not enemy.is_alive():
                 print("You killed {}!".format(enemy.name))
             else:
@@ -80,8 +91,3 @@ class Player:
     def mod_hp(self, amount):
         """ Adds (or subtracts, if negative), the "amount" given to player's hp """
         self.hp += amount
-
-
-
-
-

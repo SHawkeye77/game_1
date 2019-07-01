@@ -5,3 +5,4 @@ var/
 .python-version
 .venv
 venv/
+*.xml
