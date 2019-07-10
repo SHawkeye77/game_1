@@ -3,7 +3,7 @@ import items, world
 import random
 
 STARTING_HP = 100  # Starting HP for a new player
-STARTING_ITEMS = [items.MetalBeam()]  # List of starting items for the player
+STARTING_ITEMS = []  # List of starting items for the player
 
 
 class Player:
@@ -62,7 +62,8 @@ class Player:
                 if item.damage >= max_damage:
                     max_damage = item.damage
                     best_weapon = item
-        damage = best_weapon.damage
+        if best_weapon:
+            damage = best_weapon.damage
 
         # Applying damage from best weapon in inventory
         if best_weapon:  # If you have a weapon
