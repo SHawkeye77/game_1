@@ -3,7 +3,7 @@ import items, world
 import random
 
 STARTING_HP = 100  # Starting HP for a new player
-STARTING_ITEMS = []  # List of starting items for the player
+STARTING_ITEMS = [items.Antimatter(6), items.Knife()]  # List of starting items for the player
 
 
 class Player:
@@ -26,30 +26,12 @@ class Player:
         if action_method:
             action_method(**kwargs)  # If the action method was found, it is run.
 
-    def print_inventory(self):
-        """ Prints all items in player's inventory """
-        for item in self.inventory:
-            print(item, end='\n')
-
     def move(self, dx, dy):
         """ The general movement module """
         self.location_x += dx
         self.location_y += dy
-        # Printing the new location's name and description when you enter it
-        print(world.tile_exists(self.location_x, self.location_y).name +
-              '\n' + world.tile_exists(self.location_x, self.location_y).description)
-
-    def move_north(self):
-        self.move(dx=0, dy=-1)
-
-    def move_south(self):
-        self.move(dx=0, dy=1)
-
-    def move_east(self):
-        self.move(dx=1, dy=0)
-
-    def move_west(self):
-        self.move(dx=-1, dy=0)
+        # Printing the new location's name when you enter it
+        print("Location: " + world.tile_exists(self.location_x, self.location_y).name)
 
     def attack(self, enemy):
         """ Attacks 'enemy' with the highest-damage weapon in player's inventory """
@@ -62,11 +44,10 @@ class Player:
                 if item.damage >= max_damage:
                     max_damage = item.damage
                     best_weapon = item
-        if best_weapon:
-            damage = best_weapon.damage
 
         # Applying damage from best weapon in inventory
         if best_weapon:  # If you have a weapon
+            damage = best_weapon.damage
             print("You use {} against {}!".format(best_weapon.name, enemy.name))
             x = random.randint(1, 101)  # 1-100 random number for combat mechanics
             if 0 < x <= 15:  # Critical hit

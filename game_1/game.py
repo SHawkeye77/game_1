@@ -1,6 +1,7 @@
 import world
 from player import Player
 from resources.lore import *
+import parser
 
 
 def play():
@@ -23,17 +24,8 @@ def play():
 
         if player.is_alive() and not player.victory:
             # Prompting user for action and printing all available actions.
-            print("\nWhat do you do?")
-            available_actions = room.available_actions()
-            for action in available_actions:
-                print(action)
-            action_input = input('Action: ')  # Gathering action
-            print('\n')
-            # If inputted action matches a hotkey of the available actions, we run that action
-            for action in available_actions:
-                if action_input == action.hotkey:
-                    player.do_action(action, **action.kwargs)
-                    break
+            action_input = input("\nWhat do you do? ")  # Gathering action
+            parser.parse_args(action_input, player)
 
     # If game stops because of death or victory, print corresponding text
     if not player.is_alive():

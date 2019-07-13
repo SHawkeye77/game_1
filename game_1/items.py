@@ -1,3 +1,9 @@
+"""
+Items classes should always follow the format:
+Capital letters for the start of new words.
+"""
+
+
 class Item:
     """ Base class for all items """
     def __init__(self, name, description, value):
@@ -9,10 +15,24 @@ class Item:
         # Prints a useful summary of item when print(<item>) is called
         return "{}\n=====\n{}\nValue: {}\n".format(self.name, self.description, self.value)
 
+    def use(self, item):  # MAYBE NOT HAVE 'item' PARAM HERE?
+        """
+        Call when you want to use the current (self) item on the item that is passed in.
+        """
+        # Override in child class if you want to have the object able to be used on something
+        print("You can't do that.")
+
+    def interact(self):
+        """
+        Call when you want to interact with the current (self) item
+        """
+        # Override in child class if you want to have the object interact-able
+        print("You can't do that.")
+
 
 class Antimatter(Item):
     """ Child class for a vile of antimatter """
-    def __init__(self, amount):
+    def __init__(self, amount=5):
         self.amount = amount  # Amount, in grams, of antimatter in the vile
         super().__init__(name="Antimatter",
                          description="A small vile containing {} grams of antimatter.".format(self.amount),

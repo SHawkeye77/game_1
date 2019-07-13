@@ -3,12 +3,14 @@ import items, npcs, actions, world  # Correct even though it's red...
 
 class Location:
     """ Template for a location/room. All places must derive from this """
-    def __init__(self, x, y):
+    def __init__(self, x, y, items, name):
         self.x = x  # X-Coordinate of the location (should never be directly seen by player)
         self.y = y  # Y-Coordinate of the location (should never be directly seen by player)
+        self.items = items  # List of objects (items) at this location
+        self.name = name
 
     def adjacent_moves(self):
-        """ Returns all move actions viable at the location. """
+        """ Returns all move actions viable at the location. Can be overwritten """
         moves = []
         if world.tile_exists(self.x + 1, self.y):
             moves.append(actions.MoveEast())
@@ -32,18 +34,16 @@ class Location:
 
 
 class Room(Location):
-    def __init__(self, name, x, y, description, items):
-        self.items = items  # A list of items in the room
-        self.name = name  # Name of the location
+    def __init__(self, name, x, y, items, description):
         self.description = description  # Description of the location
-        super().__init__(x, y)
+        super().__init__(x, y, items, name)
 
 
 class StartRoom(Room):
     def __init__(self, x, y):
         super().__init__(name="Starting Room", x=x, y=y,
                          description="A cold, dark room, lit by a single lightbulb hanging from the ceiling.",
-                         items=["Test1"])
+                         items=[])
 
 
 class NorthRoom(Room):
@@ -86,14 +86,13 @@ class WestRoom(Room):
     def __init__(self, x, y):
         super().__init__(name="West Room", x=x, y=y,
                          description="A pitch black room. Loud rock music is the only thing you can hear.",
-                         items=["Test1", "Test2", "Test3", "Test4", "Test5"])
+                         items=[items.Knife(), items.Antimatter()])
 
 
 class Hall(Location):
-    def __init__(self, name, x, y):
-        self.name = name  # Name of the location
+    def __init__(self, name, x, y, items=[]):
         self.description = "A long hallway barely bright enough to see your hand in front of your face"
-        super().__init__(x, y)
+        super().__init__(x, y, items, name)
 
 
 class NorthHall(Hall):
@@ -119,7 +118,8 @@ class WestHall(Hall):
 class WinRoom(Room):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Final Room",
-                         description = "This is the final room! You won!", items=[])
+                         description="This is the final room! You won!",
+                         items=[])
 
     def win_game(self, player):
         player.victory = True
