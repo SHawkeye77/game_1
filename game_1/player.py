@@ -8,7 +8,7 @@ STARTING_ITEMS = [items.Antimatter(6), items.Knife()]  # List of starting items 
 
 class Player:
     def __init__(self):
-        self.inventory = STARTING_ITEMS
+        self.inventory = STARTING_ITEMS  # List of objects of items in player inventory
         self.hp = STARTING_HP
         self.location_x, self.location_y = world.starting_position  # Player location
         self.victory = False  # True if player has won
@@ -31,7 +31,7 @@ class Player:
         self.location_x += dx
         self.location_y += dy
         # Printing the new location's name when you enter it
-        print("Location: " + world.tile_exists(self.location_x, self.location_y).name)
+        print("Location: " + str(world.tile_exists(self.location_x, self.location_y).name))
 
     def attack(self, enemy):
         """ Attacks 'enemy' with the highest-damage weapon in player's inventory """

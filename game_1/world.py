@@ -4,7 +4,7 @@
 """
 
 _world = {}  # Dictionary that will map coordinate pair to a tile
-START_ROOM_NAME = "StartRoom"  # Name of the room you want the player to start in
+START_ROOM_NAME = "StartingRoom"  # Name of the room you want the player to start in
 starting_position = (0, 0)  # (x,y) tuple that will be set to the coordinates of the starting room
 
 
@@ -29,6 +29,7 @@ def load_tiles():
                 # value is the constructed object of the type specified by that space
                 _world[(x_val, y_val)] = \
                     None if tile_name == '' else getattr(__import__('tiles'), tile_name)(x=x_val, y=y_val)
+
 
 def tile_exists(x, y):
     """ Returns the object at given (x,y) location. If object doesn't exist, returns None """

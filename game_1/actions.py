@@ -2,7 +2,9 @@
 This module provides methods that are called and do a specific action that the user specifies they want to do.
 """
 import world
-from items import *
+from items import *  # BETTER WAY TO DO THIS?
+from tiles import *  # BETTER WAY TO DO THIS?
+
 
 def move(argument, player):
     """ Action used for user input of "use ___ on ___"
@@ -13,15 +15,66 @@ def move(argument, player):
         N/A but moves player as suggested or prints error
     """
     if argument == "North":
-        player.move(0, -1)
+        if world.tile_exists(player.location_x, player.location_y-1):
+            if world.tile_exists(player.location_x, player.location_y-1).can_enter:
+                player.move(0, -1)
+            else:
+                print(world.tile_exists(player.location_x, player.location_y-1).name + " is locked.")
+        else:
+            print("You can't do that.")
     elif argument == "South":
-        player.move(0, 1)
+        if world.tile_exists(player.location_x, player.location_y+1):
+            if world.tile_exists(player.location_x, player.location_y+1).can_enter:
+                player.move(0, 1)
+            else:
+                print(world.tile_exists(player.location_x, player.location_y+1).name + " is locked.")
+        else:
+            print("You can't do that.")
     elif argument == "East":
-        player.move(1, 0)
+        if world.tile_exists(player.location_x+1, player.location_y):
+            if world.tile_exists(player.location_x+1, player.location_y).can_enter:
+                player.move(1, 0)
+            else:
+                print(world.tile_exists(player.location_x+1, player.location_y).name + " is locked.")
+        else:
+            print("You can't do that.")
     elif argument == "West":
-        player.move(-1, 0)
+        if world.tile_exists(player.location_x-1, player.location_y):
+            if world.tile_exists(player.location_x-1, player.location_y).can_enter:
+                player.move(-1, 0)
+            else:
+                print(world.tile_exists(player.location_x-1, player.location_y).name + " is locked.")
+        else:
+            print("You can't do that.")
     else:
         print("Movement not recognized. Specify a cardinal direction.")
+    return
+
+
+def enter(player, argument, raw_argument):
+    """ Action used for user input of "enter _____"
+    Args:
+        player (object): user's player object
+        argument (string): Capitalized user input past the first word
+        raw_argument (string): every word passed the first word of user input without modification
+    Returns:
+        N/A but changes user location to the new location if its in the list of connected locations to their current
+        location.
+    """
+    if argument in world.tile_exists(player.location_x, player.location_y).connected:
+        for location,tile in world._world.items():
+            if tile.__class__.__name__ == argument:
+                if tile.can_enter:
+                    player.location_x = tile.x
+                    player.location_y = tile.y
+                    print("Location: " + str(world.tile_exists(player.location_x, player.location_y).name))
+                    return
+                else:
+                    print(raw_argument + " is locked.")
+                    return
+    else:
+        print("Can't enter '" + raw_argument + "' from current location.")
+
     return
 
 
@@ -204,3 +257,12 @@ def examine(player, argument, raw_argument):
         print("What do you want to examine?")
     return
 
+
+def kill_player(player):
+    """
+    Args:
+        player (object): user's player object
+    Returns:
+        N/A but kills player by setting their health to zero
+    """
+    player.hp = 0

@@ -26,18 +26,23 @@ def parse_args(user_input, player):
     command = list_of_input[0].lower()
     if len(list_of_input) > 1:
         arguments = [x.lower().title() for x in list_of_input[1:]]  # Formatting each argument
-        if command == "use" and ("On" in arguments):
+        if command == "pick" and arguments[0] == "Up":
+            if len(arguments) > 1:
+                actions.pick_up(player, "".join(arguments[1:]), " ".join(arguments[1:]))
+            else:
+                print("What do you want to pick up?")
+            return
+        elif command == "use" and ("On" in arguments):
             # Deals with "use ___ on ___ " input
             actions.use_on(arguments, player)
             return
-        if command == "interact" and (arguments[0] == "With"):
+        elif command == "interact" and (arguments[0] == "With"):
             # Deals with "interact with _____ " input
             if len(arguments) < 2:  # If user just says "interact with"
                 print("Specify what you'd like to interact with.")
-                return
             else:
                 actions.interact_with(arguments[1:], player)
-                return
+            return
         raw_argument = " ".join(list_of_input[1:])  # Here's the raw argument
         argument = "".join(arguments)  # Turning into un-spaced argument. Example: "FirstSecondThird"
     else:
@@ -46,32 +51,25 @@ def parse_args(user_input, player):
 
     if command == "go" or command == "move":
         actions.move(argument, player)
-        return
-
-    if command == "observe" or command == "look":
+    elif command == "observe" or command == "look":
         actions.examine_surroundings(player)
-        return
-
-    if command == "inventory" or (command == "view" and argument == "Inventory"):
+    elif command == "inventory" or (command == "view" and argument == "Inventory"):
         actions.print_inventory(player)
-        return
-
-    if command == "where" and argument == "AmI":
+    elif command == "where" and argument == "AmI":
         actions.where(player)
-        return
-
-    if command == "drop":
+    elif command == "drop":
         actions.drop(player, argument, raw_argument)
-        return
-
-    if command == "grab" or command == "take" or command == "get":
+    elif command == "grab" or command == "take" or command == "get":
         actions.pick_up(player, argument, raw_argument)
-        return
-
-    if command == "examine":
+    elif command == "examine":
         actions.examine(player, argument, raw_argument)
-        return
+    elif command == "enter":
+        actions.enter(player, argument, raw_argument)
+    elif command == "kill" and argument == "Myself":
+        actions.kill_player(player)
 
-    # Only reaches here if command given was not one of the specified commands
-    print("Command not recognized.")
+    else:
+        print("Command not recognized.")
+
+    return
 
