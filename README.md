@@ -1,2 +1,2 @@
 # game_1
-Test game project to practice game creation mechanics.
+This is my hobby project to create a text based game.
