@@ -2,7 +2,6 @@
 This module holds all tiles classes (rooms, hallways, etc)
 """
 
-
 import items, npcs, actions, world  # Correct even though it's red...
 
 

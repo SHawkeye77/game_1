@@ -62,7 +62,7 @@ def enter(player, argument, raw_argument):
         location.
     """
     if argument in world.tile_exists(player.location_x, player.location_y).connected:
-        for location,tile in world._world.items():
+        for location, tile in world._world.items():
             if tile.__class__.__name__ == argument:
                 if tile.can_enter:
                     player.location_x = tile.x
