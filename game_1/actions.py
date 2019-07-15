@@ -25,6 +25,35 @@ def move(argument, player):
     return
 
 
+def interact_with(arguments, player):
+    """ Action used for user input of "interact with _____"
+    Args:
+        arguments (list): List of capitalized strings of the third -> last words inputted by user (first=interact,
+                          second=with)
+        player (player object): User's character's "player" object
+    Return:
+        N/A but uses the player interacts with the specified item.
+    """
+    raw_item = " ".join(arguments)
+    inputted_item = "".join(arguments)  # String of item to interact with (in correct class format)
+
+    # Making sure item is in player's inventory or in the roo
+    if inputted_item not in [item.__class__.__name__ for item in player.inventory]:
+        if inputted_item not in [item.__class__.__name__ for item in
+                        world.tile_exists(player.location_x, player.location_y).items]:
+            print("'" + raw_item + "' not in your inventory or anywhere nearby.")
+            return
+    # Getting the actual item object
+    else:  # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
+        for i, item in enumerate(player.inventory):
+            if item.__class__.__name__ == inputted_item:
+                player.inventory[i].interact()
+        for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
+            if item.__class__.__name__ == inputted_item:
+                world.tile_exists(player.location_x, player.location_y).items[i].interact()
+    return
+
+
 def use_on(arguments, player):
     """ Action used for user input of "use ___ on ___"
     Args:
@@ -105,7 +134,9 @@ def print_inventory(player):
         N/A but prints each item in player's inventory
     """
     for item in player.inventory:
-        print(item, end='\n')
+        print("====================")
+        print(item.name)
+        print(item.description)
     return
 
 

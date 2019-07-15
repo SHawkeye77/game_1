@@ -16,6 +16,9 @@ def parse_args(user_input, player):
         user_input (string): raw string of user input
         player (Player object): object of active player
     """
+    # Accounting for null input
+    if user_input.strip() == "":
+        return
 
     # Split string into list of strings (separated by spaces)
     list_of_input = user_input.split()
@@ -27,6 +30,14 @@ def parse_args(user_input, player):
             # Deals with "use ___ on ___ " input
             actions.use_on(arguments, player)
             return
+        if command == "interact" and (arguments[0] == "With"):
+            # Deals with "interact with _____ " input
+            if len(arguments) < 2:  # If user just says "interact with"
+                print("Specify what you'd like to interact with.")
+                return
+            else:
+                actions.interact_with(arguments[1:], player)
+                return
         raw_argument = " ".join(list_of_input[1:])  # Here's the raw argument
         argument = "".join(arguments)  # Turning into un-spaced argument. Example: "FirstSecondThird"
     else:
