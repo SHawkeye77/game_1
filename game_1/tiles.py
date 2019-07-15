@@ -7,11 +7,12 @@ import items, npcs, actions, world  # Correct even though it's red...
 
 class Location:
     """ Template for a single location/tile. All places must derive from this """
-    def __init__(self, x, y, name, items, can_enter=True, connected=[]):
+    def __init__(self, x, y, name, description, items=[], can_enter=True, connected=[]):
         self.x = x  # X-Coordinate of the location (should never be directly seen by player)
         self.y = y  # Y-Coordinate of the location (should never be directly seen by player)
         self.items = items  # List of objects (items) at this location
         self.name = name
+        self.description = description  # Description of the location
         self.can_enter = can_enter  # True if its enter-able, false if locked (or otherwise not enter-able)
         self.connected = connected  # List of strings corresponding to all names of connected
                                     # locations (in appropriate class format)
@@ -40,20 +41,14 @@ class Location:
         return moves
 
 
-class Room(Location):
-    def __init__(self, name, x, y, description, can_enter=True, items=[], connected=[]):
-        self.description = description  # Description of the location
-        super().__init__(x=x, y=y, name=name, items=items, connected=connected, can_enter=can_enter)
-
-
-class StartingRoom(Room):
+class StartingRoom(Location):
     def __init__(self, x, y):
         super().__init__(name="Starting Room", x=x, y=y,
                          description="A cold, dark room, lit by a single lightbulb hanging from the ceiling.",
                          connected=["NorthHall", "EastHall", "SouthHall", "WestHall"])
 
 
-class NorthRoom(Room):
+class NorthRoom(Location):
     def __init__(self, x, y):
         self.enemy = npcs.DerangedScientist()  # This room starts with a deranged scientist inside
         self.description = "A massive room with yellow walls. There's a crazy person in it!"
@@ -76,15 +71,16 @@ class NorthRoom(Room):
             self.description = "A massive room with yellow walls. Good thing there's no enemy ;)"
 
 
-class EastRoom(Room):
+class EastRoom(Location):
     def __init__(self, x, y):
         super().__init__(name="East Room", x=x, y=y,
                          description="A tiny room with a desk.",
-                         items=["Test1", "Test2", "Test3"],
+                         items=[items.Antimatter(amount=1)],
                          connected=["EastHall"])
+        print("creating")
 
 
-class SouthRoom(Room):
+class SouthRoom(Location):
     def __init__(self, x, y):
         super().__init__(name="South Room", x=x, y=y,
                          description="A small-ish room with a TV playing 'bandersnatch'.",
@@ -92,19 +88,19 @@ class SouthRoom(Room):
                          connected=["SouthHall", "WinRoom"])
 
 
-class WestRoom(Room):
+class WestRoom(Location):
     def __init__(self, x, y):
         super().__init__(name="West Room", x=x, y=y,
                          description="A pitch black room. Loud rock music is the only thing you can hear.",
-                         items=[items.Knife(), items.Antimatter()],
+                         items=[items.Knife(), items.Antimatter(4)],
                          connected=["WestHall"],
                          can_enter=False)
 
 
 class Hall(Location):
     def __init__(self, name, x, y, connected, items=[]):
-        self.description = "A long hallway barely bright enough to see your hand in front of your face"
-        super().__init__(x=x, y=y, name=name, connected=connected, items=items)
+        super().__init__(x=x, y=y, name=name, connected=connected, items=items,
+                         description="A long hallway barely bright enough to see your hand in front of your face")
 
 
 class NorthHall(Hall):
@@ -131,7 +127,7 @@ class WestHall(Hall):
                          connected=["WestRoom", "StartingRoom"])
 
 
-class WinRoom(Room):
+class WinRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Final Room",
                          description="This is the final room! You won!",
@@ -140,3 +136,40 @@ class WinRoom(Room):
     def win_game(self, player):
         player.victory = True
 
+
+# Creation of rooms for the landing base =========================================================================
+# doesn't include the outdoors stuff from the base
+class LandingPad(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="Landing Pad",
+                         description="LANDING PAD DESCRIPTION",
+                         connected=["IntegrationRoom"])
+
+
+class LandingPad(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="Integration Room",
+                         description="INTEGRATION ROOM DESCRIPTION",
+                         connected=["LandingPad", "APMTerminal"],
+                         items=[items.Antimatter(100)])
+
+
+class APMTerminal(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="APM Terminal",
+                         description="APM TERMINAL ROOM DESCRIPTION",
+                         connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"])
+
+
+class Garage(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="Garage",
+                         description="GARAGE ROOM DESCRIPTION",
+                         connected=["APMTerminal"])
+
+
+class TerraCommunicationsRoom(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="Terra Communications Room",
+                         description="TERRA COMMUNICATIONS ROOM DESCRIPTION",
+                         connected=["APMTerminal"])

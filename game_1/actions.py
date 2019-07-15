@@ -204,7 +204,7 @@ def drop(player, argument, raw_argument):
     """
     for index, item in enumerate(player.inventory):
         if item.__class__.__name__ == argument:
-            world.tile_exists(player.location_x, player.location_y).items.append(eval(argument)())
+            world.tile_exists(player.location_x, player.location_y).items.append(item)
             del player.inventory[index]
             print("You drop your " + raw_argument + ".")
             return
@@ -224,7 +224,7 @@ def pick_up(player, argument, raw_argument):
     items_in_room = world.tile_exists(player.location_x, player.location_y).items
     for index, item in enumerate(items_in_room):
         if item.__class__.__name__ == argument:
-            player.inventory.append(eval(argument)())  # Adds item to player inventory
+            player.inventory.append(item)  # Adds item to player inventory
             del items_in_room[index]  # Removes item from room
             print("Added " + raw_argument + " to your inventory.")
             return
@@ -248,7 +248,7 @@ def examine(player, argument, raw_argument):
     items_in_room = world.tile_exists(player.location_x, player.location_y).items
     for index, item in enumerate(items_in_room):
         if item.__class__.__name__ == argument:
-            print(eval(argument)().description)  # Describes specified
+            print(item.description)
             return
     if raw_argument is not None:
         print(

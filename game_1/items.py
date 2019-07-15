@@ -29,7 +29,7 @@ class Item:
 
 class Antimatter(Item):
     """ Child class for a vile of antimatter """
-    def __init__(self, amount=5):
+    def __init__(self, amount):
         self.amount = amount  # Amount, in grams, of antimatter in the vile
         super().__init__(name="Antimatter",
                          description="A small vile containing {} grams of antimatter.".format(amount))
