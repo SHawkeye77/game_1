@@ -142,16 +142,19 @@ class WinRoom(Location):
 class LandingPad(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Landing Pad",
-                         description="LANDING PAD DESCRIPTION",
-                         connected=["IntegrationRoom"])
+                         connected=["IntegrationRoom"],
+                         description="An outdoor landing pad with barely enough space for your ship to land. "
+                                     "It's a tall, cylindrical room with a top open to the surrounding"
+                                     " Martian environment. Blinking lights mark the way to the base's entrance.")
 
 
-class LandingPad(Location):
+class IntegrationRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Integration Room",
-                         description="INTEGRATION ROOM DESCRIPTION",
                          connected=["LandingPad", "APMTerminal"],
-                         items=[items.Antimatter(100)])
+                         items=[items.Antimatter(100)],
+                         description="INTEGRATION ROOM DESCRIPTION"
+                         )
 
 
 class APMTerminal(Location):
@@ -165,7 +168,7 @@ class Garage(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Garage",
                          description="GARAGE ROOM DESCRIPTION",
-                         connected=["APMTerminal"])
+                         connected=["APMTerminal", "GarageMaintenanceRoom"])
 
 
 class TerraCommunicationsRoom(Location):
@@ -173,3 +176,10 @@ class TerraCommunicationsRoom(Location):
         super().__init__(x=x, y=y, name="Terra Communications Room",
                          description="TERRA COMMUNICATIONS ROOM DESCRIPTION",
                          connected=["APMTerminal"])
+
+
+class GarageMaintenanceRoom(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="Garage Maintenance Room",
+                         description="GARAGE MAINTENANCE ROOM DESCRIPTION",
+                         connected=["Garage"])

@@ -6,44 +6,61 @@ from items import *  # BETTER WAY TO DO THIS?
 from tiles import *  # BETTER WAY TO DO THIS?
 
 
-def move(argument, player):
-    """ Action used for user input of "use ___ on ___"
+def move(argument, player, raw_argument):
+    """ Makes sure argument is connected and enter-able; moves player there if it is
     Args:
         argument (string): Capitalized user input past the first word
         player (player object): User's character's "player" object
+        raw_argument (string): lowercase string of user argument of where to go
     Return:
         N/A but moves player as suggested or prints error
     """
     if argument == "North":
         if world.tile_exists(player.location_x, player.location_y-1):
-            if world.tile_exists(player.location_x, player.location_y-1).can_enter:
-                player.move(0, -1)
+            if world.tile_exists(player.location_x, player.location_y-1).__class__.__name__ in\
+             world.tile_exists(player.location_x, player.location_y).connected:  # Making sure prospective tile is connected
+                if world.tile_exists(player.location_x, player.location_y-1).can_enter:  # Making sure prospective tile is enter-able
+                    player.move(0, -1)
+                else:
+                    print(world.tile_exists(player.location_x, player.location_y-1).name + " is locked.")
             else:
-                print(world.tile_exists(player.location_x, player.location_y-1).name + " is locked.")
+                print("You can't do that.")
         else:
             print("You can't do that.")
     elif argument == "South":
         if world.tile_exists(player.location_x, player.location_y+1):
-            if world.tile_exists(player.location_x, player.location_y+1).can_enter:
-                player.move(0, 1)
+            if world.tile_exists(player.location_x, player.location_y+1).__class__.__name__ in\
+             world.tile_exists(player.location_x, player.location_y).connected:  # Making sure prospective tile is connected
+                if world.tile_exists(player.location_x, player.location_y+1).can_enter:  # Making sure prospective tile is enter-able
+                    player.move(0, 1)
+                else:
+                    print(world.tile_exists(player.location_x, player.location_y+1).name + " is locked.")
             else:
-                print(world.tile_exists(player.location_x, player.location_y+1).name + " is locked.")
+                print("You can't do that.")
         else:
             print("You can't do that.")
     elif argument == "East":
         if world.tile_exists(player.location_x+1, player.location_y):
-            if world.tile_exists(player.location_x+1, player.location_y).can_enter:
-                player.move(1, 0)
+            if world.tile_exists(player.location_x+1, player.location_y).__class__.__name__ in \
+                    world.tile_exists(player.location_x,player.location_y).connected:  # Making sure prospective tile is connected
+                if world.tile_exists(player.location_x+1, player.location_y).can_enter:  # Making sure prospective tile is enter-able
+                    player.move(1, 0)
+                else:
+                    print(world.tile_exists(player.location_x+1, player.location_y).name + " is locked.")
             else:
-                print(world.tile_exists(player.location_x+1, player.location_y).name + " is locked.")
+                print("You can't do that.")
         else:
             print("You can't do that.")
     elif argument == "West":
         if world.tile_exists(player.location_x-1, player.location_y):
-            if world.tile_exists(player.location_x-1, player.location_y).can_enter:
-                player.move(-1, 0)
+            if world.tile_exists(player.location_x-1, player.location_y).__class__.__name__ in \
+                    world.tile_exists(player.location_x, player.location_y).connected:  # Making sure prospective tile is connected
+                if world.tile_exists(player.location_x-1,player.location_y).can_enter:  # Making sure prospective tile is enter-able
+                    player.move(-1, 0)
+                else:
+                    print(world.tile_exists(player.location_x-1, player.location_y).name + " is locked.")
             else:
-                print(world.tile_exists(player.location_x-1, player.location_y).name + " is locked.")
+                print("You can't do that.")
         else:
             print("You can't do that.")
     else:
@@ -52,7 +69,7 @@ def move(argument, player):
 
 
 def enter(player, argument, raw_argument):
-    """ Action used for user input of "enter _____"
+    """ Makes sure argument is connected and enter-able; moves player there if it is
     Args:
         player (object): user's player object
         argument (string): Capitalized user input past the first word
@@ -61,10 +78,10 @@ def enter(player, argument, raw_argument):
         N/A but changes user location to the new location if its in the list of connected locations to their current
         location.
     """
-    if argument in world.tile_exists(player.location_x, player.location_y).connected:
+    if argument in world.tile_exists(player.location_x, player.location_y).connected:  # Making sure connected to current tile
         for location, tile in world._world.items():
             if tile.__class__.__name__ == argument:
-                if tile.can_enter:
+                if tile.can_enter:  # Making sure new tile is enter-able
                     player.location_x = tile.x
                     player.location_y = tile.y
                     print("Location: " + str(world.tile_exists(player.location_x, player.location_y).name))
@@ -224,9 +241,12 @@ def pick_up(player, argument, raw_argument):
     items_in_room = world.tile_exists(player.location_x, player.location_y).items
     for index, item in enumerate(items_in_room):
         if item.__class__.__name__ == argument:
-            player.inventory.append(item)  # Adds item to player inventory
-            del items_in_room[index]  # Removes item from room
-            print("Added " + raw_argument + " to your inventory.")
+            if item.can_pick_up:
+                player.inventory.append(item)  # Adds item to player inventory
+                del items_in_room[index]  # Removes item from room
+                print("Added " + raw_argument + " to your inventory.")
+            else:
+                print("You can't add that to your inventory.")
             return
     if raw_argument:
         print(

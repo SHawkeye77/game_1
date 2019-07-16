@@ -1,6 +1,3 @@
-		NorthRoom		
-		NorthHall		
-WestRoom	WestHall	StartingRoom	EastHall	EastRoom
-		SouthHall		
-		SouthRoom		
-		WinRoom		
+,GarageMaintenanceRoom,Garage
+LandingPad,IntegrationRoom,APMTerminal
+,,TerraCommunicationsRoom

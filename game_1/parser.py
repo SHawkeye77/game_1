@@ -50,7 +50,7 @@ def parse_args(user_input, player):
         raw_argument = None
 
     if command == "go" or command == "move":
-        actions.move(argument, player)
+        actions.move(argument, player, raw_argument)
     elif command == "observe" or command == "look":
         actions.examine_surroundings(player)
     elif command == "inventory" or (command == "view" and argument == "Inventory"):

@@ -6,9 +6,10 @@ Capital letters for the start of new words.
 
 class Item:
     """ Base class for all items """
-    def __init__(self, name, description):
+    def __init__(self, name, description, can_pick_up=True):
         self.name = name  # Name of item
         self.description = description  # Description of item
+        self.can_pick_up = can_pick_up  # Can the user add this to their inventory
 
     def use(self, item):  # MAYBE NOT HAVE 'item' PARAM HERE?
         """

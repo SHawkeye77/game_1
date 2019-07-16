@@ -1,10 +1,9 @@
 """ Module for dealing with the world we created """
-""" NOTE: Do NOT edit the resources/map.txt file in pycharm. It will apply automatic formatting rules that
-          will mess it up. Instead, alter it in textedit.
+""" NOTE: It now deals in csv files for reading it. 
 """
 
 _world = {}  # Dictionary that will map coordinate pair to a tile
-START_ROOM_NAME = "StartingRoom"  # Name of the room you want the player to start in
+START_ROOM_NAME = "LandingPad"  # Name of the room you want the player to start in
 starting_position = (0, 0)  # (x,y) tuple that will be set to the coordinates of the starting room
 
 
@@ -16,9 +15,9 @@ def load_tiles():
     """
     with open('resources/map.txt', 'r') as f:
         rows = f.readlines()  # Splits file into list of rows (which are strings)
-        x_max = len(rows[0].split('\t'))  # Assumes all rows contain the same number of tabs
+        x_max = len(rows[0].split(','))  # Assumes all rows contain the same number of cells (separated by commas)
         for y_val in range(len(rows)):  # For each row...
-            cols = rows[y_val].split('\t')  # A list where each element is text for the cell.
+            cols = rows[y_val].split(',')  # A list where each element is text for the cell.
             for x_val in range(x_max):  # For each column
                 tile_name = cols[x_val].replace('\n', '')  # Name (string) of that tile
                 if tile_name == START_ROOM_NAME:  # Setting starting location for the game
