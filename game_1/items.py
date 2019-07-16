@@ -11,9 +11,9 @@ class Item:
         self.description = description  # Description of item
         self.can_pick_up = can_pick_up  # Can the user add this to their inventory
 
-    def use(self, item):  # MAYBE NOT HAVE 'item' PARAM HERE?
+    def use(self):
         """
-        Call when you want to use the current (self) item on the item that is passed in.
+        Call when you want to use the current (self) item on the item that is passed in (in overridden methods of use).
         e.g. use key on door
         """
         # Override in child class if you want to have the object able to be used on something

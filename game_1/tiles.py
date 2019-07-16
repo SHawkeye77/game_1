@@ -77,7 +77,6 @@ class EastRoom(Location):
                          description="A tiny room with a desk.",
                          items=[items.Antimatter(amount=1)],
                          connected=["EastHall"])
-        print("creating")
 
 
 class SouthRoom(Location):
