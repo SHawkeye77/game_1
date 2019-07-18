@@ -65,8 +65,20 @@ class Knife(Weapon):
                          damage=5)
 
 
+class Food(Item):
+    def __init__(self, name, description):
+        super().__init__(name=name, description=description, can_pick_up=True)
+
+    def eat(self):
+        print("Tastes like chicken")
 
 
+class Drink(Item):
+    def __init__(self, name, description):
+        super().__init__(name=name, description=description, can_pick_up=True)
+
+    def drink(self):
+        print("*gulp*")
 
 
 

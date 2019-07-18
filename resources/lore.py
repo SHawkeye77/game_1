@@ -1,6 +1,6 @@
 INTRODUCTION_TEXT = \
     "\n\n==========================================================\n" \
-    "Date: May 10, 2040\n"\
+    "Date: May 10, 2045\n"\
     "Location: 1,000 km from Mars, 54,599,000 km from Earth\n"\
     "==========================================================\n"\
     "You are almost to Mars.\n"\

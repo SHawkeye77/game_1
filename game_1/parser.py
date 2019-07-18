@@ -8,6 +8,9 @@ Rules:
 import world
 from items import *
 import actions
+import random
+
+CONFUSED_RESPONSES = ["Come again?", "Sorry?", "Excuse me?", "Huh?", "What was that?"]
 
 
 def parse_args(user_input, player):
@@ -18,6 +21,7 @@ def parse_args(user_input, player):
     """
     # Accounting for null input
     if user_input.strip() == "":
+        print(random.choice(CONFUSED_RESPONSES))
         return
 
     # Split string into list of strings (separated by spaces)
@@ -50,7 +54,7 @@ def parse_args(user_input, player):
         raw_argument = None
 
     if command == "go" or command == "move":
-        actions.move(argument, player, raw_argument)
+        actions.move(argument, player)
     elif command == "observe" or command == "look":
         actions.examine_surroundings(player)
     elif command == "inventory" or (command == "view" and argument == "Inventory"):
@@ -67,9 +71,10 @@ def parse_args(user_input, player):
         actions.enter(player, argument, raw_argument)
     elif command == "kill" and argument == "Myself":
         actions.kill_player(player)
-
+    elif command == "drink":
+        actions.drink(player, argument, raw_argument)
     else:
-        print("Command not recognized.")
+        print(random.choice(CONFUSED_RESPONSES))
 
     return
 

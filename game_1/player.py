@@ -26,12 +26,16 @@ class Player:
         if action_method:
             action_method(**kwargs)  # If the action method was found, it is run.
 
-    def move(self, dx, dy):
-        """ The general movement module """
-        self.location_x += dx
-        self.location_y += dy
-        # Printing the new location's name when you enter it
-        print("Location: " + str(world.tile_exists(self.location_x, self.location_y).name))
+    def move(self, x, y):
+        """ The general movement module. Always called for ALL player movement. """
+        self.location_x = x
+        self.location_y = y
+
+        if world.tile_exists(self.location_x, self.location_y).been_entered:
+            print("Location: " + str(world.tile_exists(self.location_x, self.location_y).name))
+        else:
+            world.tile_exists(self.location_x, self.location_y).first_entrance()
+            world.tile_exists(self.location_x, self.location_y).been_entered = True
 
     def attack(self, enemy):
         """ Attacks 'enemy' with the highest-damage weapon in player's inventory """
