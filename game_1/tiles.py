@@ -135,50 +135,69 @@ class WinRoom(Location):
     def win_game(self, player):
         player.victory = True
 
+# ==================================================================================================================
+# Creation of rooms for the landing base (doesn't include the outdoors stuff from the base).
+# ==================================================================================================================
 
-# Creation of rooms for the landing base =========================================================================
-# doesn't include the outdoors stuff from the base
+
 class LandingPad(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Landing Pad",
-                         connected=["IntegrationRoom"],
-                         description="An outdoor landing pad with barely enough space for your ship to land. "
+                         connected=["DetoxChamber"],
+                         description="An outdoor landing pad with barely enough space for a ship to land. "
                                      "It's a tall, cylindrical room with a top open to the surrounding"
                                      " Martian environment. Blinking lights mark the way to the base's entrance.")
+
+
+class DetoxChamber(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="Detox Chamber",
+                         connected=["LandingPad", "IntegrationRoom"],
+                         description="A white, cylindrical room filled with vents and fans.")
 
 
 class IntegrationRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Integration Room",
-                         connected=["LandingPad", "APMTerminal"],
+                         connected=["LandingPad", "ApmTerminal"],
                          items=[items.Antimatter(100)],
-                         description="INTEGRATION ROOM DESCRIPTION"
-                         )
+                         description="A simple room consisting of two couches. Each is accompanied by a table and "
+                                     "potted plant.")
 
 
-class APMTerminal(Location):
+class ApmTerminal(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="APM Terminal",
-                         description="APM TERMINAL ROOM DESCRIPTION",
+                         description="A medium-sized room with a track in the center surrounded by benches. "
+                                     "A tablet rests on a stand at the end of the track.",
                          connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"])
 
 
 class Garage(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Garage",
-                         description="GARAGE ROOM DESCRIPTION",
-                         connected=["APMTerminal", "GarageMaintenanceRoom"])
+                         description="A giant hangar covered by a transparent roof. A closed garage door takes up "
+                                     "all of the outside wall. On one end, a mechanical lever is attached to the wall. "
+                                     "A few rovers are parked here. ",
+                         connected=["ApmTerminal", "GarageMaintenanceRoom"])
 
 
 class TerraCommunicationsRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Terra Communications Room",
-                         description="TERRA COMMUNICATIONS ROOM DESCRIPTION",
-                         connected=["APMTerminal"])
+                         description="Clocks labeled 'Sydney', 'New York', 'London', 'Dubai', and 'Pyongyang' "
+                                     "are mounted on the wall. A long counter sprinkled with "
+                                     "monitors, dials, and buttons stretches from wall to wall "
+                                     "at the end of the room.",
+                         connected=["ApmTerminal"])
 
 
 class GarageMaintenanceRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Garage Maintenance Room",
-                         description="GARAGE MAINTENANCE ROOM DESCRIPTION",
+                         description="A small walk-in closet with a variety of maintenance supplies "
+                                     "scattered about. A few tools hang from the walls.",
                          connected=["Garage"])
+
+# ==================================================================================================================
+
