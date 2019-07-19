@@ -81,6 +81,36 @@ class Drink(Item):
         print("*gulp*")
 
 
+class Coffee(Drink):
+    def __init__(self):
+        super().__init__(name="cup of coffee", description="Looks like dark roast.")
+
+    def drink(self):
+        print("\n*gulp*\nIt's hot but tasty. Could've used some cream in it though...")
+
+
+class Tea(Drink):
+    def __init__(self):
+        super().__init__(name="glass of tea", description="A small glass of herbal tea.")
+
+    def drink(self):
+        print("\n*gulp*\nIt's warm but tasty. Could've used some honey in it though...")
+
+
+class Water(Drink):
+    def __init__(self):
+        super().__init__(name="glass of water", description="A large glass of water.")
+
+    def drink(self):
+        print("\n*gulp*\nNothing like a cold glass of water.\n")
+
+
+class Coke(Drink):
+    def __init__(self):
+        super().__init__(name="can of Coke", description="It's a normal can of Coke.")
+
+    def drink(self):
+        print("\n*gulp*\nJust like Terran Coke")
 
 
 

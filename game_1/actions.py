@@ -2,7 +2,7 @@
 This module provides methods that are called and do a specific action that the user specifies they want to do.
 """
 import world
-from items import *  # BETTER WAY TO DO THIS?
+import items  # BETTER WAY TO DO THIS?
 from tiles import *  # BETTER WAY TO DO THIS?
 
 
@@ -88,7 +88,6 @@ def enter(player, argument, raw_argument):
                 else:
                     print(tile.name + " is locked.")
                     return
-                break
     else:
         print("Can't enter '" + raw_argument + "' from current location.")
 
@@ -210,7 +209,7 @@ def print_inventory(player):
     """
     for item in player.inventory:
         print("====================")
-        print(item.name)
+        print(item.name.title())
         print(item.description)
     return
 
@@ -303,8 +302,8 @@ def drink(player, argument, raw_argument):
         N/A but drinks the argument
     """
     for index, item in enumerate(player.inventory):
-        if item.name.lower() == argument.lower():
-            if item.__class__.__name__ == "Drink":
+        if item.__class__.__name__.lower() == argument.lower():
+            if isinstance(item, items.Drink):
                 item.drink()
                 del player.inventory[index]
                 return
@@ -312,8 +311,8 @@ def drink(player, argument, raw_argument):
                 print("I wouldn't drink that...")
                 return
     for index, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
-        if item.name.lower() == argument.lower():
-            if item.__class__.__name__ == "Drink":
+        if item.__class__.__name__.lower() == argument.lower():
+            if isinstance(item, items.Drink):
                 item.drink()
                 del world.tile_exists(player.location_x, player.location_y).items[index]
                 return
@@ -322,10 +321,4 @@ def drink(player, argument, raw_argument):
                 return
 
     print("There's no '" + raw_argument + "' in your inventory or anywhere nearby.")
-    return
-
-
-
-
-    print("There's none of those in your inventory or anywhere nearby.")
     return

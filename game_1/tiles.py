@@ -35,7 +35,8 @@ class LandingPad(Location):
                          description="An outdoor landing pad with barely enough space for a ship to land. "
                                      "It's a tall, cylindrical room with a top open to the surrounding"
                                      " Martian environment. Blinking lights mark the way to the base's entrance.",
-                         been_entered=True)
+                         been_entered=True,
+                         can_enter=False)
 
 
 class DetoxChamber(Location):
@@ -61,7 +62,7 @@ class IntegrationRoom(Location):
     def first_entrance(self):
         """ Is run only if it's the user's first time entering this location """
         for item in self.items:
-            if item.__class__.__name__ == "Drink":
+            if issubclass(item.__class__, items.Drink):
                 drink_name = item.name
                 break
 
