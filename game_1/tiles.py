@@ -55,7 +55,7 @@ class IntegrationRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Integration Room",
                          connected=["DetoxChamber", "ApmTerminal"],
-                         items=[items.Antimatter(100)],
+                         items=[items.Plant(), items.Plant(), items.Couch(), items.Couch()],
                          description="A simple room consisting of two couches. Each is accompanied by a table and "
                                      "potted plant.")
 

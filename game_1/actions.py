@@ -106,25 +106,26 @@ def interact_with(arguments, player):
     raw_item = " ".join(arguments)
     inputted_item = "".join(arguments)  # String of item to interact with (in correct class format)
 
-    # Making sure item is in player's inventory or in the roo
-    if inputted_item not in [item.__class__.__name__ for item in player.inventory]:
-        if inputted_item not in [item.__class__.__name__ for item in
-                        world.tile_exists(player.location_x, player.location_y).items]:
-            print("'" + raw_item + "' not in your inventory or anywhere nearby.")
-            return
-    # Getting the actual item object
-    else:  # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
+    # If it's in player inventory
+    if inputted_item in [item.__class__.__name__ for item in player.inventory]:
         for i, item in enumerate(player.inventory):
             if item.__class__.__name__ == inputted_item:
                 player.inventory[i].interact()
                 break
+    # If it's in the room
+    elif inputted_item in [item.__class__.__name__ for item in
+                           world.tile_exists(player.location_x, player.location_y).items]:
         for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
             if item.__class__.__name__ == inputted_item:
                 world.tile_exists(player.location_x, player.location_y).items[i].interact()
                 break
+    # If it's not in inventory or room
+    else:  # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
+        print("'" + raw_item + "' not in your inventory or anywhere nearby.")
     return
 
 
+# BROKEN! Never works. Make sure to also fix using self an object on itself or 2 items of same name on eachother.
 def use_on(arguments, player):
     """ Action used for user input of "use ___ on ___"
     Args:

@@ -1,6 +1,7 @@
 """
 Items classes should always follow the format:
 Capital letters for the start of new words.
+Examples: Book, GarageDoor, ElectricalCable, etc.
 """
 
 
@@ -42,6 +43,22 @@ class Antimatter(Item):
         super().__init__(name="Antimatter",
                          description="A small vile containing {} grams of antimatter.".format(self.amount))
         return
+
+
+class Couch(Item):
+    def __init__(self):
+        super().__init__(name="Couch", can_pick_up=False,
+                         description="A sleek, black leather couch.")
+
+    def interact(self):
+        print("Huh, pretty comfy.")
+
+
+class Plant(Item):
+    def __init__(self):
+        super().__init__(name="Plant",
+                         description="Looks like a Ficus Danielle, similar-looking to one at your apartment on Terra. "
+                                     "It's clearly fake.")
 
 
 class Weapon(Item):

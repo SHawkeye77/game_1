@@ -50,16 +50,18 @@ def parse_args(user_input, player):
         raw_argument = " ".join(list_of_input[1:])  # Here's the raw argument
         argument = "".join(arguments)  # Turning into un-spaced argument. Example: "FirstSecondThird"
     else:
-        argument = None
-        raw_argument = None
+        argument = ""
+        raw_argument = ""
 
     if command == "go" or command == "move":
         actions.move(argument, player)
-    elif command == "observe" or command == "look":
+    elif command in ["east", "west", "north", "south"]:
+        actions.move(command.title(), player)
+    elif command == "observe" and argument == "" or command == "look" and (argument == "Around" or argument == ""):
         actions.examine_surroundings(player)
-    elif command == "inventory" or (command == "view" and argument == "Inventory"):
+    elif command == "inventory" or (command == "view" and argument == "Inventory") or (command == "i" and argument==""):
         actions.print_inventory(player)
-    elif command == "where" and argument == "AmI":
+    elif command == "where" and argument == "AmI" or (command == "location" and argument == ""):
         actions.where(player)
     elif command == "drop":
         actions.drop(player, argument, raw_argument)
