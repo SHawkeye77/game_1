@@ -11,7 +11,6 @@ def move(argument, player):
     Args:
         argument (string): Capitalized user input past the first word
         player (player object): User's character's "player" object
-        raw_argument (string): lowercase string of user argument of where to go
     Return:
         N/A but moves player as suggested or prints error
     """
@@ -172,10 +171,10 @@ def use_on(arguments, player):
 
     # Calling the associated "use" function with the correct objects
     if item_2_location == "inventory":
-        player.inventory[item_1_index].use(player.inventory[item_2_index])
+        player.inventory[item_1_index].use(item=player.inventory[item_2_index], player=player)
     elif item_2_location == "room":
         player.inventory[item_1_index].use(
-            world.tile_exists(player.location_x, player.location_y).items[item_2_index])
+            item=world.tile_exists(player.location_x, player.location_y).items[item_2_index], player=player)
     return
 
 

@@ -6,3 +6,5 @@ var/
 .venv
 venv/
 *.xml
+.idea
+.idea/*

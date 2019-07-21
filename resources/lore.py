@@ -18,4 +18,4 @@ INTRODUCTION_TEXT = \
 
 CONCLUSION_TEXT = "I can't believe you beat my game. Well, back to work! nicroChat"
 
-DEATH_TEXT = "You lost - OMEGALUL u suck XD"
+DEATH_TEXT = "GAME OVER"

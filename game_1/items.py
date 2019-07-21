@@ -12,10 +12,11 @@ class Item:
         self.description = description  # Description of item
         self.can_pick_up = can_pick_up  # Can the user add this to their inventory
 
-    def use(self):
+    def use(self, **kwargs):
         """
         Call when you want to use the current (self) item on the item that is passed in (in overridden methods of use).
         e.g. use key on door
+        NOTE: Must always be able to accept a variable number of arguments!
         """
         # Override in child class if you want to have the object able to be used on something
         print("You can't do that.")
@@ -80,6 +81,23 @@ class Knife(Weapon):
         super().__init__(name="Knife",
                          description="A simple knife, with a blade about six inches long.",
                          damage=5)
+
+    # NOTE: In order for this to work, we assume all items will be objects...
+    def use(self, **kwargs):
+        destroyed_antimatter = False
+        for label, arg in kwargs.items():
+            if label == "item":
+                if arg.__class__.__name__ == "Antimatter":
+                    print("With a swipe of the knife you cut open the antimatter. "
+                          "A millisecond later you notice your mistake, just in time for"
+                          " the world to collapse around you.")
+                    destroyed_antimatter = True
+            # Should always pass in a player object
+            if label == "player":
+                player = arg  # Will gather the player object
+        if destroyed_antimatter:
+            player.hp = 0
+
 
 
 class Food(Item):
