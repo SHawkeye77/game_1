@@ -1,4 +1,7 @@
-To fix:
-
- - actions.use_on function
+To Fix:
  -
+
+To Do:
+ - Finish making objects in the opening rooms
+ - Create opening rooms scenario up to using apm terminal
+ 
