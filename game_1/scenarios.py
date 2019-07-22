@@ -58,3 +58,39 @@ def detox_room_entrance():
 def lists_overlap(a, b):
     """ Returns true if list 'a' and list 'b' have overlap """
     return bool(set(a) & set(b))
+
+
+def opened_garage(player, lever):
+    """ Plays scenario that happens when pressing the lever
+
+    Returns:
+         True if garage is shut immediately, False otherwise.
+    """
+    # Getting the rover object (so we can see if player is inside)
+    for index, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
+        if item.name == "Rover":
+            rover = item
+
+    if lever.garage_down:
+        lever.garage_down = False
+        if rover.player_inside:  # If player triggers lever from inside the rover
+            print("From the safety of the rover, you see the garage door rise to the ceiling, "
+                  "exposing the Martian environment outside...")
+        else:  # If player pulls lever from out in the open
+            print("The heavy lever creaks upwards. Behind you, the garage bay door creaks "
+                  "and begins to open. Before you even have time to think about what you just did, "
+                  "your body cools rapidly. You gasp for air, unsuccessfully.")
+            user_input = input("What do you do? ")
+            list_of_input = user_input.lower().split()
+            if "lever" in list_of_input:  # Player must
+                # Run if player immediately shuts garage upon their mistake
+                print("Even as the world turns hazy around you, you muster the strength to lean into the lever, "
+                      "pressing it upwards. The garage door slams shut behind you as recover your breath...")
+                lever.garage_down = True
+            else:
+                print("It's no use.")
+                player.hp = 0  # Kills the player
+    else:
+        print("The lever falls downwards and the garage door returns to a closed position.")
+        lever.garage_down = True
+

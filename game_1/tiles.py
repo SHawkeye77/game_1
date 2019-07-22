@@ -85,16 +85,19 @@ class ApmTerminal(Location):
         super().__init__(x=x, y=y, name="APM Terminal",
                          description="A medium-sized room with a track in the center surrounded by benches. "
                                      "A tablet rests on a stand at the end of the track.",
-                         connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"])
+                         connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"],
+                         items=[items.Bench(), items.Tablet()])
 
 
 class Garage(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Garage",
-                         description="A giant hangar covered by a transparent roof. A closed garage door takes up "
-                                     "all of the outside wall. On one end, a mechanical lever is attached to the wall. "
+                         description="A giant hangar covered by a transparent, domed roof. "
+                                     "A closed garage door takes up all of the outside wall. "
+                                     "On one end, a mechanical lever is attached to the wall. "
                                      "A few rovers are parked here. ",
-                         connected=["ApmTerminal", "GarageMaintenanceRoom"])
+                         connected=["ApmTerminal", "GarageMaintenanceRoom"],
+                         items=[items.Rover(), items.GarageLever()])
 
 
 class TerraCommunicationsRoom(Location):

@@ -3,6 +3,8 @@ Items classes should always follow the format:
 Capital letters for the start of new words.
 Examples: Book, GarageDoor, ElectricalCable, etc.
 """
+import scenarios
+import world
 
 
 class Item:
@@ -21,7 +23,7 @@ class Item:
         # Override in child class if you want to have the object able to be used on something
         print("You can't do that.")
 
-    def interact(self):
+    def interact(self, **kwargs):
         """
         Call when you want to interact with the current (self) item
         e.g. interact with door
@@ -53,6 +55,56 @@ class Couch(Item):
 
     def interact(self):
         print("Huh, pretty comfy.")
+
+
+class Tablet(Item):
+    def __init__(self):
+        super().__init__(name="Tablet", can_pick_up=False,
+                         description="A touch-screen pad, held at shoulder-height by a narrow, cylindrical stand.")
+
+    def interact(self): ### TO BE CHANGED (of course)
+        print("You play angry birds.")
+
+
+class Rover(Item):
+    def __init__(self, locked=True, player_inside=False):
+        self.locked = locked
+        self.player_inside = player_inside  # True if the player is inside and piloting the rover
+        super().__init__(name="Rover", can_pick_up=False,
+                         description="A modest rover. The cabin is tube-shaped, and there's four huge wheels"
+                                     " jutting out from each side.")
+
+    def interact(self): #TO BE EXPANDED ON (OBVIOUSLY)
+        if self.locked:
+            print("It's locked. Looks like it requires a key-code to enter.")
+        else:
+            print("It's unlocked! You climb inside.")
+            self.player_inside = True  # MAKE SURE WHEN YOU LEAVE ROVER THIS SWITCHES BACK TO FALSE!
+
+
+class GarageLever(Item):
+    # This lever controls opening/closing the garage bay door
+    def __init__(self, garage_down=True):
+        self.garage_down = garage_down
+        super().__init__(name="Lever", can_pick_up=False,
+                         description="A bulky mechanical lever. There's a wire attached to it that follows the "
+                                     "dome above and ends at the garage door.")
+
+    def interact(self, **kwargs):
+        # Getting the player object
+        for key, value in kwargs.items():
+            if key == "player":
+                player = value
+        scenarios.opened_garage(player, self)
+
+
+class Bench(Item):
+    def __init__(self):
+        super().__init__(name="Bench", can_pick_up=False,
+                         description="A sleek, black leather couch.")
+
+    def interact(self):
+        print("It's not too comfy. Better than standing, though.")
 
 
 class Plant(Item):
