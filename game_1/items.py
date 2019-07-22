@@ -87,7 +87,7 @@ class Knife(Weapon):
         destroyed_antimatter = False
         for label, arg in kwargs.items():
             if label == "item":
-                if arg.__class__.__name__ == "Antimatter":
+                if arg.name.title() == "Antimatter":
                     print("With a swipe of the knife you cut open the antimatter. "
                           "A millisecond later you notice your mistake, just in time for"
                           " the world to collapse around you.")
@@ -99,59 +99,19 @@ class Knife(Weapon):
             player.hp = 0
 
 
-
 class Food(Item):
-    def __init__(self, name, description):
+    def __init__(self, name, description, eat_response="Tastes like chicken"):
+        self.eat_response = eat_response
         super().__init__(name=name, description=description, can_pick_up=True)
 
     def eat(self):
-        print("Tastes like chicken")
+        print(self.eat_response)
 
 
 class Drink(Item):
-    def __init__(self, name, description):
+    def __init__(self, name, description, drink_response="*gulp*"):
+        self.drink_response = drink_response
         super().__init__(name=name, description=description, can_pick_up=True)
 
     def drink(self):
-        print("*gulp*")
-
-
-class Coffee(Drink):
-    def __init__(self):
-        super().__init__(name="cup of coffee", description="Looks like dark roast.")
-
-    def drink(self):
-        print("\n*gulp*\nIt's hot but tasty. Could've used some cream in it though...")
-
-
-class Tea(Drink):
-    def __init__(self):
-        super().__init__(name="glass of tea", description="A small glass of herbal tea.")
-
-    def drink(self):
-        print("\n*gulp*\nIt's warm but tasty. Could've used some honey in it though...")
-
-
-class Water(Drink):
-    def __init__(self):
-        super().__init__(name="glass of water", description="A large glass of water.")
-
-    def drink(self):
-        print("\n*gulp*\nNothing like a cold glass of water.\n")
-
-
-class Coke(Drink):
-    def __init__(self):
-        super().__init__(name="can of Coke", description="It's a normal can of Coke.")
-
-    def drink(self):
-        print("\n*gulp*\nJust like Terran Coke")
-
-
-
-
-
-
-
-
-
+        print(self.drink_response)

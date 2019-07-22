@@ -63,12 +63,21 @@ class IntegrationRoom(Location):
         """ Is run only if it's the user's first time entering this location """
         for item in self.items:
             if issubclass(item.__class__, items.Drink):
-                drink_name = item.name
+                drink_name = item.name.lower()
                 break
 
         print("Location: " + self.name)
         print("A simple room consisting of two couches. Each is accompanied by a potted plant and a table. "
-              "On one sits a " + drink_name + ".")
+              "On one sits a ", end="")
+        if drink_name == "coffee" or drink_name == "tea":
+            print("cup of " + drink_name + ".")
+        elif drink_name == "water":
+            print("glass of water.")
+        elif drink_name == "coke":
+            print("cold can of Coke.")
+        else:
+            print(drink_name)
+            print("pile of dust.")
 
 
 class ApmTerminal(Location):

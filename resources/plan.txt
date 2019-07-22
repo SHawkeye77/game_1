@@ -4,4 +4,6 @@ To Fix:
 To Do:
  - Finish making objects in the opening rooms
  - Create opening rooms scenario up to using apm terminal
- 
+
+Notes:
+ - ACTIONS are called by their class name but ITEMS are now called by their .name attribute in functions
