@@ -105,11 +105,10 @@ def interact_with(arguments, player):
     """
     inputted_item = " ".join(arguments)
     current_loc = world.tile_exists(player.location_x, player.location_y)
-
     # If it's in player inventory
     if inputted_item in [item.name.lower() for item in player.inventory]:
         for i, item in enumerate(player.inventory):
-            if item.name.lower() == item:
+            if item.name.lower() == inputted_item:
                 player.inventory[i].interact(player=player)
                 break
     # If it's in the room

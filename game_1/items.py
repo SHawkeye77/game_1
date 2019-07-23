@@ -2,6 +2,9 @@
 Items classes should always follow the format:
 Capital letters for the start of new words.
 Examples: Book, GarageDoor, ElectricalCable, etc.
+
+NOTE: Items are interacted with by their associated item.name attribute. It should be intuitive to the player.
+NOTE: Items must be able to accept **kwargs for all "interact" and "use" overrides!
 """
 import scenarios
 import world
@@ -39,7 +42,7 @@ class Antimatter(Item):
         super().__init__(name="Antimatter",
                          description="A small vile containing {} grams of antimatter.".format(amount))
 
-    def interact(self):
+    def interact(self, **kwargs):
         print("By interacting with the antimatter, you increased its power!")
         self.amount += 1
         # IS THERE A MORE EFFICIENT WAY TO CHANGE THE DESCRIPTION? DOESN'T CHANGE NATURALLY...
@@ -53,7 +56,7 @@ class Couch(Item):
         super().__init__(name="Couch", can_pick_up=False,
                          description="A sleek, black leather couch.")
 
-    def interact(self):
+    def interact(self, **kwargs):
         print("Huh, pretty comfy.")
 
 
@@ -62,7 +65,7 @@ class Tablet(Item):
         super().__init__(name="Tablet", can_pick_up=False,
                          description="A touch-screen pad, held at shoulder-height by a narrow, cylindrical stand.")
 
-    def interact(self): ### TO BE CHANGED (of course)
+    def interact(self, **kwargs): ### TO BE CHANGED (of course)
         print("You play angry birds.")
 
 
@@ -74,7 +77,7 @@ class Rover(Item):
                          description="A modest rover. The cabin is tube-shaped, and there's four huge wheels"
                                      " jutting out from each side.")
 
-    def interact(self): #TO BE EXPANDED ON (OBVIOUSLY)
+    def interact(self, **kwargs): #TO BE EXPANDED ON (OBVIOUSLY)
         if self.locked:
             print("It's locked. Looks like it requires a key-code to enter.")
         else:
@@ -103,7 +106,7 @@ class Bench(Item):
         super().__init__(name="Bench", can_pick_up=False,
                          description="A sleek, black leather couch.")
 
-    def interact(self):
+    def interact(self, **kwargs):
         print("It's not too comfy. Better than standing, though.")
 
 
@@ -157,6 +160,9 @@ class Food(Item):
         super().__init__(name=name, description=description, can_pick_up=True)
 
     def eat(self):
+        """
+        Only prints the appropriate response (deletion of item done in actions.py)
+        """
         print(self.eat_response)
 
 
