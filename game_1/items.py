@@ -5,6 +5,8 @@ Examples: Book, GarageDoor, ElectricalCable, etc.
 
 NOTE: Items are interacted with by their associated item.name attribute. It should be intuitive to the player.
 NOTE: Items must be able to accept **kwargs for all "interact" and "use" overrides!
+- When you add "use" function overrides, make sure to account for when they are called with objects that will do nothing,
+  and print a default response e.g. "Nothing happens."
 """
 import scenarios
 import world
@@ -19,15 +21,17 @@ class Item:
 
     def use(self, **kwargs):
         """
+        Used for "use _____ on _____" input
         Call when you want to use the current (self) item on the item that is passed in (in overridden methods of use).
         e.g. use key on door
         NOTE: Must always be able to accept a variable number of arguments!
         """
         # Override in child class if you want to have the object able to be used on something
-        print("You can't do that.")
+        print("Nothing happens.")
 
     def interact(self, **kwargs):
         """
+        Used for "interact with _____" input
         Call when you want to interact with the current (self) item
         e.g. interact with door
         """
@@ -141,17 +145,20 @@ class Knife(Weapon):
     def use(self, **kwargs):
         destroyed_antimatter = False
         for label, arg in kwargs.items():
+            # Gathering item object of item the knife is being used on
             if label == "item":
                 if arg.name.title() == "Antimatter":
                     print("With a swipe of the knife you cut open the antimatter. "
                           "A millisecond later you notice your mistake, just in time for"
                           " the world to collapse around you.")
                     destroyed_antimatter = True
-            # Should always pass in a player object
+            # Gathering player object
             if label == "player":
                 player = arg  # Will gather the player object
         if destroyed_antimatter:
             player.hp = 0
+        else:  # Hits this if object
+            print("Nothing happens.")
 
 
 class Food(Item):
@@ -161,7 +168,7 @@ class Food(Item):
 
     def eat(self):
         """
-        Only prints the appropriate response (deletion of item done in actions.py)
+        Only prints the appropriate response (deletion of item is done in actions.py)
         """
         print(self.eat_response)
 
@@ -173,3 +180,11 @@ class Drink(Item):
 
     def drink(self):
         print(self.drink_response)
+
+
+class Tool(Item):
+    def __init__(self, name, description, can_pick_up):
+        super().__init__(name=name, description=description, can_pick_up=can_pick_up)
+
+    def use(self, **kwargs):
+        print("******add ability to use hammer on lock")

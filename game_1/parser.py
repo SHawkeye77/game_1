@@ -77,6 +77,8 @@ def parse_args(user_input, player):
         actions.drink(player, argument, raw_argument)
     elif command == "eat":
         actions.eat(player, argument, raw_argument)
+    elif command == "uuddlrlrbastart":  # Konami code
+        print("Nice try, bud.")
     else:
         print(random.choice(CONFUSED_RESPONSES))
 

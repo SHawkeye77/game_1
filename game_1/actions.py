@@ -206,6 +206,7 @@ def print_inventory(player):
     returns:
         N/A but prints each item in player's inventory
     """
+    print("\nInventory:")
     for item in player.inventory:
         print("====================")
         print(item.name.title())

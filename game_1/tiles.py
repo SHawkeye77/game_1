@@ -84,7 +84,10 @@ class ApmTerminal(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="APM Terminal",
                          description="A medium-sized room with a track in the center surrounded by benches. "
-                                     "A tablet rests on a stand at the end of the track.",
+                                     "A tablet rests on a stand at the end of the track. "
+                                     "A horrendous, rotten smell seems to be coming "
+                                     "from the Terra Communications Room, which is, oddly, locked by a "
+                                     "bulky, old-school mechanical lock. ",
                          connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"],
                          items=[items.Bench(), items.Tablet()])
 
@@ -116,7 +119,15 @@ class GarageMaintenanceRoom(Location):
                          description="A small walk-in closet with a variety of maintenance supplies "
                                      "scattered about. A few tools hang from the walls.",
                          connected=["Garage"],
-                         can_enter=False)
+                         can_enter=True,
+                         items=[items.Tool(name="Hammer", description="A standard, metal hammer.", can_pick_up=True),
+                                items.Tool(name="Screwdriver",
+                                           description="A metal screwdriver with a shank around 5 inches long.",
+                                           can_pick_up=True),
+                                items.Tool(name="Ladder", description="A foldable ladder at least 6 feet in height",
+                                           can_pick_up=False),
+                                items.Tool(name="Wrench", description="Your standard wrench. No bigger than your hand.",
+                                           can_pick_up=True)])
 
 # ==================================================================================================================
 
