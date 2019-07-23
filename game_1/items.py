@@ -19,12 +19,17 @@ class Item:
         self.description = description  # Description of item
         self.can_pick_up = can_pick_up  # Can the user add this to their inventory
 
-    def use(self, **kwargs):
+    def use(self, item, player):
         """
         Used for "use _____ on _____" input
         Call when you want to use the current (self) item on the item that is passed in (in overridden methods of use).
         e.g. use key on door
-        NOTE: Must always be able to accept a variable number of arguments!
+
+        Args:
+            item (object): other item we are going to use the current (self) item on.
+            player (object): current user's player object
+        Returns:
+            N/A but uses self object on item object
         """
         # Override in child class if you want to have the object able to be used on something
         print("Nothing happens.")
@@ -37,6 +42,12 @@ class Item:
         """
         # Override in child class if you want to have the object interact-able
         print("Nothing happens.")
+
+
+class Lock(Item):
+    def __init__(self):
+        super().__init__(name="Lock", can_pick_up=False,
+                         description="An old, bulky, mechanical lock.")
 
 
 class Antimatter(Item):
@@ -108,7 +119,7 @@ class GarageLever(Item):
 class Bench(Item):
     def __init__(self):
         super().__init__(name="Bench", can_pick_up=False,
-                         description="A sleek, black leather couch.")
+                         description="A long bench, wide enough to fit around four people.")
 
     def interact(self, **kwargs):
         print("It's not too comfy. Better than standing, though.")
@@ -142,22 +153,16 @@ class Knife(Weapon):
                          damage=5)
 
     # NOTE: In order for this to work, we assume all items will be objects...
-    def use(self, **kwargs):
+    def use(self, item, player):
         destroyed_antimatter = False
-        for label, arg in kwargs.items():
-            # Gathering item object of item the knife is being used on
-            if label == "item":
-                if arg.name.title() == "Antimatter":
-                    print("With a swipe of the knife you cut open the antimatter. "
-                          "A millisecond later you notice your mistake, just in time for"
-                          " the world to collapse around you.")
-                    destroyed_antimatter = True
-            # Gathering player object
-            if label == "player":
-                player = arg  # Will gather the player object
+        if item.name.title() == "Antimatter":
+            print("With a swipe of the knife you cut open the antimatter. "
+                  "A millisecond later you notice your mistake, just in time for "
+                  "the world to collapse around you.")
+            destroyed_antimatter = True
         if destroyed_antimatter:
             player.hp = 0
-        else:  # Hits this if object
+        else:  # Hits this if knife is used on something other than antimatter
             print("Nothing happens.")
 
 
@@ -186,5 +191,10 @@ class Tool(Item):
     def __init__(self, name, description, can_pick_up):
         super().__init__(name=name, description=description, can_pick_up=can_pick_up)
 
-    def use(self, **kwargs):
-        print("******add ability to use hammer on lock")
+    def use(self, item, player):
+        # Hammers can be used to break locks
+        if self.name.lower() == "hammer" and item.name.lower() == "lock":
+            print("DESTROY LOCK")
+            print("MAKE ROOM UNLOCKED")
+        else:
+            print("Nothing happens")

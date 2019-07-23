@@ -84,12 +84,17 @@ class ApmTerminal(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="APM Terminal",
                          description="A medium-sized room with a track in the center surrounded by benches. "
-                                     "A tablet rests on a stand at the end of the track. "
-                                     "A horrendous, rotten smell seems to be coming "
-                                     "from the Terra Communications Room, which is, oddly, locked by a "
-                                     "bulky, old-school mechanical lock. ",
+                                     "A tablet rests on a stand at the end of the track. ",
                          connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"],
-                         items=[items.Bench(), items.Tablet()])
+                         items=[items.Bench(), items.Tablet(), items.Lock()])
+
+    def first_entrance(self):
+        """ Is run only if it's the user's first time entering this location """
+        print("A medium-sized room with a track in the center surrounded by benches."
+              "A tablet rests on a stand at the end of the track.\n "
+              "A horrendous, rotten smell seems to be coming "
+              "from the Terra Communications Room, which is, oddly, locked by a "
+              "bulky, old-school mechanical lock...")
 
 
 class Garage(Location):
@@ -110,7 +115,8 @@ class TerraCommunicationsRoom(Location):
                                      "are mounted on the wall. A long counter sprinkled with "
                                      "monitors, dials, and buttons stretches from wall to wall "
                                      "at the end of the room.",
-                         connected=["ApmTerminal"])
+                         connected=["ApmTerminal"],
+                         can_enter=False)
 
 
 class GarageMaintenanceRoom(Location):

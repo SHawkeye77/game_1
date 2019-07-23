@@ -170,10 +170,10 @@ def use_on(arguments, player):
 
     # Calling the associated "use" function with the correct objects
     if item_2_location == "inventory":
-        player.inventory[item_1_index].use(item=player.inventory[item_2_index], player=player)
+        player.inventory[item_1_index].use(player.inventory[item_2_index], player)
     elif item_2_location == "room":
         player.inventory[item_1_index].use(
-            item=world.tile_exists(player.location_x, player.location_y).items[item_2_index], player=player)
+            world.tile_exists(player.location_x, player.location_y).items[item_2_index], player)
     return
 
 
