@@ -192,9 +192,12 @@ class Tool(Item):
         super().__init__(name=name, description=description, can_pick_up=can_pick_up)
 
     def use(self, item, player):
-        # Hammers can be used to break locks
+        # Hammer can be used to break Terra Communications room lock
         if self.name.lower() == "hammer" and item.name.lower() == "lock":
-            print("DESTROY LOCK")
-            print("MAKE ROOM UNLOCKED")
+            print("After a few blows, you are able to shatter the mechanical lock.")
+            for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
+                if item.name.lower() == "lock":
+                    del world.tile_exists(player.location_x, player.location_y).items[i]  # Destroying lock
+                    world.tile_exists(player.location_x, player.location_y+1).can_enter = True  # BANKS ON THE FACT THAT ITS ONE SOUTH OF THE ROOM THE LOCK IS IN!
         else:
             print("Nothing happens")

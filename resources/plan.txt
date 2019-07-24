@@ -1,6 +1,5 @@
 To Do:
- - Make sure lock on Terra Communications Room door is destroyed and TCR is unlocked when the hammer is used on it.
-   - Then, add all the stuff in the TCR
+ - Add all the stuff in the TCR
  - Finish making objects in the opening rooms
  - Create opening rooms scenario up to using apm terminal
 
