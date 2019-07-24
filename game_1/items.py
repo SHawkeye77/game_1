@@ -116,6 +116,41 @@ class GarageLever(Item):
         scenarios.opened_garage(player, self)
 
 
+class Chair(Item):
+    def __init__(self):
+        super().__init__(name="Chair", can_pick_up=False,
+                         description="A standard, wooden chair.")
+
+    def interact(self, **kwargs):
+        print("Surprisingly comfy.")
+
+
+class Table(Item):
+    def __init__(self, description="A large table with a polished finish."):
+        super().__init__(name="Table", can_pick_up=False,
+                         description=description)
+
+
+class Clock(Item):
+    def __init__(self, time_location="Minneapolis"):
+        self.time_location = time_location
+        super().__init__(name=time_location + " Clock", can_pick_up=True,
+                         description="A traditional-looking clock set to " + self.time_location + " local time.")
+
+
+class DeadCommunicationsDirector(Item):
+    def __init__(self):
+        super().__init__(name="Communications Director", can_pick_up=False,
+                         description="It is clear something awful happened to the director.\n"
+                                     "His skin is, for the most part, torn. While some tears look like cuts, others "
+                                     "are large enough to expose patches of his anatomy underneath... "
+                                     "The intact portions of the man's skin are not normal either; at these spots "
+                                     "the skin has clumped together and begun to sag from the man's body.")
+
+    def interact(self, **kwargs):
+        print("Yeah right, no way I'm touching that.")
+
+
 class Bench(Item):
     def __init__(self):
         super().__init__(name="Bench", can_pick_up=False,
@@ -188,7 +223,7 @@ class Drink(Item):
 
 
 class Tool(Item):
-    def __init__(self, name, description, can_pick_up):
+    def __init__(self, name, description, can_pick_up=True):
         super().__init__(name=name, description=description, can_pick_up=can_pick_up)
 
     def use(self, item, player):

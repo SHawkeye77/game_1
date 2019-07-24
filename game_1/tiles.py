@@ -55,7 +55,8 @@ class IntegrationRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Integration Room",
                          connected=["DetoxChamber", "ApmTerminal"],
-                         items=[items.Plant(), items.Plant(), items.Couch(), items.Couch()],
+                         items=[items.Plant(), items.Plant(), items.Couch(),
+                                items.Table(description="A modest end table with an oak finish.")],
                          description="A simple room consisting of two couches. Each is accompanied by a table and "
                                      "potted plant.")
 
@@ -113,10 +114,23 @@ class TerraCommunicationsRoom(Location):
         super().__init__(x=x, y=y, name="Terra Communications Room",
                          description="Clocks labeled 'Sydney', 'New York', 'London', 'Dubai', and 'Pyongyang' "
                                      "are mounted on the wall. A long counter sprinkled with "
-                                     "monitors, dials, and buttons stretches from wall to wall "
-                                     "at the end of the room.",
+                                     "dials, buttons, and a computer stretches from wall to wall. "
+                                     "In front of the computer sits the dead communications director.",
                          connected=["ApmTerminal"],
+                         items=[items.Table(), items.Chair(), items.Clock(time_location="Sydney"),
+                                items.Clock(time_location="New York"), items.Clock(time_location="London"),
+                                items.Clock(time_location="Dubai"), items.Clock(time_location="Pyongyang"),
+                                items.DeadCommunicationsDirector()],
                          can_enter=False)
+
+    def first_entrance(self):
+        print("Location: Terra Communications Room")
+        print("Clocks labeled 'Sydney', 'New York', 'London', 'Dubai', and 'Pyongyang' are mounted on the wall. "
+              "A long counter sprinkled with dials, buttons, and a computer stretches from wall to wall. "
+              "In front of the computer sits who you assume is the communications "
+              "director... dead. Something is horribly wrong with the corpse.")
+
+
 
 
 class GarageMaintenanceRoom(Location):
@@ -126,14 +140,12 @@ class GarageMaintenanceRoom(Location):
                                      "scattered about. A few tools hang from the walls.",
                          connected=["Garage"],
                          can_enter=True,
-                         items=[items.Tool(name="Hammer", description="A standard, metal hammer.", can_pick_up=True),
+                         items=[items.Tool(name="Hammer", description="A standard, metal hammer."),
                                 items.Tool(name="Screwdriver",
-                                           description="A metal screwdriver with a shank around 5 inches long.",
-                                           can_pick_up=True),
+                                           description="A metal screwdriver with a shank around 5 inches long."),
                                 items.Tool(name="Ladder", description="A foldable ladder at least 6 feet in height",
                                            can_pick_up=False),
-                                items.Tool(name="Wrench", description="Your standard wrench. No bigger than your hand.",
-                                           can_pick_up=True)])
+                                items.Tool(name="Wrench", description="Your standard wrench. No bigger than your hand.")])
 
 # ==================================================================================================================
 
