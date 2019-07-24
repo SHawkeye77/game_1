@@ -198,6 +198,10 @@ class Tool(Item):
             for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
                 if item.name.lower() == "lock":
                     del world.tile_exists(player.location_x, player.location_y).items[i]  # Destroying lock
-                    world.tile_exists(player.location_x, player.location_y+1).can_enter = True  # BANKS ON THE FACT THAT ITS ONE SOUTH OF THE ROOM THE LOCK IS IN!
+                    for location, tile in world._world.items():
+                        if world.tile_exists(location[0], location[1]):
+                            if tile.name == "Terra Communications Room":
+                                tile.can_enter = True
+                                break
         else:
             print("Nothing happens")
