@@ -20,7 +20,7 @@ INTRODUCTION_TEXT = \
     " It should not take longer than one work day. Thank you for your willingness to help.\n***" \
     "\nA little less than an hour later, your ship touches down at the UNEEA's Martian base...\n\n"
 
-CONCLUSION_TEXT = "I can't believe you beat my game. Well, back to work! nicroChat"
+CONCLUSION_TEXT = "SUCCESS\nSpecial thanks to:\nOwen Murphy\n "
 
 DEATH_TEXT = "GAME OVER"
 
