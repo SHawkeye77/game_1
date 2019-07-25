@@ -134,7 +134,7 @@ def computer_usage(player):
 
 
     """
-    Failed to send messages:
+    Drafts:
     - (to terra)
     
     Previous messages: 
