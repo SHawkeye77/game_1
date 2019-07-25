@@ -109,13 +109,13 @@ def interact_with(arguments, player):
     if inputted_item in [item.name.lower() for item in player.inventory]:
         for i, item in enumerate(player.inventory):
             if item.name.lower() == inputted_item:
-                player.inventory[i].interact(player=player)
+                player.inventory[i].interact(player)
                 break
     # If it's in the room
     elif inputted_item in [item.name.lower() for item in current_loc.items]:
         for i, item in enumerate(current_loc.items):
             if item.name.lower() == inputted_item:
-                current_loc.items[i].interact(player=player)
+                current_loc.items[i].interact(player)
                 break
     # If it's not in inventory or room
     else:  # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?

@@ -2,8 +2,13 @@ import items, world
 
 import random
 
-STARTING_HP = 100  # Starting HP for a new player
-STARTING_ITEMS = [items.Antimatter(6), items.Knife(), items.Tool(name="Hammer", description="asdf")]  # List of starting items for the player
+# Starting HP for a new player
+STARTING_HP = 100
+
+# List of starting items for the player
+STARTING_ITEMS = [items.Antimatter(6),
+                  items.Knife(),
+                  items.Tool(name="Hammer", description="TO BE REMOVED FROM PLAYER INVENTORY")]
 
 
 class Player:

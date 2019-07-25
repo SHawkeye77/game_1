@@ -1,3 +1,7 @@
+"""
+This module holds all the wordy lore/text that we wouldn't want to take up a ton of space in the code.
+"""
+
 INTRODUCTION_TEXT = \
     "\n\n==========================================================\n" \
     "Date: May 10, 2045\n"\
@@ -19,3 +23,59 @@ INTRODUCTION_TEXT = \
 CONCLUSION_TEXT = "I can't believe you beat my game. Well, back to work! nicroChat"
 
 DEATH_TEXT = "GAME OVER"
+
+#  =====================================================================================================================
+#  Text for computer scenarios
+#  =====================================================================================================================
+GUI_LOGIN = \
+    " ________________________________________________ \n" \
+    "|    UNEAA SECURE SERVER AUTHENTICATION PORTAL   |\n" \
+    "|                                                |\n" \
+    "|             __________________                 |\n" \
+    "|   USERNAME:|                  |                |\n" \
+    "|             ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻                 |\n" \
+    "|             __________________                 |\n" \
+    "|   PASSWORD:|                  |                |\n" \
+    "|             ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻                 |\n" \
+    "|                                                |\n" \
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"
+
+COMM_DIR_POST_LOGIN_GUI = \
+    " ________________________________________________ \n"\
+    "| USER: DAVID LU                                 |\n"\
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|   __________________     __________________    |\n"\
+    "|  |VIEW SENT MESSAGES|   |   VIEW DRAFTS    |   |\n"\
+    "|   ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻     ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻    |\n"\
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n"\
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"
+
+
+COMM_DIR_SENT_MESSAGES = \
+    "==========================================================\n" \
+    "MAY 7, 2045\n" \
+    "05:46 UTC\n"\
+    "==========================================================\n"\
+    "SUBJECT: SUBJECT OF EMAIL 1\n" \
+    "RECIPIENT: MARTIAN_BASE_INHABITANTS_ALL\n"\
+    "BODY OF EMAIL 1"\
+    "\n\n"\
+    "==========================================================\n" \
+    "MAY 8, 2045\n" \
+    "13:04 UTC\n"\
+    "==========================================================\n" \
+    "SUBJECT: SUBJECT OF EMAIL 2\n" \
+    "RECIPIENT: MARTIAN_BASE_INHABITANTS_ALL\n"\
+    "BODY OF EMAIL 2"
+
+COMM_DIR_DRAFTS = \
+    "==========================================================\n" \
+    "DRAFT 1\n"\
+    "MAY 10,2045, 04:48 UTC\n"\
+    "==========================================================\n"\
+    "SUBJECT: SUBJECT OF DRAFTED EMAIL\n" \
+    "RECIPIENT: TERRA_COMMUNICATIONS\n"\
+    "BODY OF DRAFTED EMAIL "

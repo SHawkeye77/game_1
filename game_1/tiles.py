@@ -2,8 +2,9 @@
 This module holds all tiles classes (rooms, hallways, etc)
 """
 
-import items, npcs, actions, world  # Correct even though it's red...
+import items, npcs, actions, world
 import scenarios
+
 
 class Location:
     """ Template for a single location/tile. All places must derive from this """
@@ -85,7 +86,8 @@ class ApmTerminal(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="APM Terminal",
                          description="A medium-sized room with a track in the center surrounded by benches. "
-                                     "A tablet rests on a stand at the end of the track. ",
+                                     "A tablet rests on a stand at the end of the track. A horrible smell is coming "
+                                     "from the Terra Communications Room, which is locked by a large mechanical lock.",
                          connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"],
                          items=[items.Bench(), items.Tablet(), items.Lock()])
 
@@ -120,7 +122,7 @@ class TerraCommunicationsRoom(Location):
                          items=[items.Table(), items.Chair(), items.Clock(time_location="Sydney"),
                                 items.Clock(time_location="New York"), items.Clock(time_location="London"),
                                 items.Clock(time_location="Dubai"), items.Clock(time_location="Pyongyang"),
-                                items.DeadCommunicationsDirector()],
+                                items.DeadCommunicationsDirector(), items.Computer()],
                          can_enter=False)
 
     def first_entrance(self):
@@ -131,13 +133,11 @@ class TerraCommunicationsRoom(Location):
               "director... dead. Something is horribly wrong with the corpse.")
 
 
-
-
 class GarageMaintenanceRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Garage Maintenance Room",
-                         description="A small walk-in closet with a variety of maintenance supplies "
-                                     "scattered about. A few tools hang from the walls.",
+                         description="A small walk-in closet with a variety of maintenance supplies scattered about."
+                                     "A hammer, screwdriver, and wrench sit beneath a wooden ladder.",
                          connected=["Garage"],
                          can_enter=True,
                          items=[items.Tool(name="Hammer", description="A standard, metal hammer."),
@@ -145,7 +145,8 @@ class GarageMaintenanceRoom(Location):
                                            description="A metal screwdriver with a shank around 5 inches long."),
                                 items.Tool(name="Ladder", description="A foldable ladder at least 6 feet in height",
                                            can_pick_up=False),
-                                items.Tool(name="Wrench", description="Your standard wrench. No bigger than your hand.")])
+                                items.Tool(name="Wrench", description="Your standard wrench. No bigger than your hand.")
+                                ])
 
 # ==================================================================================================================
 

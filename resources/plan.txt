@@ -1,10 +1,12 @@
 To Do:
- - Add all the stuff in the TCR
+ - Make the emails
+ - Add buttons, dials, photopropulsion apparatus, and note (with creds) to TCR
  - Finish making objects in the opening rooms
- - Create opening rooms scenario up to using apm terminal
+ - Create opening rooms scenarios up to using apm terminal
 
 Notes:
  - ACTIONS are called by their class name but ITEMS are now called by their .name attribute in functions
+ - The fake computer gui is 50 characters wide. It will look horrible if whatever is playing the game is less than that.
 
 To Fix:
  -

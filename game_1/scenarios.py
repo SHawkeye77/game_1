@@ -3,6 +3,7 @@ This module holds scenarios that the player can go through.
 """
 import world
 import items
+from resources import lore
 
 
 def detox_room_entrance():
@@ -94,3 +95,49 @@ def opened_garage(player, lever):
         print("The lever falls downwards and the garage door returns to a closed position.")
         lever.garage_down = True
 
+
+def computer_usage(player):
+    """ The scenario for when the player interacts with the a secure computer. """
+    print("Type 'exit' at any time to leave the computer")
+    while True:
+        print("\n" + lore.GUI_LOGIN)
+        username = input("What 'USERNAME' do you enter? ")
+        password = input("What 'PASSWORD' do you enter? ")
+        # If the communications director logs in
+        if username == "luxxx825" and password == "gellerfan334!":
+            while True:
+                print(lore.COMM_DIR_POST_LOGIN_GUI)
+                clicked = input("What do you click? ").lower()
+                if clicked == "view sent messages" or clicked == "sent messages":
+                    print("The following appears on your screen:\n")
+                    print(lore.COMM_DIR_SENT_MESSAGES)
+                    print("\n\nAfter reading, you return back to the previous page.\n\n")
+                elif clicked == "view drafts" or clicked == "drafts":
+                    print("The following appears on your screen:\n")
+                    print(lore.COMM_DIR_DRAFTS)
+                    print("\n\nAfter reading, you return back to the previous page.\n\n")
+                elif clicked == "exit":
+                    print("You log out of the computer.")
+                    return
+                else:
+                    print("Not an available option...")
+
+        # If they choose to exit
+        elif username.lower() == "exit" or password.lower() == "exit":
+            print("You exit out of the computer.")
+            return
+
+        else:
+            print("INVALID USERNAME/PASSWORD COMBINATION")
+
+
+
+
+    """
+    Failed to send messages:
+    - (to terra)
+    
+    Previous messages: 
+    - (To base) Message with the APM Terminal code 
+    - (to base) Message telling people the dangers of the disease 
+    """

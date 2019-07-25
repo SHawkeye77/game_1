@@ -4,7 +4,7 @@ Capital letters for the start of new words.
 Examples: Book, GarageDoor, ElectricalCable, etc.
 
 NOTE: Items are interacted with by their associated item.name attribute. It should be intuitive to the player.
-NOTE: Items must be able to accept **kwargs for all "interact" and "use" overrides!
+NOTE: Items must be able to accept player for all "use" overrides, and player for all "interact" overrides.
 - When you add "use" function overrides, make sure to account for when they are called with objects that will do nothing,
   and print a default response e.g. "Nothing happens."
 """
@@ -34,7 +34,7 @@ class Item:
         # Override in child class if you want to have the object able to be used on something
         print("Nothing happens.")
 
-    def interact(self, **kwargs):
+    def interact(self, player):
         """
         Used for "interact with _____" input
         Call when you want to interact with the current (self) item
@@ -57,7 +57,7 @@ class Antimatter(Item):
         super().__init__(name="Antimatter",
                          description="A small vile containing {} grams of antimatter.".format(amount))
 
-    def interact(self, **kwargs):
+    def interact(self, player):
         print("By interacting with the antimatter, you increased its power!")
         self.amount += 1
         # IS THERE A MORE EFFICIENT WAY TO CHANGE THE DESCRIPTION? DOESN'T CHANGE NATURALLY...
@@ -71,7 +71,7 @@ class Couch(Item):
         super().__init__(name="Couch", can_pick_up=False,
                          description="A sleek, black leather couch.")
 
-    def interact(self, **kwargs):
+    def interact(self, player):
         print("Huh, pretty comfy.")
 
 
@@ -80,7 +80,7 @@ class Tablet(Item):
         super().__init__(name="Tablet", can_pick_up=False,
                          description="A touch-screen pad, held at shoulder-height by a narrow, cylindrical stand.")
 
-    def interact(self, **kwargs): ### TO BE CHANGED (of course)
+    def interact(self, player): ### TO BE CHANGED (of course)
         print("You play angry birds.")
 
 
@@ -92,7 +92,7 @@ class Rover(Item):
                          description="A modest rover. The cabin is tube-shaped, and there's four huge wheels"
                                      " jutting out from each side.")
 
-    def interact(self, **kwargs): #TO BE EXPANDED ON (OBVIOUSLY)
+    def interact(self, player): #TO BE EXPANDED ON (OBVIOUSLY)
         if self.locked:
             print("It's locked. Looks like it requires a key-code to enter.")
         else:
@@ -108,11 +108,7 @@ class GarageLever(Item):
                          description="A bulky mechanical lever. There's a wire attached to it that follows the "
                                      "dome above and ends at the garage door.")
 
-    def interact(self, **kwargs):
-        # Getting the player object
-        for key, value in kwargs.items():
-            if key == "player":
-                player = value
+    def interact(self, player):
         scenarios.opened_garage(player, self)
 
 
@@ -121,7 +117,7 @@ class Chair(Item):
         super().__init__(name="Chair", can_pick_up=False,
                          description="A standard, wooden chair.")
 
-    def interact(self, **kwargs):
+    def interact(self, player):
         print("Surprisingly comfy.")
 
 
@@ -147,8 +143,19 @@ class DeadCommunicationsDirector(Item):
                                      "The intact portions of the man's skin are not normal either; at these spots "
                                      "the skin has clumped together and begun to sag from the man's body.")
 
-    def interact(self, **kwargs):
+    def interact(self, player):
         print("Yeah right, no way I'm touching that.")
+
+
+class Computer(Item):
+    def __init__(self):
+        super().__init__(name="Computer", can_pick_up=False,
+                         description="A white, touch-screen monitor attached to the wall by a rotating beam. "
+                                     "It's about a meter wide and a centimeter deep. It's turned on.")
+
+    def interact(self, player):
+        print("You pull up a chair and begin working at the computer...")
+        scenarios.computer_usage(player)
 
 
 class Bench(Item):
@@ -156,7 +163,7 @@ class Bench(Item):
         super().__init__(name="Bench", can_pick_up=False,
                          description="A long bench, wide enough to fit around four people.")
 
-    def interact(self, **kwargs):
+    def interact(self, player):
         print("It's not too comfy. Better than standing, though.")
 
 
@@ -233,6 +240,10 @@ class Tool(Item):
             for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
                 if item.name.lower() == "lock":
                     del world.tile_exists(player.location_x, player.location_y).items[i]  # Destroying lock
+                    world.tile_exists(player.location_x, player.location_y).description = \
+                        "A medium-sized room with a track in the center surrounded by benches. "\
+                        "A tablet rests on a stand at the end of the track. A horrible smell is coming "\
+                        "from the Terra Communications Room."
                     for location, tile in world._world.items():
                         if world.tile_exists(location[0], location[1]):
                             if tile.name == "Terra Communications Room":
