@@ -55,7 +55,7 @@ class DetoxChamber(Location):
 class IntegrationRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Integration Room",
-                         connected=["DetoxChamber", "ApmTerminal"],
+                         connected=["DetoxChamber", "ApmTerminalA"],
                          items=[items.Plant(), items.Plant(), items.Couch(),
                                 items.Table(description="A modest end table with an oak finish.")],
                          description="A simple room consisting of two couches. Each is accompanied by a table and "
@@ -82,9 +82,9 @@ class IntegrationRoom(Location):
             print("pile of dust.")
 
 
-class ApmTerminal(Location):
+class ApmTerminalA(Location):
     def __init__(self, x, y):
-        super().__init__(x=x, y=y, name="APM Terminal",
+        super().__init__(x=x, y=y, name="APM Terminal A",
                          description="A medium-sized room with a track in the center surrounded by benches. "
                                      "A tablet rests on a stand at the end of the track. A horrible smell is coming "
                                      "from the Terra Communications Room, which is locked by a large mechanical lock.",
@@ -107,7 +107,7 @@ class Garage(Location):
                                      "A closed garage door takes up all of the outside wall. "
                                      "On one end, a mechanical lever is attached to the wall. "
                                      "A few rovers are parked here. ",
-                         connected=["ApmTerminal", "GarageMaintenanceRoom"],
+                         connected=["ApmTerminalA", "GarageMaintenanceRoom"],
                          items=[items.Rover(), items.GarageLever()])
 
 
@@ -118,7 +118,7 @@ class TerraCommunicationsRoom(Location):
                                      "are mounted on the wall. A long counter sprinkled with "
                                      "dials, buttons, and a computer stretches from wall to wall. "
                                      "In front of the computer sits the dead communications director.",
-                         connected=["ApmTerminal"],
+                         connected=["ApmTerminalA"],
                          items=[items.Table(), items.Chair(), items.Clock(time_location="Sydney"),
                                 items.Clock(time_location="New York"), items.Clock(time_location="London"),
                                 items.Clock(time_location="Dubai"), items.Clock(time_location="Pyongyang"),

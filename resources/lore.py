@@ -90,7 +90,7 @@ COMM_DIR_SENT_MESSAGES = \
     "|                                                |\n"\
     "| CONGRATULATIONS AND THANK YOU FOR BEING A PART |\n"\
     "| OF THE GREATEST ACCOMPLISHMENT ACHIEVED IN     |\n"\
-    "| HUMAN HISTORY.                                 |\n"\
+    "| EXTRATERRESTRIAL HISTORY.                      |\n"\
     "|       ----------------------------------       |\n"\
     "| MAY 7, 2045                                    |\n"\
     "| 05:53 UTC                                      |\n"\
@@ -120,7 +120,7 @@ COMM_DIR_DRAFTS = \
     "| SUBJECT: IMMEDIATE ASSISTANCE NEEDED           |\n" \
     "| RECIPIENT: UNEEA_TERRA_COMMUNICATIONS          |\n" \
     "|       ----------------------------------       |\n" \
-    "|                                                |\n" \
+    "|  ...                                           |\n" \
     "|                                                |\n" \
     "|                                                |\n" \
     "|                                                |\n" \

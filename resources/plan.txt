@@ -1,6 +1,7 @@
 To Do:
- - Make the emails
- - Add buttons, dials, photopropulsion apparatus, and note (with creds) to TCR
+ - Test APM terminal interaction
+ - Add Key Card (for APM) to TCR (its already created, just add it and put it in description somewhere)
+ - Add buttons, dials, photopropulsion apparatus, and note (with creds) to TCR.
  - Finish making objects in the opening rooms
  - Create opening rooms scenarios up to using apm terminal
 

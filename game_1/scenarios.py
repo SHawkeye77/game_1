@@ -49,7 +49,7 @@ def detox_room_entrance():
         elif "nothing" in list_of_input and ("not" not in list_of_input):
             print("\"We would prefer you stay hydrated during your visit.\"")
         elif "yes" in list_of_input or "sure" in list_of_input:
-            print("Great! What can I get you?")
+            print("\"Great! What can I get you?\"")
         else:
             print("\"I'm sorry, I don't understand.\"")
 
@@ -98,7 +98,7 @@ def opened_garage(player, lever):
 
 def computer_usage(player):
     """ The scenario for when the player interacts with a secure computer. """
-    print("Type 'exit' at any time to leave the computer")
+    print("Type 'exit' at any time to leave the computer.")
     first_time_login = True
     while True:
         if first_time_login:
@@ -114,11 +114,9 @@ def computer_usage(player):
         if username == "luxxx825" and password == "gellerfan334!":
             computer_usage_communications_director()
             return
-        elif username.lower() == "exit" or password.lower() == "exit":
+        elif password.lower() == "exit":
             print("You exit out of the computer.")
             return
-        else:
-            continue
 
 
 def computer_usage_communications_director():
@@ -158,3 +156,57 @@ def computer_usage_communications_director():
             return
         else:
             print("Not an available option...")
+
+
+def apm_terminal(player):
+    """ Plays the scenario for the player choosing a place to go from the terminal (starting from greeting)
+    Args:
+        player (object): Player object of current player (needed for current location)
+    Returns:
+         N/A but interacts with the player to select a viable location, then transports them there.
+    """
+    current_terminal = world.tile_exists(player.location_x, player.location_y).name
+    available_options = ["Remain Here", "What Is This"]
+    if current_terminal == "APM Terminal A":
+        available_options += ["Terminal B"]
+    elif current_terminal == "APM Terminal B":
+        available_options += [""]
+    elif current_terminal == "APM Terminal C":
+        available_options += [""]
+    elif current_terminal == "APM Terminal D":
+        available_options += [""]
+
+    been_entered = False
+    while True:
+        if been_entered:
+            print("\"Where would you like to go?\nPlease specify one of the following options:\" ")
+        else:
+            print("\"Hello Mr.Lu! Where would you like to go?\nPlease specify one of the following options: ")
+            been_entered = True
+        for option in available_options:
+            print(option)
+        to_go = input("")
+        if to_go.lower() == "terminal a" and "APM Terminal A" in available_options:
+            print("CODE IN THE PLAYER GOING TO TERMINAL A")
+            return
+        elif to_go.lower() == "terminal b" and "APM Terminal B" in available_options:
+            print("CODE IN THE PLAYER GOING TO TERMINAL B")
+            return
+        elif to_go.lower() == "terminal c" and "APM Terminal C" in available_options:
+            print("CODE IN THE PLAYER GOING TO TERMINAL C")
+            return
+        elif to_go.lower() == "terminal d" and "APM Terminal D" in available_options:
+            print("CODE IN THE PLAYER GOING TO TERMINAL D")
+            return
+        elif to_go.lower() == "earth":
+            print("Well, aren't you clever")
+        elif to_go.lower() == "remain here":
+            print("\"Understood. We will not send a tram to your location.\"")
+            return
+        elif to_go.lower() == "what is this" or to_go.lower() == "what is this?":
+            print("\"Welcome to the Automated People Mover, or APM, service at your Martian UNEEA base. "
+                  "The APM provides base workers with a convenient, safe way to travel between domes.\"")
+        else:
+            print("\"'" + to_go + "' not a valid response.\"")
+
+

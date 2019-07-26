@@ -84,6 +84,20 @@ class Tablet(Item):
         print("You play angry birds.")
 
 
+class APMPass(Item):
+    def __init__(self):
+        super().__init__(name="Key Card",
+                         description="It's dark-blue and looks like a credit-card.")
+
+    def use(self, item, player):
+        if item.name == "Tablet":
+            print("*click*")
+            print("From a speaker above, the same voice from earlier greets you: ")
+            scenarios.apm_terminal(player)
+        else:
+            print("Nothing happens.")
+
+
 class Rover(Item):
     def __init__(self, locked=True, player_inside=False):
         self.locked = locked
