@@ -136,8 +136,9 @@ class TerraCommunicationsRoom(Location):
 class GarageMaintenanceRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Garage Maintenance Room",
-                         description="A small walk-in closet with a variety of maintenance supplies scattered about."
-                                     "A hammer, screwdriver, and wrench sit beneath a wooden ladder.",
+                         description="A small walk-in closet with a variety of maintenance supplies scattered about. "
+                                     "A variety of tools: hammers, screwdrivers, wrenches, etc. sit "
+                                     "beneath a wooden ladder.",
                          connected=["Garage"],
                          can_enter=True,
                          items=[items.Tool(name="Hammer", description="A standard, metal hammer."),

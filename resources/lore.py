@@ -20,7 +20,7 @@ INTRODUCTION_TEXT = \
     " It should not take longer than one work day. Thank you for your willingness to help.\n***" \
     "\nA little less than an hour later, your ship touches down at the UNEEA's Martian base...\n\n"
 
-CONCLUSION_TEXT = "SUCCESS\nSpecial thanks to:\nOwen Murphy\n "
+CONCLUSION_TEXT = "SUCCESS\nSpecial thanks to:\nOwen Murphy\nPeter Schmidt\n"
 
 DEATH_TEXT = "GAME OVER"
 
@@ -31,6 +31,19 @@ GUI_LOGIN = \
     " ________________________________________________ \n" \
     "|    UNEAA SECURE SERVER AUTHENTICATION PORTAL   |\n" \
     "|                                                |\n" \
+    "|             __________________                 |\n" \
+    "|   USERNAME:|                  |                |\n" \
+    "|             ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻                 |\n" \
+    "|             __________________                 |\n" \
+    "|   PASSWORD:|                  |                |\n" \
+    "|             ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻                 |\n" \
+    "|                                                |\n" \
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"
+
+GUI_LOGIN_AFTER_FAIL = \
+    " ________________________________________________ \n" \
+    "|  INVALID USERNAME/PASSWORD COMBINATION         |\n" \
+    "|  TRY AGAIN                                     |\n" \
     "|             __________________                 |\n" \
     "|   USERNAME:|                  |                |\n" \
     "|             ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻                 |\n" \
@@ -55,27 +68,68 @@ COMM_DIR_POST_LOGIN_GUI = \
 
 
 COMM_DIR_SENT_MESSAGES = \
-    "==========================================================\n" \
-    "MAY 7, 2045\n" \
-    "05:46 UTC\n"\
-    "==========================================================\n"\
-    "SUBJECT: SUBJECT OF EMAIL 1\n" \
-    "RECIPIENT: MARTIAN_BASE_INHABITANTS_ALL\n"\
-    "BODY OF EMAIL 1"\
-    "\n\n"\
-    "==========================================================\n" \
-    "MAY 8, 2045\n" \
-    "13:04 UTC\n"\
-    "==========================================================\n" \
-    "SUBJECT: SUBJECT OF EMAIL 2\n" \
-    "RECIPIENT: MARTIAN_BASE_INHABITANTS_ALL\n"\
-    "BODY OF EMAIL 2"
+    " ________________________________________________ \n"\
+    "| MAY 7, 2045                                    |\n"\
+    "| 05:46 UTC                                      |\n"\
+    "| SUBJECT: EXCITING NEWS                         |\n"\
+    "| RECIPIENT: MARTIAN_BASE_INHABITANTS_ALL        |\n"\
+    "|       ----------------------------------       |\n"\
+    "| GOOD MORNING BASE EMPLOYEES,                   |\n"\
+    "| I AM THRILLED TO ANNOUNCE THE BIGGEST          |\n"\
+    "| ACHIEVEMENT OF OUR BASE THUS FAR. AS OF        |\n"\
+    "| YESTERDAY, AROUND 21:15 UTC, THANKS TO THE     |\n"\
+    "| HARD WORK OF OUR BASE'S RESEARCH TEAM, HUMANS  |\n"\
+    "| NOW KNOW WE ARE NOT ALONE IN OUR EXISTENCE. A  |\n"\
+    "| SMALL COLONY OF WHAT HAS BEEN DEEMED           |\n"\
+    "| \"science name\" OR \"nickname\" WAS               |\n"\
+    "| DISCOVERED IN OUR MINES. RESEARCH HAS BEEN,    |\n"\
+    "| AND WILL CONTINUE TO BE, CONDUCTED NONSTOP ON  |\n"\
+    "| THIS MICROORGANISM ON OUR LOCAL BASE UNTIL WE  |\n"\
+    "| CREATE A VIABLE, SAFE WAY TO TRANSPORT A       |\n"\
+    "| TO OUR TERRAN FACILITIES.                      |\n"\
+    "|                                                |\n"\
+    "| CONGRATULATIONS AND THANK YOU FOR BEING A PART |\n"\
+    "| OF THE GREATEST ACCOMPLISHMENT ACHIEVED IN     |\n"\
+    "| HUMAN HISTORY.                                 |\n"\
+    "|       ----------------------------------       |\n"\
+    "| MAY 7, 2045                                    |\n"\
+    "| 05:53 UTC                                      |\n"\
+    "| SUBJECT: EXCITING NEWS - FOLLOW UP             |\n"\
+    "| RECIPIENT: MARTIAN_BASE_SCIENCE_DIVISION       |\n"\
+    "|       ----------------------------------       |\n"\
+    "| AS BRIEFED BY...                               |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                                |\n"\
+    "|                                        ______  |\n"\
+    "|                                       | BACK | |\n"\
+    "|                                        ⎻⎻⎻⎻⎻⎻  |\n"\
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"\
 
 COMM_DIR_DRAFTS = \
-    "==========================================================\n" \
-    "DRAFT 1\n"\
-    "MAY 10,2045, 04:48 UTC\n"\
-    "==========================================================\n"\
-    "SUBJECT: SUBJECT OF DRAFTED EMAIL\n" \
-    "RECIPIENT: TERRA_COMMUNICATIONS\n"\
-    "BODY OF DRAFTED EMAIL "
+    " ________________________________________________ \n" \
+    "| DRAFT 1 *CONNECTION LOST*                      |\n" \
+    "| MAY 10,2045                                    |\n" \
+    "| 04:48 UTC                                      |\n" \
+    "| SUBJECT: IMMEDIATE ASSISTANCE NEEDED           |\n" \
+    "| RECIPIENT: UNEEA_TERRA_COMMUNICATIONS          |\n" \
+    "|       ----------------------------------       |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                        ______  |\n" \
+    "|                                       | BACK | |\n" \
+    "|                                        ⎻⎻⎻⎻⎻⎻  |\n" \
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"

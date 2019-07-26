@@ -97,47 +97,64 @@ def opened_garage(player, lever):
 
 
 def computer_usage(player):
-    """ The scenario for when the player interacts with the a secure computer. """
+    """ The scenario for when the player interacts with a secure computer. """
     print("Type 'exit' at any time to leave the computer")
+    first_time_login = True
     while True:
-        print("\n" + lore.GUI_LOGIN)
+        if first_time_login:
+            first_time_login = False
+            print("\n" + lore.GUI_LOGIN)
+        else:
+            print("\n" + lore.GUI_LOGIN_AFTER_FAIL)
         username = input("What 'USERNAME' do you enter? ")
+        if username.lower() == "exit":
+            print("You exit out of the computer.")
+            return
         password = input("What 'PASSWORD' do you enter? ")
-        # If the communications director logs in
         if username == "luxxx825" and password == "gellerfan334!":
+            computer_usage_communications_director()
+            return
+        elif username.lower() == "exit" or password.lower() == "exit":
+            print("You exit out of the computer.")
+            return
+        else:
+            continue
+
+
+def computer_usage_communications_director():
+    """ If the communications director logs into a computer, it goes here. """
+    while True:
+        print(lore.COMM_DIR_POST_LOGIN_GUI)
+        clicked = input("What do you click? ").lower()
+
+        # Sent messages
+        if clicked == "view sent messages" or clicked == "sent messages":
             while True:
-                print(lore.COMM_DIR_POST_LOGIN_GUI)
+                print(lore.COMM_DIR_SENT_MESSAGES)
                 clicked = input("What do you click? ").lower()
-                if clicked == "view sent messages" or clicked == "sent messages":
-                    print("The following appears on your screen:\n")
-                    print(lore.COMM_DIR_SENT_MESSAGES)
-                    print("\n\nAfter reading, you return back to the previous page.\n\n")
-                elif clicked == "view drafts" or clicked == "drafts":
-                    print("The following appears on your screen:\n")
-                    print(lore.COMM_DIR_DRAFTS)
-                    print("\n\nAfter reading, you return back to the previous page.\n\n")
+                if clicked == "back":
+                    break  # Goes back to login gui
                 elif clicked == "exit":
                     print("You log out of the computer.")
                     return
                 else:
                     print("Not an available option...")
 
-        # If they choose to exit
-        elif username.lower() == "exit" or password.lower() == "exit":
-            print("You exit out of the computer.")
+        # Drafts page
+        elif clicked == "view drafts" or clicked == "drafts":
+            while True:
+                print(lore.COMM_DIR_DRAFTS)
+                clicked = input("What do you click? ").lower()
+                if clicked == "back":
+                    break  # Goes back to login gui
+                elif clicked == "exit":
+                    print("You log out of the computer.")
+                    return
+                else:
+                    print("Not an available option...")
+
+        elif clicked == "exit":
+            print("You log out of the computer.")
             return
-
         else:
-            print("INVALID USERNAME/PASSWORD COMBINATION")
-
-
-
-
-    """
-    Drafts:
-    - (to terra)
-    
-    Previous messages: 
-    - (To base) Message with the APM Terminal code 
-    - (to base) Message telling people the dangers of the disease 
-    """
+            print("Not an available option...")
