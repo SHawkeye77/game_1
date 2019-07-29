@@ -78,7 +78,8 @@ class Couch(Item):
 class Tablet(Item):
     def __init__(self):
         super().__init__(name="Tablet", can_pick_up=False,
-                         description="A touch-screen pad, held at shoulder-height by a narrow, cylindrical stand.")
+                         description="A touch-screen pad, held at shoulder-height by a narrow, cylindrical stand. "
+                                     "The screen reads: \'Please swipe key card to begin\'")
 
 
 class APMPass(Item):
@@ -151,6 +152,13 @@ class Clock(Item):
                          description="A traditional-looking clock set to " + self.time_location + " local time.")
 
 
+class Transmitter(Item):
+    def __init__(self):
+        super().__init__(name="Transmitter", can_pick_up=False,
+                         description="A metallic, tapering cylinder pointing up towards the sky. In the center you "
+                                     "can see its photopropulsion apparatus. Looks like it's been tampered with...")
+
+
 class DeadCommunicationsDirector(Item):
     def __init__(self):
         super().__init__(name="Communications Director", can_pick_up=False,
@@ -158,7 +166,7 @@ class DeadCommunicationsDirector(Item):
                                      "His skin is, for the most part, torn. While some tears look like cuts, others "
                                      "are large enough to expose patches of his anatomy underneath... "
                                      "The intact portions of the man's skin are not normal either; at these spots "
-                                     "the skin has clumped together and begun to sag from the man's body."
+                                     "the skin has clumped together and begun to sag from the man's body. "
                                      "There seems to be a note, as well as what looks like a small key card poking out "
                                      "of his breast pocket.")
 

@@ -116,11 +116,12 @@ class TerraCommunicationsRoom(Location):
         super().__init__(x=x, y=y, name="Terra Communications Room",
                          description="Clocks labeled 'Sydney', 'New York', 'London', 'Dubai', and 'Pyongyang' "
                                      "are mounted on the wall. A long counter sprinkled with "
-                                     "dials, buttons, and a computer stretches from wall to wall. "
+                                     "dials, buttons, and a computer stretches from wall to wall. On the east side of "
+                                     "the room sits the base's transmitter. "
                                      "In front of the computer sits the dead communications director.",
                          connected=["ApmTerminalA"],
                          can_enter=False,
-                         items=[items.Table(), items.Chair(), items.Clock(time_location="Sydney"),
+                         items=[items.Table(), items.Chair(), items.Transmitter(), items.Clock(time_location="Sydney"),
                                 items.Clock(time_location="New York"), items.Clock(time_location="London"),
                                 items.Clock(time_location="Dubai"), items.Clock(time_location="Pyongyang"),
                                 items.DeadCommunicationsDirector(), items.Computer(), items.APMPass(),
@@ -130,7 +131,8 @@ class TerraCommunicationsRoom(Location):
     def first_entrance(self):
         print("Location: Terra Communications Room")
         print("Clocks labeled 'Sydney', 'New York', 'London', 'Dubai', and 'Pyongyang' are mounted on the wall. "
-              "A long counter sprinkled with dials, buttons, and a computer stretches from wall to wall. "
+              "A long counter sprinkled with dials, buttons, and a computer stretches from wall to wall. On the east "
+              "side of the room sits the base's transmitter. "
               "In front of the computer sits who you assume is the communications "
               "director... dead. Something is horribly wrong with the corpse.")
 
