@@ -1,13 +1,12 @@
 To Do:
- - Have "name" attribute be a list instead of a string. So that any of those "names" can be called to reference the item
-   - Be careful, though, that there's no overlap between names in the a room though.
  - Create opening rooms scenarios up to using apm terminal and test until thoroughly good.
 
 Notes:
- - ACTIONS are called by their class name but ITEMS are now called by their .name attribute in functions
+ - ACTIONS and TILES are called by their class name but ITEMS are now called by their .name attribute in functions
  - The fake computer gui is 50 characters wide. It will look horrible if whatever is playing the game is less than that.
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
    - Specifically, need to do this for Key Card in TCR, Note in TCR,
  - Add buttons and dials to TCR (once I figure out what they will actually do)
+ - Add emails to TCR scenario and also create

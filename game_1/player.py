@@ -8,7 +8,7 @@ STARTING_HP = 100
 # List of starting items for the player
 STARTING_ITEMS = [items.Antimatter(6),
                   items.Knife(),
-                  items.Tool(name="Hammer", description="TO BE REMOVED FROM PLAYER INVENTORY")]
+                  items.Tool(name=["Hammer"], description="TO BE REMOVED FROM PLAYER INVENTORY")]
 
 
 class Player:
@@ -57,7 +57,7 @@ class Player:
         # Applying damage from best weapon in inventory
         if best_weapon:  # If you have a weapon
             damage = best_weapon.damage
-            print("You use {} against {}!".format(best_weapon.name, enemy.name))
+            print("You use {} against {}!".format(best_weapon.name[0], enemy.name))
             x = random.randint(1, 101)  # 1-100 random number for combat mechanics
             if 0 < x <= 15:  # Critical hit
                 print("Critical hit!")

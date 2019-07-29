@@ -12,7 +12,7 @@ class Location:
         self.x = x  # X-Coordinate of the location (should never be directly seen by player)
         self.y = y  # Y-Coordinate of the location (should never be directly seen by player)
         self.items = items  # List of objects (items) at this location
-        self.name = name
+        self.name = name  # String name of the location (not list like items)
         self.description = description  # Description of the location
         self.can_enter = can_enter  # True if its enter-able, false if locked (or otherwise not enter-able)
         self.been_entered = been_entered  # False if room has never been entered by the player
@@ -65,7 +65,7 @@ class IntegrationRoom(Location):
         """ Is run only if it's the user's first time entering this location """
         for item in self.items:
             if issubclass(item.__class__, items.Drink):
-                drink_name = item.name.lower()
+                drink_name = item.name[0].lower()
                 break
 
         print("Location: " + self.name)
@@ -145,13 +145,13 @@ class GarageMaintenanceRoom(Location):
                                      "beneath a wooden ladder.",
                          connected=["Garage"],
                          can_enter=True,
-                         items=[items.Tool(name="Hammer", description="A standard, metal hammer."),
-                                items.Tool(name="Screwdriver",
+                         items=[items.Tool(name=["Hammer"], description="A standard, metal hammer."),
+                                items.Tool(name=["Screwdriver"],
                                            description="A metal screwdriver with a shank around 5 inches long."),
-                                items.Tool(name="Ladder", description="A foldable ladder at least 6 feet in height",
+                                items.Tool(name=["Ladder"], description="A foldable ladder at least 6 feet in height",
                                            can_pick_up=False),
-                                items.Tool(name="Wrench", description="Your standard wrench. No bigger than your hand.")
-                                ])
+                                items.Tool(name=["Wrench"], description="Your standard wrench. "
+                                                                        "No bigger than your hand.")])
 
 # ==================================================================================================================
 

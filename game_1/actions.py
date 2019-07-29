@@ -108,15 +108,15 @@ def interact_with(arguments, player):
     # If it's in player inventory
     if inputted_item in [item.name.lower() for item in player.inventory]:
         for i, item in enumerate(player.inventory):
-            if item.name.lower() == inputted_item:
+            if inputted_item in [name.lower() for name in item.name]:
                 player.inventory[i].interact(player)
-                break
+                return
     # If it's in the room
     elif inputted_item in [item.name.lower() for item in current_loc.items]:
         for i, item in enumerate(current_loc.items):
-            if item.name.lower() == inputted_item:
+            if inputted_item in [name.lower() for name in item.name]:
                 current_loc.items[i].interact(player)
-                break
+                return
     # If it's not in inventory or room
     else:  # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
         print("'" + inputted_item + "' not in your inventory or anywhere nearby.")
@@ -138,32 +138,42 @@ def use_on(arguments, player):
             break
     item_1 = " ".join(arguments[:index_of_on])  # String of item_1 in name format
     item_2 = " ".join(arguments[index_of_on + 1:])  # String of item_2 in name format
+
+    # Gathering and finding item names
+    inventory_names = []  # All possible names for items in inventory
+    room_names = []  # All possible names for items in the room
+    for item in player.inventory:
+        inventory_names += item.name
+    for item in world.tile_exists(player.location_x, player.location_y).items:
+        room_names += item.name
+
     # Making sure first item is in player's inventory
-    if item_1 not in [item.name.lower() for item in player.inventory]:
+    if item_1 not in [item.lower() for item in inventory_names]:
         print("'" + item_1 + "' not in your inventory.")
         return
+
     # Gets actual item_1 object
     else:
         for i, item in enumerate(player.inventory):
-            if item.name.lower() == item_1:
+            if item_1 in [name.lower() for name in item.name]:
                 item_1_index = i
+                break
 
     # Making sure second item is in player's inventory or in the room
-    if item_2 not in [item.name.lower() for item in player.inventory]:
-        if item_2 not in [item.name.lower() for item in
-                          world.tile_exists(player.location_x, player.location_y).items]:
+    if item_2 not in [item.lower() for item in inventory_names]:
+        if item_2 not in [item.lower() for item in room_names]:
             print("'" + item_2 + "' not in your inventory or anywhere nearby.")
             return
 
     # Getting the actual item_2 object (only reaches here if it is in room or inventory)
     # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
     for i, item in enumerate(player.inventory):
-        if item.name.lower() == item_2:
+        if item_2 in [name.lower() for name in item.name]:
             item_2_index = i
             item_2_location = "inventory"
             break
     for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
-        if item.name.lower() == item_2:
+        if item_2 in [name.lower() for name in item.name]:
             item_2_index = i
             item_2_location = "room"
             break
@@ -208,9 +218,8 @@ def print_inventory(player):
     """
     print("\nInventory:")
     for item in player.inventory:
-        print("====================")
-        print(item.name.title())
-        print(item.description)
+        print(item.name[0].title())
+        print(" -> " + item.description)
     return
 
 
@@ -224,7 +233,7 @@ def drop(player, argument, raw_argument):
         N/A but adds argument from player inventory to current tile's items
     """
     for index, item in enumerate(player.inventory):
-        if item.name.lower() == argument:
+        if argument in [name.lower() for name in item.name]:
             world.tile_exists(player.location_x, player.location_y).items.append(item)
             del player.inventory[index]
             print("You drop your " + raw_argument + ".")
@@ -244,7 +253,7 @@ def pick_up(player, argument, raw_argument):
     """
     items_in_room = world.tile_exists(player.location_x, player.location_y).items
     for index, item in enumerate(items_in_room):
-        if item.name.lower() == argument:
+        if argument in [name.lower() for name in item.name]:
             if item.can_pick_up:
                 player.inventory.append(item)  # Adds item to player inventory
                 del items_in_room[index]  # Removes item from room
@@ -271,7 +280,7 @@ def examine(player, argument, raw_argument):
     """
     items_in_room = world.tile_exists(player.location_x, player.location_y).items
     for index, item in enumerate(items_in_room):
-        if item.name.lower() == argument:
+        if argument in [name.lower() for name in item.name]:
             print(item.description)
             return
     if raw_argument is not "":
@@ -302,7 +311,7 @@ def drink(player, argument, raw_argument):
         N/A but drinks the argument
     """
     for index, item in enumerate(player.inventory):
-        if item.name.lower() == argument:
+        if argument in [name.lower() for name in item.name]:
             if isinstance(item, items.Drink):
                 item.drink()
                 del player.inventory[index]
@@ -311,7 +320,7 @@ def drink(player, argument, raw_argument):
                 print("I wouldn't drink that...")
                 return
     for index, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
-        if item.name.lower() == argument:
+        if argument in [name.lower() for name in item.name]:
             if isinstance(item, items.Drink):
                 item.drink()
                 del world.tile_exists(player.location_x, player.location_y).items[index]
@@ -334,7 +343,7 @@ def eat(player, argument, raw_argument):
         N/A but drinks the argument
     """
     for index, item in enumerate(player.inventory):
-        if item.name.lower() == argument:
+        if argument in [name.lower() for name in item.name]:
             if isinstance(item, items.Food):
                 item.eat()
                 del player.inventory[index]
@@ -343,7 +352,7 @@ def eat(player, argument, raw_argument):
                 print("I wouldn't eat that...")
                 return
     for index, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
-        if item.name.lower() == argument:
+        if argument in [name.lower() for name in item.name]:
             if isinstance(item, items.Food):
                 item.eat()
                 del world.tile_exists(player.location_x, player.location_y).items[index]

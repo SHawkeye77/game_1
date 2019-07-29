@@ -15,7 +15,7 @@ import world
 class Item:
     """ Base class for all items """
     def __init__(self, name, description, can_pick_up=True):
-        self.name = name  # Name of item
+        self.name = name  # List of names for item (any of which can be used to reference it). First one should be main.
         self.description = description  # Description of item
         self.can_pick_up = can_pick_up  # Can the user add this to their inventory
 
@@ -46,7 +46,7 @@ class Item:
 
 class Lock(Item):
     def __init__(self):
-        super().__init__(name="Lock", can_pick_up=False,
+        super().__init__(name=["Lock"], can_pick_up=False,
                          description="An old, bulky, mechanical lock.")
 
 
@@ -54,21 +54,21 @@ class Antimatter(Item):
     """ Child class for a vile of antimatter """
     def __init__(self, amount):
         self.amount = amount  # Amount, in grams, of antimatter in the vile
-        super().__init__(name="Antimatter",
+        super().__init__(name=["Antimatter"],
                          description="A small vile containing {} grams of antimatter.".format(amount))
 
     def interact(self, player):
         print("By interacting with the antimatter, you increased its power!")
         self.amount += 1
         # IS THERE A MORE EFFICIENT WAY TO CHANGE THE DESCRIPTION? DOESN'T CHANGE NATURALLY...
-        super().__init__(name="Antimatter",
+        super().__init__(name=["Antimatter"],
                          description="A small vile containing {} grams of antimatter.".format(self.amount))
         return
 
 
 class Couch(Item):
     def __init__(self):
-        super().__init__(name="Couch", can_pick_up=False,
+        super().__init__(name=["Couch"], can_pick_up=False,
                          description="A sleek, black leather couch.")
 
     def interact(self, player):
@@ -77,18 +77,18 @@ class Couch(Item):
 
 class Tablet(Item):
     def __init__(self):
-        super().__init__(name="Tablet", can_pick_up=False,
+        super().__init__(name=["Tablet"], can_pick_up=False,
                          description="A touch-screen pad, held at shoulder-height by a narrow, cylindrical stand. "
                                      "The screen reads: \'Please swipe key card to begin\'")
 
 
 class APMPass(Item):
     def __init__(self):
-        super().__init__(name="Key Card",
+        super().__init__(name=["Key Card"],
                          description="It's dark-blue and looks like a credit-card.")
 
     def use(self, item, player):
-        if item.name == "Tablet":
+        if "tablet" in [name.lower() for name in item.name]:
             print("*click*")
             print("From a speaker above, you're greeted by a familiar voice...")
             scenarios.apm_terminal(player)
@@ -99,14 +99,14 @@ class APMPass(Item):
 class Note(Item):
     """ A slip of paper with info on it """
     def __init__(self, description):
-        super().__init__(name="Note", description=description)
+        super().__init__(name=["Note"], description=description)
 
 
 class Rover(Item):
     def __init__(self, locked=True, player_inside=False):
         self.locked = locked
         self.player_inside = player_inside  # True if the player is inside and piloting the rover
-        super().__init__(name="Rover", can_pick_up=False,
+        super().__init__(name=["Rover"], can_pick_up=False,
                          description="A modest rover. The cabin is tube-shaped, and there's four huge wheels"
                                      " jutting out from each side.")
 
@@ -122,7 +122,7 @@ class GarageLever(Item):
     # This lever controls opening/closing the garage bay door
     def __init__(self, garage_down=True):
         self.garage_down = garage_down
-        super().__init__(name="Lever", can_pick_up=False,
+        super().__init__(name=["Lever"], can_pick_up=False,
                          description="A bulky mechanical lever. There's a wire attached to it that follows the "
                                      "dome above and ends at the garage door.")
 
@@ -132,7 +132,7 @@ class GarageLever(Item):
 
 class Chair(Item):
     def __init__(self):
-        super().__init__(name="Chair", can_pick_up=False,
+        super().__init__(name=["Chair"], can_pick_up=False,
                          description="A standard, wooden chair.")
 
     def interact(self, player):
@@ -141,27 +141,27 @@ class Chair(Item):
 
 class Table(Item):
     def __init__(self, description="A large table with a polished finish."):
-        super().__init__(name="Table", can_pick_up=False,
+        super().__init__(name=["Table"], can_pick_up=False,
                          description=description)
 
 
 class Clock(Item):
     def __init__(self, time_location="Minneapolis"):
         self.time_location = time_location
-        super().__init__(name=time_location + " Clock", can_pick_up=True,
+        super().__init__(name=[time_location + " Clock"], can_pick_up=True,
                          description="A traditional-looking clock set to " + self.time_location + " local time.")
 
 
 class Transmitter(Item):
     def __init__(self):
-        super().__init__(name="Transmitter", can_pick_up=False,
+        super().__init__(name=["Transmitter"], can_pick_up=False,
                          description="A metallic, tapering cylinder pointing up towards the sky. In the center you "
                                      "can see its photopropulsion apparatus. Looks like it's been tampered with...")
 
 
 class DeadCommunicationsDirector(Item):
     def __init__(self):
-        super().__init__(name="Communications Director", can_pick_up=False,
+        super().__init__(name=["Communications Director", "Corpse"], can_pick_up=False,
                          description="It is clear something awful happened to the director.\n"
                                      "His skin is, for the most part, torn. While some tears look like cuts, others "
                                      "are large enough to expose patches of his anatomy underneath... "
@@ -176,7 +176,7 @@ class DeadCommunicationsDirector(Item):
 
 class Computer(Item):
     def __init__(self):
-        super().__init__(name="Computer", can_pick_up=False,
+        super().__init__(name=["Computer"], can_pick_up=False,
                          description="A white, touch-screen monitor attached to the wall by a rotating beam. "
                                      "It's about a meter wide and a centimeter deep. It's turned on.")
 
@@ -187,7 +187,7 @@ class Computer(Item):
 
 class Bench(Item):
     def __init__(self):
-        super().__init__(name="Bench", can_pick_up=False,
+        super().__init__(name=["Bench"], can_pick_up=False,
                          description="A long bench, wide enough to fit around four people.")
 
     def interact(self, player):
@@ -196,7 +196,7 @@ class Bench(Item):
 
 class Plant(Item):
     def __init__(self):
-        super().__init__(name="Plant",
+        super().__init__(name=["Plant", "Potted Plant"],
                          description="Looks like a Ficus Danielle, similar-looking to one at your apartment on Terra. "
                                      "It's clearly fake.")
 
@@ -210,27 +210,24 @@ class Weapon(Item):
 
 class MetalBeam(Weapon):
     def __init__(self):
-        super().__init__(name="Metal Beam",
+        super().__init__(name=["Metal Beam"],
                          description="A metal beam, about two feet long.",
                          damage=5)
 
 
 class Knife(Weapon):
     def __init__(self):
-        super().__init__(name="Knife",
+        super().__init__(name=["Knife"],
                          description="A simple knife, with a blade about six inches long.",
                          damage=5)
 
     # NOTE: In order for this to work, we assume all items will be objects...
     def use(self, item, player):
-        destroyed_antimatter = False
-        if item.name.title() == "Antimatter":
-            print("With a swipe of the knife you cut open the antimatter. "
-                  "A millisecond later you notice your mistake, just in time for "
-                  "the world to collapse around you.")
-            destroyed_antimatter = True
-        if destroyed_antimatter:
+        if "antimatter" in [name.lower() for name in item.name]:
+            print("With a swipe of the knife you cut open the antimatter. A millisecond later you notice your mistake, "
+                  "just in time for the world to collapse around you.")
             player.hp = 0
+            return
         else:  # Hits this if knife is used on something other than antimatter
             print("Nothing happens.")
 
@@ -262,10 +259,10 @@ class Tool(Item):
 
     def use(self, item, player):
         # Hammer can be used to break Terra Communications room lock
-        if self.name.lower() == "hammer" and item.name.lower() == "lock":
+        if "hammer" in [name.lower() for name in self.name] and "lock" in [name.lower() for name in item.name]:
             print("After a few blows, you are able to shatter the mechanical lock.")
             for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
-                if item.name.lower() == "lock":
+                if "lock" in [name.lower() for name in item.name]:
                     del world.tile_exists(player.location_x, player.location_y).items[i]  # Destroying lock
                     world.tile_exists(player.location_x, player.location_y).description = \
                         "A medium-sized room with a track in the center surrounded by benches. "\
