@@ -93,8 +93,8 @@ class ApmTerminalA(Location):
 
     def first_entrance(self):
         """ Is run only if it's the user's first time entering this location """
-        print("A medium-sized room with a track in the center surrounded by benches."
-              "A tablet rests on a stand at the end of the track.\n "
+        print("A medium-sized room with a track in the center surrounded by benches. "
+              "A tablet rests on a stand at the end of the track. "
               "A horrendous, rotten smell seems to be coming "
               "from the Terra Communications Room, which is, oddly, locked by a "
               "bulky, old-school mechanical lock...")
@@ -126,7 +126,7 @@ class TerraCommunicationsRoom(Location):
                                 items.Clock(time_location="Dubai"), items.Clock(time_location="Pyongyang"),
                                 items.DeadCommunicationsDirector(), items.Computer(), items.APMPass(),
                                 items.Note(description="A yellow post-it note with the following written on it:\n"
-                                                       "u: luxxx825\np: gellerfan334!")])
+                                                       "\tu: luxxx825\n\tp: gellerfan334!")])
 
     def first_entrance(self):
         print("Location: Terra Communications Room")
@@ -148,7 +148,7 @@ class GarageMaintenanceRoom(Location):
                          items=[items.Tool(name=["Hammer"], description="A standard, metal hammer."),
                                 items.Tool(name=["Screwdriver"],
                                            description="A metal screwdriver with a shank around 5 inches long."),
-                                items.Tool(name=["Ladder"], description="A foldable ladder at least 6 feet in height",
+                                items.Tool(name=["Ladder"], description="A foldable ladder at least 6 feet in height.",
                                            can_pick_up=False),
                                 items.Tool(name=["Wrench"], description="Your standard wrench. "
                                                                         "No bigger than your hand.")])

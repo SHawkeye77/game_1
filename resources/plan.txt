@@ -1,5 +1,5 @@
 To Do:
- - Create opening rooms scenarios up to using apm terminal and test until thoroughly good.
+ -
 
 Notes:
  - ACTIONS and TILES are called by their class name but ITEMS are now called by their .name attribute in functions
@@ -7,6 +7,7 @@ Notes:
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
-   - Specifically, need to do this for Key Card in TCR, Note in TCR,
+   - Specifically, need to do this for Key Card in TCR, Note in TCR, plants in integration room, clocks in TCR,
  - Add buttons and dials to TCR (once I figure out what they will actually do)
  - Add emails to TCR scenario and also create
+ - Add all 3 intro emails

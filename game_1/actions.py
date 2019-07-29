@@ -105,14 +105,24 @@ def interact_with(arguments, player):
     """
     inputted_item = " ".join(arguments)
     current_loc = world.tile_exists(player.location_x, player.location_y)
+
+    inventory_names = []
+    for item in player.inventory:
+        for name in item.name:
+            inventory_names.append(name.lower())
+    room_names = []
+    for item in current_loc.items:
+        for name in item.name:
+            room_names.append(name.lower())
+
     # If it's in player inventory
-    if inputted_item in [item.name.lower() for item in player.inventory]:
+    if inputted_item in inventory_names:
         for i, item in enumerate(player.inventory):
             if inputted_item in [name.lower() for name in item.name]:
                 player.inventory[i].interact(player)
                 return
     # If it's in the room
-    elif inputted_item in [item.name.lower() for item in current_loc.items]:
+    elif inputted_item in room_names:
         for i, item in enumerate(current_loc.items):
             if inputted_item in [name.lower() for name in item.name]:
                 current_loc.items[i].interact(player)
@@ -272,25 +282,42 @@ def pick_up(player, argument, raw_argument):
     return
 
 
-def examine(player, argument, raw_argument):
+def examine(player, arguments, raw_argument):
     """
     Args:
         player (object): user's player object
-        argument (string): lowercase user input past the first word
+        arguments (string): List of lowercase strings of the 2nd -> last words inputted by user (first=examine)
         raw_argument (string): every word passed the first word of user input without modification
     Returns:
         N/A but prints description of user specified item if its in the current tile
     """
-    items_in_room = world.tile_exists(player.location_x, player.location_y).items
-    for index, item in enumerate(items_in_room):
-        if argument in [name.lower() for name in item.name]:
-            print(item.description)
-            return
-    if raw_argument is not "":
-        print(
-            "There is no '" + raw_argument + "' in the room.")  # Only gets here if none of specified item are in tile
-    else:
-        print("What do you want to examine?")
+    inputted_item = " ".join(arguments)
+    current_loc = world.tile_exists(player.location_x, player.location_y)
+
+    inventory_names = []
+    for item in player.inventory:
+        for name in item.name:
+            inventory_names.append(name.lower())
+    room_names = []
+    for item in current_loc.items:
+        for name in item.name:
+            room_names.append(name.lower())
+
+    # If it's in player inventory
+    if inputted_item in inventory_names:
+        for i, item in enumerate(player.inventory):
+            if inputted_item in [name.lower() for name in item.name]:
+                print(item.name[0].title() + ": " + item.description)
+                return
+    # If it's in the room
+    elif inputted_item in room_names:
+        for i, item in enumerate(current_loc.items):
+            if inputted_item in [name.lower() for name in item.name]:
+                print(item.name[0].title() + ": " + item.description)
+                return
+    # If it's not in inventory or room
+    else:  # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
+        print("'" + raw_argument + "' not in your inventory or anywhere nearby.")
     return
 
 

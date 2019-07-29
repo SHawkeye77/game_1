@@ -68,7 +68,7 @@ def parse_args(user_input, player):
     elif command == "grab" or command == "take" or command == "get":
         actions.pick_up(player, argument, raw_argument)
     elif command == "examine":
-        actions.examine(player, argument, raw_argument)
+        actions.examine(player, arguments, raw_argument)
     elif command == "enter":
         actions.enter(player, argument, raw_argument)
     elif command == "kill" and argument == "myself":

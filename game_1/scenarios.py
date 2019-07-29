@@ -123,16 +123,21 @@ def computer_usage(player):
 
 def computer_usage_communications_director():
     """ If the communications director logs into a computer, it goes here. """
+    from_messages = False
+    print(lore.COMM_DIR_POST_LOGIN_GUI)
     while True:
-        print(lore.COMM_DIR_POST_LOGIN_GUI)
+        if from_messages:
+            print(lore.COMM_DIR_POST_LOGIN_GUI)
+            from_messages=False
         clicked = input("What do you click? ").lower()
 
         # Sent messages
         if clicked == "view sent messages" or clicked == "sent messages":
+            print(lore.COMM_DIR_SENT_MESSAGES)
             while True:
-                print(lore.COMM_DIR_SENT_MESSAGES)
                 clicked = input("What do you click? ").lower()
                 if clicked == "back":
+                    from_messages = True
                     break  # Goes back to login gui
                 elif clicked == "exit":
                     print("You log out of the computer.")
@@ -142,10 +147,11 @@ def computer_usage_communications_director():
 
         # Drafts page
         elif clicked == "view drafts" or clicked == "drafts":
+            print(lore.COMM_DIR_DRAFTS)
             while True:
-                print(lore.COMM_DIR_DRAFTS)
                 clicked = input("What do you click? ").lower()
                 if clicked == "back":
+                    from_messages = True
                     break  # Goes back to login gui
                 elif clicked == "exit":
                     print("You log out of the computer.")
