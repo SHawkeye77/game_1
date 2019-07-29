@@ -6,9 +6,7 @@ import random
 STARTING_HP = 100
 
 # List of starting items for the player
-STARTING_ITEMS = [items.Antimatter(6),
-                  items.Knife(),
-                  items.Tool(name=["Hammer"], description="TO BE REMOVED FROM PLAYER INVENTORY")]
+STARTING_ITEMS = []
 
 
 class Player:

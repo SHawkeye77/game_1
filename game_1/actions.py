@@ -217,9 +217,12 @@ def print_inventory(player):
         N/A but prints each item in player's inventory
     """
     print("\nInventory:")
-    for item in player.inventory:
-        print(item.name[0].title())
-        print(" -> " + item.description)
+    if len(player.inventory) >= 1:
+        for item in player.inventory:
+            print(item.name[0].title())
+            print(" -> " + item.description)
+    else:
+        print("You have nothing in your inventory.")
     return
 
 
