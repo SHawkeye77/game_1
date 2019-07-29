@@ -1,9 +1,8 @@
 To Do:
- - Test APM terminal interaction
- - Add Key Card (for APM) to TCR (its already created, just add it and put it in description somewhere)
- - Add buttons, dials, photopropulsion apparatus, and note (with creds) to TCR.
+ - Update tcr description if note and items are picked up (add description_update module)
+ - Add buttons, dials, photopropulsion apparatus to TCR.
  - Finish making objects in the opening rooms
- - Create opening rooms scenarios up to using apm terminal
+ - Create opening rooms scenarios up to using apm terminal and test until thoroughly good.
 
 Notes:
  - ACTIONS are called by their class name but ITEMS are now called by their .name attribute in functions

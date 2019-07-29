@@ -119,11 +119,13 @@ class TerraCommunicationsRoom(Location):
                                      "dials, buttons, and a computer stretches from wall to wall. "
                                      "In front of the computer sits the dead communications director.",
                          connected=["ApmTerminalA"],
+                         can_enter=False,
                          items=[items.Table(), items.Chair(), items.Clock(time_location="Sydney"),
                                 items.Clock(time_location="New York"), items.Clock(time_location="London"),
                                 items.Clock(time_location="Dubai"), items.Clock(time_location="Pyongyang"),
-                                items.DeadCommunicationsDirector(), items.Computer()],
-                         can_enter=False)
+                                items.DeadCommunicationsDirector(), items.Computer(), items.APMPass(),
+                                items.Note(description="A yellow post-it note with the following written on it:\n"
+                                                       "u: luxxx825\np: gellerfan334!")])
 
     def first_entrance(self):
         print("Location: Terra Communications Room")

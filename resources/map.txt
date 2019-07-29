@@ -1,3 +1,3 @@
 ,,GarageMaintenanceRoom,Garage
-LandingPad,DetoxChamber,IntegrationRoom,ApmTerminal
+LandingPad,DetoxChamber,IntegrationRoom,ApmTerminalA
 ,,,TerraCommunicationsRoom

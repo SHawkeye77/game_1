@@ -80,9 +80,6 @@ class Tablet(Item):
         super().__init__(name="Tablet", can_pick_up=False,
                          description="A touch-screen pad, held at shoulder-height by a narrow, cylindrical stand.")
 
-    def interact(self, player): ### TO BE CHANGED (of course)
-        print("You play angry birds.")
-
 
 class APMPass(Item):
     def __init__(self):
@@ -92,10 +89,16 @@ class APMPass(Item):
     def use(self, item, player):
         if item.name == "Tablet":
             print("*click*")
-            print("From a speaker above, the same voice from earlier greets you: ")
+            print("From a speaker above, you're greeted by a familiar voice...")
             scenarios.apm_terminal(player)
         else:
             print("Nothing happens.")
+
+
+class Note(Item):
+    """ A slip of paper with info on it """
+    def __init__(self, description):
+        super().__init__(name="Note", description=description)
 
 
 class Rover(Item):
@@ -155,7 +158,9 @@ class DeadCommunicationsDirector(Item):
                                      "His skin is, for the most part, torn. While some tears look like cuts, others "
                                      "are large enough to expose patches of his anatomy underneath... "
                                      "The intact portions of the man's skin are not normal either; at these spots "
-                                     "the skin has clumped together and begun to sag from the man's body.")
+                                     "the skin has clumped together and begun to sag from the man's body."
+                                     "There seems to be a note, as well as what looks like a small key card poking out "
+                                     "of his breast pocket.")
 
     def interact(self, player):
         print("Yeah right, no way I'm touching that.")

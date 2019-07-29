@@ -166,7 +166,7 @@ def apm_terminal(player):
          N/A but interacts with the player to select a viable location, then transports them there.
     """
     current_terminal = world.tile_exists(player.location_x, player.location_y).name
-    available_options = ["Remain Here", "What Is This"]
+    available_options = []
     if current_terminal == "APM Terminal A":
         available_options += ["Terminal B"]
     elif current_terminal == "APM Terminal B":
@@ -175,38 +175,42 @@ def apm_terminal(player):
         available_options += [""]
     elif current_terminal == "APM Terminal D":
         available_options += [""]
+    available_options += ["Remain Here", "What Is This"]
 
     been_entered = False
     while True:
         if been_entered:
-            print("\"Where would you like to go?\nPlease specify one of the following options:\" ")
+            print("\"Where would you like to go?\"\n\"Please specify one of the following options:\" ")
         else:
-            print("\"Hello Mr.Lu! Where would you like to go?\nPlease specify one of the following options: ")
+            # It says Mr. Lu because you are using his key card.
+            print("\"Hello Mr.Lu! Welcome to the APM transportation interface.\"\n"
+                  "\"Where would you like to go?\"\n\"Please specify one of the following options:\"")
             been_entered = True
         for option in available_options:
-            print(option)
-        to_go = input("")
-        if to_go.lower() == "terminal a" and "APM Terminal A" in available_options:
+            print(" - \"" + option + "\"")
+        user_input = input("")
+        to_go = user_input.strip().lower()
+        if to_go == "terminal a" and "Terminal A" in available_options:
             print("CODE IN THE PLAYER GOING TO TERMINAL A")
             return
-        elif to_go.lower() == "terminal b" and "APM Terminal B" in available_options:
+        elif to_go == "terminal b" and "Terminal B" in available_options:
             print("CODE IN THE PLAYER GOING TO TERMINAL B")
             return
-        elif to_go.lower() == "terminal c" and "APM Terminal C" in available_options:
+        elif to_go == "terminal c" and "Terminal C" in available_options:
             print("CODE IN THE PLAYER GOING TO TERMINAL C")
             return
-        elif to_go.lower() == "terminal d" and "APM Terminal D" in available_options:
+        elif to_go == "terminal d" and "Terminal D" in available_options:
             print("CODE IN THE PLAYER GOING TO TERMINAL D")
             return
-        elif to_go.lower() == "earth":
+        elif to_go == "earth":
             print("Well, aren't you clever")
-        elif to_go.lower() == "remain here":
-            print("\"Understood. We will not send a tram to your location.\"")
+        elif to_go == "remain here":
+            print("\"Understood. We will not send a tram to your location. Have a wonderful stay!\"")
             return
-        elif to_go.lower() == "what is this" or to_go.lower() == "what is this?":
-            print("\"Welcome to the Automated People Mover, or APM, service at your Martian UNEEA base. "
-                  "The APM provides base workers with a convenient, safe way to travel between domes.\"")
+        elif to_go == "what is this" or to_go == "what is this?":
+            print("\"This is the Automated People Mover, or \'APM\' for short. "
+                  "Our APM service provides base workers with a convenient, safe way to travel between domes.\"")
         else:
-            print("\"'" + to_go + "' not a valid response.\"")
+            print("\n\"'" + user_input + "' not a valid response.\"")
 
 
