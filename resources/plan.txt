@@ -1,5 +1,5 @@
-To Do:
- -
+TODO:
+ - start coding main area.
 
 Notes:
  - ACTIONS and TILES are called by their class name but ITEMS are now called by their .name attribute in functions
