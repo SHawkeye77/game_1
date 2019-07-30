@@ -173,6 +173,18 @@ def apm_terminal(player):
     Returns:
          N/A but interacts with the player to select a viable location, then transports them there.
     """
+    # Getting the objects of the 4 terminals
+    for location, tile in world._world.items():
+        if world.tile_exists(location[0], location[1]):
+            if tile.name == "APM Terminal A":
+                terminal_a = tile
+            elif tile.name == "APM Terminal B":
+                terminal_b = tile
+            elif tile.name == "APM Terminal C":
+                terminal_c = tile
+            elif tile.name == "APM Terminal D":
+                terminal_d = tile
+
     current_terminal = world.tile_exists(player.location_x, player.location_y).name
     available_options = []
     if current_terminal == "APM Terminal A":
@@ -199,15 +211,25 @@ def apm_terminal(player):
         user_input = input("")
         to_go = user_input.strip().lower()
         if to_go == "terminal a" and "Terminal A" in available_options:
-            print("CODE IN THE PLAYER GOING TO TERMINAL A")
+            print("\"Sounds great! We will send a tram to your location right away. Safe travels!\"")
+            print("Less than a minute later, a two-car tram arrives at the tracks in front of you. You step in, "
+                  "the doors are sealed, and you're transported through a tubed environment to the Landing "
+                  "Dome's Terminal A ...")
+            player.move(terminal_a.x, terminal_a.y)
             return
         elif to_go == "terminal b" and "Terminal B" in available_options:
-            print("CODE IN THE PLAYER GOING TO TERMINAL B")
+            print("\"Sounds great! We will send a tram to your location right away. Safe travels!\"")
+            print("Less than a minute later, a two-car tram arrives at the tracks in front of you. You step in, "
+                  "the doors are sealed, and you're transported through a tubed environment to the Main Dome's "
+                  "Terminal B...")
+            player.move(terminal_b.x, terminal_b.y)
             return
         elif to_go == "terminal c" and "Terminal C" in available_options:
+            print("\"Sounds great! We will send a tram to your location right away. Safe travels!\"")
             print("CODE IN THE PLAYER GOING TO TERMINAL C")
             return
         elif to_go == "terminal d" and "Terminal D" in available_options:
+            print("\"Sounds great! We will send a tram to your location right away. Safe travels!\"")
             print("CODE IN THE PLAYER GOING TO TERMINAL D")
             return
         elif to_go == "earth":

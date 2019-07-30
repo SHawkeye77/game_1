@@ -1,5 +1,4 @@
 TODO:
- - Refactor code so you can import modules to tiles and items and have folders with files that hold different kinds
  - start coding main area.
 
 To Fix/Add:
@@ -7,8 +6,13 @@ To Fix/Add:
    - Specifically, need to do this for Key Card in TCR, Note in TCR, plants in integration room, clocks in TCR,
  - Add buttons and dials to TCR (once I figure out what they will actually do)
  - Add emails to TCR scenario and also create
+ - Refactor code so you can import modules to tiles and items and have folders with files that hold different kinds
  - Add all 3 intro emails
 
 Notes:
  - ACTIONS and TILES are called by their class name but ITEMS are now called by their .name attribute in functions
  - The fake computer gui is 50 characters wide. It will look horrible if whatever is playing the game is less than that.
+ - For the most part, in the main dome, the only time you can use cardinal directions to move is when you're in the
+   hallways, in the courtyard, or in a room with multiple subrooms (hospital, security area, shopping area, and spiritual area)
+   You can still go everywhere (that is portrayed as connected on the map) by using the enter <location> command.
+
