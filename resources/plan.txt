@@ -1,9 +1,6 @@
 TODO:
+ - Refactor code so you can import modules to tiles and items and have folders with files that hold different kinds
  - start coding main area.
-
-Notes:
- - ACTIONS and TILES are called by their class name but ITEMS are now called by their .name attribute in functions
- - The fake computer gui is 50 characters wide. It will look horrible if whatever is playing the game is less than that.
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
@@ -11,3 +8,7 @@ To Fix/Add:
  - Add buttons and dials to TCR (once I figure out what they will actually do)
  - Add emails to TCR scenario and also create
  - Add all 3 intro emails
+
+Notes:
+ - ACTIONS and TILES are called by their class name but ITEMS are now called by their .name attribute in functions
+ - The fake computer gui is 50 characters wide. It will look horrible if whatever is playing the game is less than that.

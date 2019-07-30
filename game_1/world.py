@@ -13,7 +13,7 @@ def load_tiles():
     fills the "_world" dictionary that will map tuples of (x,y) coordinates to objects of rooms
 
     """
-    with open('resources/map.txt', 'r') as f:
+    with open('resources/map.csv', 'r') as f:
         rows = f.readlines()  # Splits file into list of rows (which are strings)
         x_max = len(rows[0].split(','))  # Assumes all rows contain the same number of cells (separated by commas)
         for y_val in range(len(rows)):  # For each row...

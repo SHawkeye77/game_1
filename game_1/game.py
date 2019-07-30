@@ -17,7 +17,7 @@ def play():
     """ Main function that will run to play the game """
 
     # Setting up the world
-    world.load_tiles()  # Loads in the world specified in resources/map.txt
+    world.load_tiles()  # Loads in the world specified in resources/map.csv
     player = Player()  # Creating a player object
     print(INTRODUCTION_TEXT)
 
