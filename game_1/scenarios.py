@@ -166,6 +166,7 @@ def computer_usage_communications_director():
             print("Not an available option...")
 
 
+# Will need lots of expanding once I figure out how the APM system is going to work
 def apm_terminal(player):
     """ Plays the scenario for the player choosing a place to go from the terminal (starting from greeting)
     Args:
@@ -190,24 +191,19 @@ def apm_terminal(player):
     if current_terminal == "APM Terminal A":
         available_options += ["Terminal B"]
     elif current_terminal == "APM Terminal B":
-        available_options += [""]
+        available_options += ["Terminal A"]
     elif current_terminal == "APM Terminal C":
         available_options += [""]
     elif current_terminal == "APM Terminal D":
         available_options += [""]
     available_options += ["Remain Here", "What Is This"]
 
-    been_entered = False
+    # It says Mr. Lu because you are using his key card.
+    print("\"Hello Mr.Lu! Welcome to the APM transportation interface.\"\n"
+          "\"Where would you like to go?\"\n\"Please specify one of the following options:\"")
+    for option in available_options:
+        print(" - \"" + option + "\"")
     while True:
-        if been_entered:
-            print("\"Where would you like to go?\"\n\"Please specify one of the following options:\" ")
-        else:
-            # It says Mr. Lu because you are using his key card.
-            print("\"Hello Mr.Lu! Welcome to the APM transportation interface.\"\n"
-                  "\"Where would you like to go?\"\n\"Please specify one of the following options:\"")
-            been_entered = True
-        for option in available_options:
-            print(" - \"" + option + "\"")
         user_input = input("")
         to_go = user_input.strip().lower()
         if to_go == "terminal a" and "Terminal A" in available_options:
@@ -241,6 +237,6 @@ def apm_terminal(player):
             print("\"This is the Automated People Mover, or \'APM\' for short. "
                   "Our APM service provides base workers with a convenient, safe way to travel between domes.\"")
         else:
-            print("\n\"'" + user_input + "' not a valid response.\"")
+            print("\"'" + user_input + "' is not a valid response. Please state one of my previously-listed options.\"")
 
 
