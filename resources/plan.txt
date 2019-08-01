@@ -1,5 +1,6 @@
 TODO:
- - start coding main area.
+ - Add main area descriptions (rough draft).
+ - Add main area items and revise descriptions
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
@@ -10,7 +11,7 @@ To Fix/Add:
  - Add all 3 intro emails
 
 Notes:
- - ACTIONS and TILES are called by their class name but ITEMS are now called by their .name attribute in functions
+ - ACTIONS and TILES are called by their "class name" but ITEMS are now called by their ".name" attribute in functions
  - The fake computer gui is 50 characters wide. It will look horrible if whatever is playing the game is less than that.
  - For the most part, in the main dome, the only time you can use cardinal directions to move is when you're in the
    hallways, in the courtyard, or in a room with multiple subrooms (hospital, security area, shopping area, and spiritual area)

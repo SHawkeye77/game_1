@@ -34,7 +34,7 @@ class IntegrationRoom(Location):
                          items=[items.Plant(), items.Plant(), items.Couch(),
                                 items.Table(description="A modest end table with an oak finish.")],
                          description="A simple room consisting of two couches. Each is accompanied by a table and "
-                                     "potted plant.")
+                                     "potted plant. Covering the ceiling is a mural of Terra.")
 
     def first_entrance(self):
         """ Is run only if it's the user's first time entering this location """
@@ -42,7 +42,6 @@ class IntegrationRoom(Location):
             if issubclass(item.__class__, items.Drink):
                 drink_name = item.name[0].lower()
                 break
-
 
         print("Location: " + self.name)
         print("A simple room consisting of two couches. Each is accompanied by a potted plant and a table. "

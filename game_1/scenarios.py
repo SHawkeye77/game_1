@@ -210,7 +210,7 @@ def apm_terminal(player):
             print("\"Sounds great! We will send a tram to your location right away. Safe travels!\"")
             print("Less than a minute later, a two-car tram arrives at the tracks in front of you. You step in, "
                   "the doors are sealed, and you're transported through a tubed environment to the Landing "
-                  "Dome's Terminal A ...")
+                  "Dome's Terminal A...")
             player.move(terminal_a.x, terminal_a.y)
             return
         elif to_go == "terminal b" and "Terminal B" in available_options:
@@ -222,11 +222,17 @@ def apm_terminal(player):
             return
         elif to_go == "terminal c" and "Terminal C" in available_options:
             print("\"Sounds great! We will send a tram to your location right away. Safe travels!\"")
-            print("CODE IN THE PLAYER GOING TO TERMINAL C")
+            print("Less than a minute later, a two-car tram arrives at the tracks in front of you. You step in, "
+                  "the doors are sealed, and you're transported through a tubed environment to the Landing "
+                  "Dome's Terminal C...")
+            player.move(terminal_c.x, terminal_c.y)
             return
         elif to_go == "terminal d" and "Terminal D" in available_options:
             print("\"Sounds great! We will send a tram to your location right away. Safe travels!\"")
-            print("CODE IN THE PLAYER GOING TO TERMINAL D")
+            print("Less than a minute later, a two-car tram arrives at the tracks in front of you. You step in, "
+                  "the doors are sealed, and you're transported through a tubed environment to the Landing "
+                  "Dome's Terminal D...")
+            player.move(terminal_d.x, terminal_d.y)
             return
         elif to_go == "earth":
             print("Well, aren't you clever")

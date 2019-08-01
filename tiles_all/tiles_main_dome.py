@@ -8,7 +8,8 @@ class ApmTerminalB(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="APM Terminal B",
                          connected=["HallA"],
-                         description="APM TERMINAL B DESCRIPTION HERE",
+                         description="The APM track runs the length of the West end of the room. There's benches and a "
+                                     "waiting area to the East where a tablet sits.",
                          items=[items.Tablet()])
 
 
@@ -16,21 +17,25 @@ class SpiritualCenter(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Spiritual Center",
                          connected=["HallB", "Booth1", "Booth2"],
-                         description="SPIRITUAL CENTER DESCRIPTION HERE")
+                         description="The room is scattered wih cushions and chairs. In one corner a "
+                                     "tiny fountain pools into a small pond. There's a bookshelf on one wall. "
+                                     "Connected on the east of the room are two personal booths.")
 
 
 class Booth1(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Booth 1",
                          connected=["SpiritualCenter"],
-                         description="BOOTH 1 DESCRIPTION HERE")
+                         description="A cramped, soundproof booth barely big enough to fit a small bench and a little "
+                                     "leg-room. It's no larger than your bedroom closet back on terra.")
 
 
 class Booth2(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Booth 2",
                          connected=["SpiritualCenter"],
-                         description="BOOTH 2 DESCRIPTION HERE")
+                         description="A cramped, soundproof booth barely big enough to fit a small bench and a little "
+                                     "leg-room. It's no larger than your bedroom closet back on terra.")
 
 
 class Bathrooms(Location):
