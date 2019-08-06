@@ -253,6 +253,16 @@ class Drink(Item):
         print(self.drink_response)
 
 
+class Mirror(Item):
+    def __init__(self):
+        super().__init__(name=["Mirror"],
+                         description="There is an ugly person staring back at you.",
+                         can_pick_up=False)
+
+    def interact(self, player):
+        print("There is an ugly person staring back at you.")
+
+
 class Tool(Item):
     def __init__(self, name, description, can_pick_up=True):
         super().__init__(name=name, description=description, can_pick_up=can_pick_up)

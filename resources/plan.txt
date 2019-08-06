@@ -6,9 +6,8 @@ To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
    - Specifically, need to do this for Key Card in TCR, Note in TCR, plants in integration room, clocks in TCR,
  - Add buttons and dials to TCR (once I figure out what they will actually do)
- - Add emails to TCR scenario and also create
- - Refactor code so you can import modules to tiles and items and have folders with files that hold different kinds
- - Add all 3 intro emails
+ - Add or complete the 3 emails in TCR scenario
+ - Refactor code so you can import modules to items and have folders with files that hold different kinds
 
 Notes:
  - ACTIONS and TILES are called by their "class name" but ITEMS are now called by their ".name" attribute in functions

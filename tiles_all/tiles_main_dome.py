@@ -42,21 +42,25 @@ class Bathrooms(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Bathrooms",
                          connected=["HallC"],
-                         description="BATHROOMS DESCRIPTION HERE")
+                         description="A clean bathroom with a bright white finish. There's five stalls "
+                                     "and a hallway cutting through the center of the room. At the end is a single "
+                                     "sink and full length mirror.",
+                         items=[items.Mirror()])
 
 
 class Gym(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Gym",
                          connected=["HallC"],
-                         description="GYM DESCRIPTION HERE")
+                         description="A complete gym filled with benches, squat racks, free weights, treadmills, "
+                                     "bikes, rowing machines, and more...")
 
 
 class Cafeteria(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Cafeteria",
                          connected=["HallE"],
-                         description="GYM DESCRIPTION HERE")
+                         description="CAFE DESCRIPTION HERE")
 
 
 class Bar(Location):
