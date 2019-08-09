@@ -166,124 +166,159 @@ class MentalHealthRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="MentalHealthRoom",
                          connected=["Reception"],
-                         description="MENTAL HEALTH ROOM DESCRIPTION HERE")
+                         description="A couch sits across from a robotic head mounted on the wall. The head is "
+                                     "labeled \"ELIZA\"")
 
 
 class Courtyard(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Courtyard",
                          connected=["HallM", "HallN", "HallO", "HallP"],
-                         description="COURTYARD DESCRIPTION HERE")
+                         description="A wide open circular space capped only by the transparent, domed ceiling "
+                                     "far above. The ground is artificial turf and there's a large, stone fountain "
+                                     "flowing with water in the center.")
 
 
 class HallA(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall A",
                          connected=["HallL", "HallB", "ApmTerminalB", "SecurityCenter"],
-                         description="HALL A DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall A\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallB(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall B",
                          connected=["HallA", "HallC", "HallM", "SpiritualCenter", ""],
-                         description="HALL B DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall B\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallC(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall C",
                          connected=["HallB", "HallD", "Bathrooms", "Gym"],
-                         description="HALL C DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall C\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallD(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall D",
                          connected=["HallC", "HallE", "StorageArea"],
-                         description="HALL D DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall D\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallE(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall E",
                          connected=["HallD", "HallF", "HallN", "Cafeteria"],
-                         description="HALL E DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall E\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallF(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall F",
                          connected=["HallE", "HallG", "Bar"],
-                         description="HALL F DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall F\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallG(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall G",
                          connected=["HallF", "HallH", "Lounge"],
-                         description="HALL G DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall G\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallH(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall H",
                          connected=["HallG", "HallI", "HallO", "MovieTheater"],
-                         description="HALL H DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall H\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallI(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall I",
                          connected=["HallH", "HallJ", "Reception", "MaintenanceRoom"],
-                         description="HALL I DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall I\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallJ(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall J",
                          connected=["HallI", "HallK", "ShoppingCenter"],
-                         description="HALL J DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall J\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallK(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall K",
                          connected=["HallJ", "HallL", "HallP"],
-                         description="HALL K DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall K\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallL(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall L",
                          connected=["HallA", "HallK"],
-                         description="HALL L DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall L\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallM(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall M",
                          connected=["HallB", "Courtyard"],
-                         description="HALL M DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall M\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallN(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall N",
                          connected=["HallE", "Courtyard"],
-                         description="HALL N DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall N\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallO(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall O",
                          connected=["HallH", "Courtyard"],
-                         description="HALL O DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall O\". Automatic doors wait "
+                                     "at both ends.")
 
 
 class HallP(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall P",
                          connected=["HallK", "Courtyard"],
-                         description="HALL P DESCRIPTION HERE")
+                         description="A white tube with wires and tubes running along the ceiling. On the wall, in "
+                                     "large, black lettering it reads \"Hall P\". Automatic doors wait "
+                                     "at both ends.")
 

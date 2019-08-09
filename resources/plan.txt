@@ -8,6 +8,10 @@ To Fix/Add:
  - Add buttons and dials to TCR (once I figure out what they will actually do)
  - Add or complete the 3 emails in TCR scenario
  - Refactor code so you can import modules to items and have folders with files that hold different kinds
+ - ELIZA chatbot in mental health room.
+   - Just download the java version of eliza and do os.system(filename.java) then os.system(filename) to run it
+   - (I think)
+ -
 
 Notes:
  - ACTIONS and TILES are called by their "class name" but ITEMS are now called by their ".name" attribute in functions
