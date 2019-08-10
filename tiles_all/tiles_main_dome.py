@@ -131,35 +131,45 @@ class StorageArea(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Storage Area",
                          connected=["HallD"],
-                         description="STORAGE AREA DESCRIPTION HERE")
+                         description="You're in a closet-sized entrance blocked off from a large storace area by "
+                                     "clear plexiglass. There's a red button on the wall. The storage area is filled "
+                                     "floor to ceiling with sealed crates.")  # THE ROBOT COULD BE BROKEN IF I DON'T FEEL LIKE CODING IN THE STUFF OR IT COULD ONLY BE ABLE TO GRAB CERTAIN THINGS
 
 
 class Lounge(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lounge",
                          connected=["HallG"],
-                         description="LOUNGE DESCRIPTION HERE")
+                         description="A cozy, airy room. The artificial bricks, laminate wood-look flooring, and "
+                                     "electric fireplace are reminiscent of your family cabin back home. Scattered "
+                                     "around the room are bean-bag chairs, recliners, and even a couple massage "
+                                     "chairs. There's even a small oxygen bar in the corner.")
 
 
 class Reception(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Reception",
                          connected=["HallI", "MentalHealthRoom", "SurgeryRoom", "EmergencyRoom"],
-                         description="RECEPTION DESCRIPTION HERE")
+                         description="A cute lobby with chairs and a modest reception desk.")  # ADD A PHONE AND COMPUTER AND FRAMED PHOTO AND A BOWL OF MINTS ON THE DESK? ADD TO DESCRIPTION?
 
 
 class EmergencyRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Emergency Room",
                          connected=["Reception"],
-                         description="EMERGENCY ROOM DESCRIPTION HERE")
+                         description="Tables are pushed to the side, making room for an open area where corpses "
+                                     "are now scattered. Blood clings to the tiles and the wretched stench of decaying "
+                                     "bodies punctuates the room.")
 
 
 class SurgeryRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Surgery Room",
                          connected=["Reception"],
-                         description="SURGERY ROOM DESCRIPTION HERE")
+                         description="A sterile, white room with a bank of lights attached to the ceiling. "
+                                     "There's a tray on top of a rolling table. A white cloth covers its contents. "
+                                     "A stainless-steel operating table sits in the center of the room. There's a "
+                                     "sink in the corner.")
 
 
 class MentalHealthRoom(Location):
