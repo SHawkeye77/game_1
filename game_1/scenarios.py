@@ -241,7 +241,8 @@ def apm_terminal(player):
             return
         elif to_go == "what is this" or to_go == "what is this?":
             print("\"This is the Automated People Mover, or \'APM\' for short. "
-                  "Our APM service provides base workers with a convenient, safe way to travel between domes.\"")
+                  "Our APM service provides base workers with a convenient, safe way to travel between domes. Now, "
+                  "please specify one of the previously stated options.\"")
         else:
             print("\"'" + user_input + "' is not a valid response. Please state one of my previously-listed options.\"")
 
