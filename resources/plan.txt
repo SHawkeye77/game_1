@@ -1,6 +1,5 @@
 TODO:
- - Add main area descriptions (rough draft).
- - Add main area items and revise descriptions
+ - Add main area items and revise descriptions (continue from Cafeteria, clockwise)
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?

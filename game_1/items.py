@@ -110,7 +110,7 @@ class Rover(Item):
                          description="A modest rover. The cabin is tube-shaped, and there's four huge wheels"
                                      " jutting out from each side.")
 
-    def interact(self, player): #TO BE EXPANDED ON (OBVIOUSLY)
+    def interact(self, player): # TO BE EXPANDED ON (OBVIOUSLY)
         if self.locked:
             print("It's locked. Looks like it requires a key-code to enter.")
         else:
@@ -137,6 +137,112 @@ class Chair(Item):
 
     def interact(self, player):
         print("Surprisingly comfy.")
+
+
+class Cushion(Item):
+    def __init__(self):
+        super().__init__(name=["Cushion"], can_pick_up=True,
+                         description="A small cushion just large enough to sit cross-legged on.")
+
+    def interact(self, player):
+        print("You sit on it and smile, suddenly feeling more at ease.")
+
+
+class SpiritualCenterFountain(Item):  # MAYBE IF YOU THROW A COIN IN SOMETHING HAPPENS??? ========================================
+    def __init__(self):
+        super().__init__(name=["Fountain"], can_pick_up=False,
+                         description="Water flows from a high-up bowl, overflowing into larger bowls of increasing "
+                                     "sizes below.")
+
+
+class SpiritualCenterPond(Item):  # MAYBE IF YOU THROW A COIN IN SOMETHING HAPPENS??? ========================================
+    def __init__(self):
+        super().__init__(name=["Pond"], can_pick_up=False,
+                         description="A clear pool of water. There's a drain at the bottom where the water is "
+                                     "filtered.")
+
+
+class SpiritualCenterBookshelf(Item):
+    def __init__(self):
+        super().__init__(name=["Bookshelf"], can_pick_up=False,
+                         description="A dark, wooden bookshelf filled with religious texts.")  # MAYBE LIST SOME ACTUAL TEXTS? NEEDS TO BE UPDATED IF SOME ARE TAKEN THEN...
+
+
+class Book(Item):
+    def __init__(self, name=["BOOK"], description="BOOK DESCRIPTION"):
+        super().__init__(name=name, description=description)
+
+
+class Sink(Item):
+    def __init__(self):
+        super().__init__(name=["Sink"], can_pick_up=False,
+                         description="A standard, stainless-steel sink.")
+
+    def interact(self, player):
+        print("You turn the sink on and wash your hands.")
+
+
+class Toilet(Item):
+    def __init__(self):
+        super().__init__(name=["Toilet"], can_pick_up=False,
+                         description="A standard, stainless-steel Toilet.")
+
+    def interact(self, player):
+        print("You've needed to take a crap since arriving. You now feel relieved.")
+
+
+class WorkoutBench(Item):
+    def __init__(self):
+        super().__init__(name=["Bench", "Benches"], can_pick_up=False,
+                         description="A red, padded workout bench that can be adjusted to different positions.")
+
+    def interact(self, player):
+        print("You rotate the back to a new position.")
+
+
+class SquatRack(Item):
+    def __init__(self):
+        super().__init__(name=["Squat Rack"], can_pick_up=False,
+                         description="A squat rack with a padded floor for olympic lifts.")
+
+    def interact(self, player):
+        print("You load up some weights and rip through a couple of sets. Your legs are sore now.")
+
+
+class Weight(Item):
+    def __init__(self):
+        super().__init__(name=["Weight", "Weights", "Free Weights", "Free Weight", "Free Weights", "dumbbell",
+                               "dumbbells"], can_pick_up=True, description="A 20 pound free weight")  #ADD DIFFERENT WEIGHTS SO THERE'S VARIATION AND MORE REALISM?
+
+    def interact(self, player):
+        print("You grind out some curls and examine your biceps. Not too shabby.")
+
+
+class Treadmill(Item):
+    def __init__(self):
+        super().__init__(name=["Treadmill"], can_pick_up=False,
+                         description="A dark-blue treadmill.")
+
+    def interact(self, player):
+        print("You adjust the dials and go for a quick jog. A few minutes later you end sweaty, huffing and puffing.")
+
+
+class Bike(Item):
+    def __init__(self):
+        super().__init__(name=["Exercise Bike", "Bike"], can_pick_up=False,
+                         description="A slick, silver stationary bike.")
+
+    def interact(self, player):
+        print("You take it for a quick spin. It doesn't feel great on your knees.")
+
+
+class RowingMachine(Item):
+    def __init__(self):
+        super().__init__(name=["Rowing Machine"], can_pick_up=False,
+                         description="It's filled with water used for the counterweight.")
+
+    def interact(self, player):
+        print("Now you're sweaty and your back is sore. Awesome.")
 
 
 class Table(Item):
@@ -186,9 +292,9 @@ class Computer(Item):
 
 
 class Bench(Item):
-    def __init__(self):
+    def __init__(self, description="A long bench, wide enough to fit around four people."):
         super().__init__(name=["Bench"], can_pick_up=False,
-                         description="A long bench, wide enough to fit around four people.")
+                         description=description)
 
     def interact(self, player):
         print("It's not too comfy. Better than standing, though.")

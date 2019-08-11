@@ -10,7 +10,7 @@ class ApmTerminalB(Location):
                          connected=["HallA"],
                          description="The APM track runs the length of the West end of the room. There are benches and "
                                      "a waiting area to the East where a tablet sits.",
-                         items=[items.Tablet()])
+                         items=[items.Tablet(), items.Bench()])
 
 
 class SpiritualCenter(Location):
@@ -19,7 +19,27 @@ class SpiritualCenter(Location):
                          connected=["HallB", "Booth1", "Booth2"],
                          description="The room is scattered wih cushions and chairs. In one corner a "
                                      "tiny fountain pools into a small pond. There's a bookshelf on one wall. "
-                                     "Connected on the east of the room are two personal booths.")
+                                     "Connected on the east of the room are two personal booths.",
+                         items=[items.Chair(), items.Cushion(), items.SpiritualCenterFountain(),
+                                items.SpiritualCenterPond(), items.SpiritualCenterBookshelf(),
+                                items.Book(name=["The Bible", "Bible"],
+                                           description="1:1 In the beginning God created the heaven and the earth.\n"
+                                                       "1:2 And the earth was without form, and void; and darkness was "
+                                                       "upon the face of the deep. And the Spirit of God moved upon..."
+                                                       "\nYou get bored and stop reading."),
+                                items.Book(name=["The Quran", "Quran"],
+                                           description="1:1 In the name of Allah, the Entirely Merciful, the "
+                                                       "Especially Merciful.\n1:2 [All] praise is [due] to Allah, "
+                                                       "Lord of the worlds -\n1:3 The Entirely Merciful, the "
+                                                       "Especially Merciful,\n1:4 Sovereign of the..."
+                                                       "\nYou get bored and stop reading."),
+                                items.Book(name=["Tao Te Ching"],
+                                           description="1:1 The Tao that can be trodden is not the enduring and "
+                                                       "unchanging Tao. The name that can be named is not the "
+                                                       "enduring and unchanging name.\n1:2 [Conceived of as] having "
+                                                       "no name, it is the Originator of heaven and earth; "
+                                                       "[conceived of as] having a name, it is...\nYou get bored and "
+                                                       "stop reading.")])
 
 
 class Booth1(Location):
@@ -27,7 +47,8 @@ class Booth1(Location):
         super().__init__(x=x, y=y, name="Booth 1",
                          connected=["SpiritualCenter"],
                          description="A cramped, soundproof booth barely big enough to fit a small bench and a little "
-                                     "leg-room. It's no larger than your bedroom closet back on Terra.")
+                                     "leg-room. It's no larger than your bedroom closet back on Terra.",
+                         items=items.Bench(description="A tiny wooden bench."))
 
 
 class Booth2(Location):
@@ -35,17 +56,18 @@ class Booth2(Location):
         super().__init__(x=x, y=y, name="Booth 2",
                          connected=["SpiritualCenter"],
                          description="A cramped, soundproof booth barely big enough to fit a small bench and a little "
-                                     "leg-room. It's no larger than your bedroom closet back on Terra.")
+                                     "leg-room. It's no larger than your bedroom closet back on Terra.",
+                         items=items.Bench(description="A tiny wooden bench."))
 
 
 class Bathrooms(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Bathrooms",
                          connected=["HallC"],
-                         description="A clean bathroom with a bright white finish. There are five stalls "
+                         description="A clean bathroom with a bright, white finish. There are five stalls "
                                      "and a hallway cutting through the center of the room. At the end is a single "
                                      "sink and full length mirror.",
-                         items=[items.Mirror()])
+                         items=[items.Mirror(), items.Sink(), items.Toilet()])
 
 
 class Gym(Location):
@@ -53,7 +75,9 @@ class Gym(Location):
         super().__init__(x=x, y=y, name="Gym",
                          connected=["HallC"],
                          description="A complete gym filled with benches, squat racks, free weights, treadmills, "
-                                     "bikes, rowing machines, and more...")
+                                     "bikes, rowing machines, and more...",
+                         items=[items.WorkoutBench(), items.SquatRack(), items.Weight(), items.Treadmill(),
+                                items.Bike(), items.RowingMachine()])
 
 
 class Cafeteria(Location):
