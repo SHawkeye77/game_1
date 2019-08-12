@@ -87,8 +87,8 @@ class Cafeteria(Location):
                          description="Scattered about the room are tables of a variety of shapes and sizes. "
                                      "On the far wall is a large cyan tile with a black handle. Beneath it are"
                                      "five levers labeled 'M', 'B', 'L', 'D', and 'S'.",
-                         items=[items.Table(), items.Chair()])
-                         # Still to add: tile, handle, lever b, lever l, lever d, lever s, lever m
+                         items=[items.Table(), items.Chair(), items.Tile(), items.Handle(), items.LeverB()])
+                         # Still to add: lever l, lever d, lever s, lever m
 
 
 class Bar(Location):

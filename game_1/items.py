@@ -139,6 +139,54 @@ class Chair(Item):
         print("Surprisingly comfy.")
 
 
+class Tile(Item):
+    def __init__(self):
+        super().__init__(name=["Tile"], can_pick_up=False,
+                         description="A round, cyan tile. It looks like it can be opened. On it is a handle.")
+
+
+class Handle(Item):
+    def __init__(self, interact_message="Pulling the handle opens the tile. Inside is a tray with nothing on it."):
+        self.interact_message = interact_message
+        super().__init__(name=["Handle"], can_pick_up=False,
+                         description="A black handle.")
+
+    def change_inside_tile(self, new_interact_message):
+        self.interact_message = new_interact_message
+
+    def interact(self, player):
+        print(self.interact_message)
+
+
+class LeverB(Item):
+    def __init__(self):
+        super().__init__(name=["Lever B", "B Lever", "B"], can_pick_up=False,
+                         description="A silver lever labeled \"B\" in black lettering.")
+
+    def interact(self, player):
+        # Delete any other food in the room AND finding the Handle object
+        for i, item in world.tile_exists(player.location_x, player.location_y).items:
+            if item.__class__.__name__ == "Handle":
+                handle = item  # Should always hit this for one of the items
+                continue
+            if item.__class__.__name__ == "Food":
+                del world.tile_exists(player.location_x, player.location_y).items[i]
+                continue
+        # Add the food item to the room
+        world.tile_exists(player.location_x, player.location_y).items.append(Food(
+            name=["Scrambled Eggs", "Eggs", "Breakfast"],
+            description="A warm plate of scrambled eggs with a touch of salt and pepper."))
+        # Changing the description of what's inside the tile
+        handle.change_inside_tile("Pulling the handle opens the tile. Inside is some scrambled eggs.")
+        # Hinting that something has changed
+        print("After a few seconds, there's a slight rumbling from inside the tile, followed by a *ding*.")
+
+
+class Food(Item):
+    def __init__(self, name=["Food"], description="Some food..."):
+        super().__init__(name=name, description=description)
+
+
 class Cushion(Item):
     def __init__(self):
         super().__init__(name=["Cushion"], can_pick_up=True,
