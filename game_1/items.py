@@ -174,17 +174,52 @@ class LeverB(Item):
                 continue
         # Add the food item to the room
         world.tile_exists(player.location_x, player.location_y).items.append(Food(
-            name=["Scrambled Eggs", "Eggs", "Breakfast"],
-            description="A warm plate of scrambled eggs with a touch of salt and pepper."))
+            name=["Scrambled Egg Plate", "Eggs", "Breakfast", "Box"],
+            description="A warm plate of scrambled eggs with a touch of salt and pepper. They're accompanied by a "
+                        "bowl of fresh fruit."))
         # Changing the description of what's inside the tile
-        handle.change_inside_tile("Pulling the handle opens the tile. Inside is some scrambled eggs.")
+        handle.change_inside_tile("Pulling the handle opens the tile. Inside is a box labeled \"Breakfast\" containing "
+                                  "some scrambled eggs and a bowl of fresh fruit.")
+        # Hinting that something has changed
+        print("After a few seconds, there's a slight rumbling from inside the tile, followed by a *ding*.")
+
+
+class LeverD(Item):
+    def __init__(self):
+        super().__init__(name=["Lever D", "D Lever", "D"], can_pick_up=False,
+                         description="A silver lever labeled \"D\" in black lettering.")
+
+    def interact(self, player):
+        # Delete any other food in the room AND finding the Handle object
+        for i, item in world.tile_exists(player.location_x, player.location_y).items:
+            if item.__class__.__name__ == "Handle":
+                handle = item  # Should always hit this for one of the items
+                continue
+            if item.__class__.__name__ == "Food":
+                del world.tile_exists(player.location_x, player.location_y).items[i]
+                continue
+        # Add the food item to the room
+        world.tile_exists(player.location_x, player.location_y).items.append(Food(
+            name=["Lasagna", "Dinner", "Box"],
+            description="A hot plate of Lasagna.",
+            eat_response="gnam gnam!"))
+        # Changing the description of what's inside the tile
+        handle.change_inside_tile("Pulling the handle opens the tile. Inside is a box labeled \"Dinner\" containing "
+                                  "a hot plate of lasagna.")
         # Hinting that something has changed
         print("After a few seconds, there's a slight rumbling from inside the tile, followed by a *ding*.")
 
 
 class Food(Item):
-    def __init__(self, name=["Food"], description="Some food..."):
-        super().__init__(name=name, description=description)
+    def __init__(self, name=["Food"], description="Some food...", eat_response="Tastes like chicken"):
+        self.eat_response = eat_response
+        super().__init__(name=name, description=description, can_pick_up=True)
+
+    def eat(self):
+        """
+        Only prints the appropriate response (deletion of item is done in actions.py)
+        """
+        print(self.eat_response)
 
 
 class Cushion(Item):
@@ -384,18 +419,6 @@ class Knife(Weapon):
             return
         else:  # Hits this if knife is used on something other than antimatter
             print("Nothing happens.")
-
-
-class Food(Item):
-    def __init__(self, name, description, eat_response="Tastes like chicken"):
-        self.eat_response = eat_response
-        super().__init__(name=name, description=description, can_pick_up=True)
-
-    def eat(self):
-        """
-        Only prints the appropriate response (deletion of item is done in actions.py)
-        """
-        print(self.eat_response)
 
 
 class Drink(Item):
