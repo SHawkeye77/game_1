@@ -158,6 +158,21 @@ class Handle(Item):
         print(self.interact_message)
 
 
+class MenuButton(Item):
+    def __init__(self):
+        super().__init__(name=["Button", "Menu"], can_pick_up=False,
+                         description="A red button labeled \"Menu\"")
+
+    def interact(self, player):
+        print("A familiar voice greets you...\n"
+              "\"Welcome to the UNEEA martian base cafeteria! Your menu for today is as follows:\n"
+              "For breakfast: scrambled eggs and fresh fruit!\n"
+              "For lunch: a scrumptious veggie and tofu wrap!\n"
+              "For dinner: mouth-watering lasagna!\n"
+              "For a snack: heart-healthy trail mix!\n"
+              "Enjoy and have a wonderful day here at UNEEA's martian base!\"")
+
+
 class LeverB(Item):
     def __init__(self):
         super().__init__(name=["Lever B", "B Lever", "B"], can_pick_up=False,
@@ -165,7 +180,7 @@ class LeverB(Item):
 
     def interact(self, player):
         # Delete any other food in the room AND finding the Handle object
-        for i, item in world.tile_exists(player.location_x, player.location_y).items:
+        for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
             if item.__class__.__name__ == "Handle":
                 handle = item  # Should always hit this for one of the items
                 continue
@@ -181,7 +196,7 @@ class LeverB(Item):
         handle.change_inside_tile("Pulling the handle opens the tile. Inside is a box labeled \"Breakfast\" containing "
                                   "some scrambled eggs and a bowl of fresh fruit.")
         # Hinting that something has changed
-        print("After a few seconds, there's a slight rumbling from inside the tile, followed by a *ding*.")
+        print("After a few seconds, there's a slight rumbling from inside the tile followed by a *ding*")
 
 
 class LeverD(Item):
@@ -191,7 +206,7 @@ class LeverD(Item):
 
     def interact(self, player):
         # Delete any other food in the room AND finding the Handle object
-        for i, item in world.tile_exists(player.location_x, player.location_y).items:
+        for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
             if item.__class__.__name__ == "Handle":
                 handle = item  # Should always hit this for one of the items
                 continue
@@ -207,7 +222,59 @@ class LeverD(Item):
         handle.change_inside_tile("Pulling the handle opens the tile. Inside is a box labeled \"Dinner\" containing "
                                   "a hot plate of lasagna.")
         # Hinting that something has changed
-        print("After a few seconds, there's a slight rumbling from inside the tile, followed by a *ding*.")
+        print("After a few seconds, there's a slight rumbling from inside the tile followed by a *ding*")
+
+
+class LeverL(Item):
+    def __init__(self):
+        super().__init__(name=["Lever L", "L Lever", "L"], can_pick_up=False,
+                         description="A silver lever labeled \"L\" in black lettering.")
+
+    def interact(self, player):
+        # Delete any other food in the room AND finding the Handle object
+        for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
+            if item.__class__.__name__ == "Handle":
+                handle = item  # Should always hit this for one of the items
+                continue
+            if item.__class__.__name__ == "Food":
+                del world.tile_exists(player.location_x, player.location_y).items[i]
+                continue
+        # Add the food item to the room
+        world.tile_exists(player.location_x, player.location_y).items.append(Food(
+            name=["Wrap", "Lunch"],
+            description="A chilled veggie and tofu wrap.",
+            eat_response="mmmm healthy!"))
+        # Changing the description of what's inside the tile
+        handle.change_inside_tile("Pulling the handle opens the tile. Inside is a box labeled \"Lunch\" containing "
+                                  "what looks like a veggie and tofu wrap.")
+        # Hinting that something has changed
+        print("After a few seconds, there's a slight rumbling from inside the tile followed by a *ding*")
+
+
+class LeverS(Item):
+    def __init__(self):
+        super().__init__(name=["Lever S", "S Lever", "S"], can_pick_up=False,
+                         description="A silver lever labeled \"S\" in black lettering.")
+
+    def interact(self, player):
+        # Delete any other food in the room AND finding the Handle object
+        for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
+            if item.__class__.__name__ == "Handle":
+                handle = item  # Should always hit this for one of the items
+                continue
+            if item.__class__.__name__ == "Food":
+                del world.tile_exists(player.location_x, player.location_y).items[i]
+                continue
+        # Add the food item to the room
+        world.tile_exists(player.location_x, player.location_y).items.append(Food(
+            name=["Trail Mix", "Snack", "Packet"],
+            description="A small packet of nuts, chocolate, and dried fruit.",
+            eat_response="*gulp*\nYum!"))
+        # Changing the description of what's inside the tile
+        handle.change_inside_tile("Pulling the handle opens the tile. Inside is a box labeled \"Snack\" containing "
+                                  "a packet of trail mix.")
+        # Hinting that something has changed
+        print("After a few seconds, there's a slight rumbling from inside the tile followed by a *ding*")
 
 
 class Food(Item):

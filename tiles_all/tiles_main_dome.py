@@ -85,11 +85,11 @@ class Cafeteria(Location):
         super().__init__(x=x, y=y, name="Cafeteria",
                          connected=["HallE"],
                          description="Scattered about the room are tables of a variety of shapes and sizes. "
-                                     "On the far wall is a large cyan tile with a black handle. Beneath it are"
-                                     "five levers labeled 'M', 'B', 'L', 'D', and 'S'.",
+                                     "On the far wall is a large cyan tile with a black handle. Beneath it are "
+                                     "four levers labeled \"S\", \"B\", \"L\", and \"D\", accompanied by a red button "
+                                     "with \"Menu\" written on it...",
                          items=[items.Table(), items.Chair(), items.Tile(), items.Handle(), items.LeverB(),
-                                items.LeverD()])
-                         # Still to add: lever l, lever s, lever m
+                                items.LeverD(), items.LeverL(), items.LeverS(), items.MenuButton()])
 
 
 class Bar(Location):
