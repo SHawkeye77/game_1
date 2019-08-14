@@ -64,7 +64,7 @@ class ApmTerminalA(Location):
                                      "A tablet rests on a stand at the end of the track. A horrible smell is coming "
                                      "from the Terra Communications Room, which is locked by a large mechanical lock.",
                          connected=["IntegrationRoom", "Garage", "TerraCommunicationsRoom"],
-                         items=[items.Bench(), items.Tablet(), items.Lock()])
+                         items=[items.Bench(), items.Tablet(), items.TcrLock()])
 
     def first_entrance(self):
         """ Is run only if it's the user's first time entering this location """

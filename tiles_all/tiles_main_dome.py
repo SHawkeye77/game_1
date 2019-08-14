@@ -96,13 +96,14 @@ class Bar(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Bar",
                          connected=["HallF"],
-                         description="A dimly lit room complete with a bar, red velvet booths, and an old "
+                         description="A dimly lit room complete with a red velvet booths and an old "
                                      "Steinway piano. Speakers playing 1950s jazz hang from the ceiling "
-                                     "above a black-and-white checkerboard dance floor. You half expect "
-                                     "Frank Sinatra to walk in.",
-                         items=[items.Chair(), items.Speaker(), items.Piano(), items.Booth(), items.Bar()])
-                         # To add: bar(with screw bolt on it, if use screwdriver on it, it changes description of itself and adds booze to the room. Add some alcoholic effect?
-                         # To add: booze, something that locks the bar cabinet and does the stuff above ^
+                                     "above a black-and-white checkerboard dance floor. At the back is a bar with a "
+                                     "long cabinet behind it. You half expect Frank Sinatra to walk in.",
+                         items=[items.Chair(), items.DanceFloor(), items.Speaker(), items.Piano(), items.Booth(),
+                                items.Bar(), items.BarLock(), items.Cabinet()])
+                        #TODO: CABINET SHOULD MAYBE BE COVEED BY SOMETHING OTHER THAN A LOCK SO IT'S NOT REPETATIVE
+
 
 class MovieTheater(Location):
     def __init__(self, x, y):
@@ -163,7 +164,7 @@ class StorageArea(Location):
                          connected=["HallD"],
                          description="You're in a closet-sized entrance blocked off from a large storace area by "
                                      "clear plexiglass. There's a red button on the wall. The storage area is filled "
-                                     "floor to ceiling with sealed crates.")  # THE ROBOT COULD BE BROKEN IF I DON'T FEEL LIKE CODING IN THE STUFF OR IT COULD ONLY BE ABLE TO GRAB CERTAIN THINGS
+                                     "floor to ceiling with sealed crates.")  #TODO: THE ROBOT COULD BE BROKEN IF I DON'T FEEL LIKE CODING IN THE STUFF OR IT COULD ONLY BE ABLE TO GRAB CERTAIN THINGS
 
 
 class Lounge(Location):
@@ -180,7 +181,7 @@ class Reception(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Reception",
                          connected=["HallI", "MentalHealthRoom", "SurgeryRoom", "EmergencyRoom"],
-                         description="A cute lobby with chairs and a modest reception desk.")  # ADD A PHONE AND COMPUTER AND FRAMED PHOTO AND A BOWL OF MINTS ON THE DESK? ADD TO DESCRIPTION?
+                         description="A cute lobby with chairs and a modest reception desk.")  #TODO: ADD A PHONE AND COMPUTER AND FRAMED PHOTO AND A BOWL OF MINTS ON THE DESK? ADD TO DESCRIPTION?
 
 
 class EmergencyRoom(Location):

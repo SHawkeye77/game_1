@@ -77,8 +77,7 @@ class Piano(Item):
 class Bar(Item):
     def __init__(self):
         super().__init__(name=["Bar"], can_pick_up=False,
-                         description="A long, curved bar with a wooden finish. There's a ______ on the back securing "
-                                     "its storage cabinet.")
+                         description="A long, curved bar with a wooden finish.")
 
 
 class Booth(Item):
@@ -90,26 +89,22 @@ class Booth(Item):
         print("You take a seat then immediately get up. This is no time for rest!")
 
 
-class Lock(Item):
+class TcrLock(Item):
     def __init__(self):
-        super().__init__(name=["Lock"], can_pick_up=False,
+        super().__init__(name=["Lock", "TCR Lock"], can_pick_up=False,
                          description="An old, bulky, mechanical lock.")
 
 
-class Antimatter(Item):
-    """ Child class for a vile of antimatter """
-    def __init__(self, amount):
-        self.amount = amount  # Amount, in grams, of antimatter in the vile
-        super().__init__(name=["Antimatter"],
-                         description="A small vile containing {} grams of antimatter.".format(amount))
+class BarLock(Item):
+    def __init__(self):
+        super().__init__(name=["Lock", "Bar Lock"], can_pick_up=False,
+                         description="An old, bulky, mechanical lock.")
 
-    def interact(self, player):
-        print("By interacting with the antimatter, you increased its power!")
-        self.amount += 1
-        # IS THERE A MORE EFFICIENT WAY TO CHANGE THE DESCRIPTION? DOESN'T CHANGE NATURALLY...
-        super().__init__(name=["Antimatter"],
-                         description="A small vile containing {} grams of antimatter.".format(self.amount))
-        return
+
+class Cabinet(Item):
+    def __init__(self):
+        super().__init__(name=["Cabinet"], can_pick_up=False,
+                         description="A long cabinet behind the bar. It's secured by a lock.")
 
 
 class Couch(Item):
@@ -344,14 +339,14 @@ class Cushion(Item):
         print("You sit on it and smile, suddenly feeling more at ease.")
 
 
-class SpiritualCenterFountain(Item):  # MAYBE IF YOU THROW A COIN IN SOMETHING HAPPENS??? ========================================
+class SpiritualCenterFountain(Item):  #TODO: MAYBE IF YOU THROW A COIN IN SOMETHING HAPPENS??? ========================================
     def __init__(self):
         super().__init__(name=["Fountain"], can_pick_up=False,
                          description="Water flows from a high-up bowl, overflowing into larger bowls of increasing "
                                      "sizes below.")
 
 
-class SpiritualCenterPond(Item):  # MAYBE IF YOU THROW A COIN IN SOMETHING HAPPENS??? ========================================
+class SpiritualCenterPond(Item):  #TODO: MAYBE IF YOU THROW A COIN IN SOMETHING HAPPENS??? ========================================
     def __init__(self):
         super().__init__(name=["Pond"], can_pick_up=False,
                          description="A clear pool of water. There's a drain at the bottom where the water is "
@@ -361,7 +356,7 @@ class SpiritualCenterPond(Item):  # MAYBE IF YOU THROW A COIN IN SOMETHING HAPPE
 class SpiritualCenterBookshelf(Item):
     def __init__(self):
         super().__init__(name=["Bookshelf"], can_pick_up=False,
-                         description="A dark, wooden bookshelf filled with religious texts.")  # MAYBE LIST SOME ACTUAL TEXTS? NEEDS TO BE UPDATED IF SOME ARE TAKEN THEN...
+                         description="A dark, wooden bookshelf filled with religious texts.")  #TODO: MAYBE LIST SOME ACTUAL TEXTS? NEEDS TO BE UPDATED IF SOME ARE TAKEN THEN...
 
 
 class Book(Item):
@@ -408,7 +403,7 @@ class SquatRack(Item):
 class Weight(Item):
     def __init__(self):
         super().__init__(name=["Weight", "Weights", "Free Weights", "Free Weight", "Free Weights", "dumbbell",
-                               "dumbbells"], can_pick_up=True, description="A 20 pound free weight")  #ADD DIFFERENT WEIGHTS SO THERE'S VARIATION AND MORE REALISM?
+                               "dumbbells"], can_pick_up=True, description="A 20 pound free weight")  #TODO: ADD DIFFERENT WEIGHTS SO THERE'S VARIATION AND MORE REALISM?
 
     def interact(self, player):
         print("You grind out some curls and examine your biceps. Not too shabby.")
@@ -512,6 +507,13 @@ class Drink(Item):
         print(self.drink_response)
 
 
+# TODO: MAYBE MAKE IT SO THAT IF YOU DRINK TOO MANY SOMETHING HAPPENS TO YOU TO MAKE YOU "DRUNK" IN GAME ===============================
+class Booze(Drink):
+    def __init__(self):
+        super().__init__(name=["Booze"], description="A handle of 80-proof Henny",
+                         drink_response="Doesn't taste as good as it did back in college.")
+
+
 class Mirror(Item):
     def __init__(self):
         super().__init__(name=["Mirror"],
@@ -527,11 +529,11 @@ class Tool(Item):
         super().__init__(name=name, description=description, can_pick_up=can_pick_up)
 
     def use(self, item, player):
-        # Hammer can be used to SPECIFICALLY break Terra Communications room lock
-        if "hammer" in [name.lower() for name in self.name] and "lock" in [name.lower() for name in item.name]:
+        # Hammer destroying TCR Lock then updating description
+        if "hammer" in [name.lower() for name in self.name] and "tcr lock" in [name.lower() for name in item.name]:
             print("After a few blows, you are able to shatter the mechanical lock.")
             for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
-                if "lock" in [name.lower() for name in item.name]:
+                if "tcr lock" in [name.lower() for name in item.name]:
                     del world.tile_exists(player.location_x, player.location_y).items[i]  # Destroying lock
                     world.tile_exists(player.location_x, player.location_y).description = \
                         "A medium-sized room with a track in the center surrounded by benches. "\
@@ -542,5 +544,22 @@ class Tool(Item):
                             if tile.name == "Terra Communications Room":
                                 tile.can_enter = True
                                 break
+                    break
+        # Hammer destroying Bar's Lock then updating description
+        elif "hammer" in [name.lower() for name in self.name] and "bar lock" in [name.lower() for name in item.name]:
+            print("With one strong strike you are able to shatter the lock. Opening the cabinet you are greeted by "
+                  "a plethora of booze.")
+            for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
+                if "bar lock" in [name.lower() for name in item.name]:
+                    del world.tile_exists(player.location_x, player.location_y).items[i]  # Destroying lock
+                    for item in world.tile_exists(player.location_x, player.location_y).items:
+                        if "cabinet" in [item_name.lower() for item_name in item.name]:
+                            item.description = "A cabinet behind the bar. You've busted the lock on " \
+                                               "it, exposing a variety of booze."
+                            world.tile_exists(player.location_x, player.location_y).\
+                                items += [Booze(), Booze(), Booze()]  #TODO: POSSIBLY CHANGE THIS SO THERE'S DIFFERENT KINDS? =======================================
+                            break
+                    break
+
         else:
             print("Nothing happens")
