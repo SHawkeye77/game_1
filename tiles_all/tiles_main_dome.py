@@ -97,8 +97,11 @@ class Bar(Location):
         super().__init__(x=x, y=y, name="Bar",
                          connected=["HallF"],
                          description="A dimly lit room complete with a bar, red velvet booths, and an old "
-                                     "Steinway piano. Speakers hang from the ceiling above a black-and-white "
-                                     "checkerboard dance floor. You half expect Frank Sinatra to walk in.")
+                                     "Steinway piano. Speakers playing 1950s jazz hang from the ceiling "
+                                     "above a black-and-white checkerboard dance floor. You half expect "
+                                     "Frank Sinatra to walk in.",
+                         items=[items.Chair(), items.Speaker(), items.Piano(), items.Booth()])
+                         # To add: bar(with lock on it, if broken it changes description of itself and adds booze to the room. Add some alcoholic effect?
 
 
 class MovieTheater(Location):

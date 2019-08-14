@@ -44,6 +44,45 @@ class Item:
         print("Nothing happens.")
 
 
+class DanceFloor(Item):
+    def __init__(self):
+        super().__init__(name=["Dance Floor", "Floor"], can_pick_up=False,
+                         description="A black-and-white checkerboard dance floor that takes up the center of the room.")
+
+    def interact(self, player):
+        print("Nodding your head to the smooth jazz playing overhead you hop on to the dance floor and bust out "
+              "some moves. Your boy's still got it.")
+
+
+class Speaker(Item):
+    def __init__(self):
+        super().__init__(name=["Speaker", "Speakers"], can_pick_up=False,
+                         description="A standard, black speaker.")
+
+    def interact(self, player):
+        print("You can't reach the speaker.")
+
+
+class Piano(Item):
+    def __init__(self):
+        super().__init__(name=["Piano", "Steinway", "Steinway Piano"], can_pick_up=False,
+                         description="Even though it's old the Steinway is in immaculate condition. "
+                                     "It has a beautiful finish.")
+
+    def interact(self, player):
+        print("You were actually pretty good back in the day so you give it a shot.\n*Cracks Knuckles*\n"
+              "Cringing at each missed note you quickly remember why you quit.")
+
+
+class Booth(Item):
+    def __init__(self):
+        super().__init__(name=["Booth", "Booths"], can_pick_up=False,
+                         description="A red velvet booth.")
+
+    def interact(self, player):
+        print("You take a seat then immediately get up. This is no time for rest!")
+
+
 class Lock(Item):
     def __init__(self):
         super().__init__(name=["Lock"], can_pick_up=False,
@@ -455,37 +494,6 @@ class Plant(Item):
         super().__init__(name=["Plant", "Potted Plant"],
                          description="Looks like a Ficus Danielle, similar-looking to one at your apartment on Terra. "
                                      "It's clearly fake.")
-
-
-class Weapon(Item):
-    """ Child class of item to inherit weapons from """
-    def __init__(self, name, description, damage):
-        self.damage = damage  # Damage (in 'units') of the weapon
-        super().__init__(name, description)
-
-
-class MetalBeam(Weapon):
-    def __init__(self):
-        super().__init__(name=["Metal Beam"],
-                         description="A metal beam, about two feet long.",
-                         damage=5)
-
-
-class Knife(Weapon):
-    def __init__(self):
-        super().__init__(name=["Knife"],
-                         description="A simple knife, with a blade about six inches long.",
-                         damage=5)
-
-    # NOTE: In order for this to work, we assume all items will be objects...
-    def use(self, item, player):
-        if "antimatter" in [name.lower() for name in item.name]:
-            print("With a swipe of the knife you cut open the antimatter. A millisecond later you notice your mistake, "
-                  "just in time for the world to collapse around you.")
-            player.hp = 0
-            return
-        else:  # Hits this if knife is used on something other than antimatter
-            print("Nothing happens.")
 
 
 class Drink(Item):

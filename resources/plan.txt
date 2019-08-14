@@ -1,5 +1,5 @@
 TODO:
- - Add main area items and revise descriptions (continue from ____, clockwise)
+ - Add main area items and revise descriptions (continue from bar, clockwise)
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
@@ -18,4 +18,4 @@ Notes:
  - For the most part, in the main dome, the only time you can use cardinal directions to move is when you're in the
    hallways, in the courtyard, or in a room with multiple subrooms (hospital, security area, shopping area, and spiritual area)
    You can still go everywhere (that is portrayed as connected on the map) by using the enter <location> command.
-
+ - change the interact with _______ null response to "Can't do that" instead?
