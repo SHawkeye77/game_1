@@ -74,6 +74,13 @@ class Piano(Item):
               "Cringing at each missed note you quickly remember why you quit.")
 
 
+class Bar(Item):
+    def __init__(self):
+        super().__init__(name=["Bar"], can_pick_up=False,
+                         description="A long, curved bar with a wooden finish. There's a ______ on the back securing "
+                                     "its storage cabinet.")
+
+
 class Booth(Item):
     def __init__(self):
         super().__init__(name=["Booth", "Booths"], can_pick_up=False,
@@ -520,7 +527,7 @@ class Tool(Item):
         super().__init__(name=name, description=description, can_pick_up=can_pick_up)
 
     def use(self, item, player):
-        # Hammer can be used to break Terra Communications room lock
+        # Hammer can be used to SPECIFICALLY break Terra Communications room lock
         if "hammer" in [name.lower() for name in self.name] and "lock" in [name.lower() for name in item.name]:
             print("After a few blows, you are able to shatter the mechanical lock.")
             for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):

@@ -100,9 +100,9 @@ class Bar(Location):
                                      "Steinway piano. Speakers playing 1950s jazz hang from the ceiling "
                                      "above a black-and-white checkerboard dance floor. You half expect "
                                      "Frank Sinatra to walk in.",
-                         items=[items.Chair(), items.Speaker(), items.Piano(), items.Booth()])
-                         # To add: bar(with lock on it, if broken it changes description of itself and adds booze to the room. Add some alcoholic effect?
-
+                         items=[items.Chair(), items.Speaker(), items.Piano(), items.Booth(), items.Bar()])
+                         # To add: bar(with screw bolt on it, if use screwdriver on it, it changes description of itself and adds booze to the room. Add some alcoholic effect?
+                         # To add: booze, something that locks the bar cabinet and does the stuff above ^
 
 class MovieTheater(Location):
     def __init__(self, x, y):
