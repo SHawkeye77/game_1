@@ -1,5 +1,5 @@
 TODO:
- - Add main area items and revise descriptions (continue from movie theatre, clockwise)
+ - Add main area items and revise descriptions (continue from maintenance room, clockwise)
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
@@ -8,6 +8,7 @@ To Fix/Add:
  - ELIZA chatbot in mental health room.
    - Just download the java version of eliza and do os.system(filename.java) then os.system(filename) to run it (I think?)
  - Could add pencil and paper so you could write notes on it and store it in your inventory
+ - Add sound effects?
  - Add the lore I skipped:
    - Add/complete the 3 emails in TCR scenario
    - Add buttons and dials to TCR (once I figure out what they will actually do)

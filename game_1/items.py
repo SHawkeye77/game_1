@@ -3,10 +3,9 @@ Items classes should always follow the format:
 Capital letters for the start of new words.
 Examples: Book, GarageDoor, ElectricalCable, etc.
 
+NOTE: If an item description has multiple lines, each line after the first should start with a "\t" (tab)
 NOTE: Items are interacted with by their associated item.name attribute. It should be intuitive to the player.
 NOTE: Items must be able to accept player for all "use" overrides, and player for all "interact" overrides.
-- When you add "use" function overrides, make sure to account for when they are called with objects that will do nothing,
-  and print a default response e.g. "Nothing happens."
 """
 import scenarios
 import world
@@ -172,12 +171,64 @@ class GarageLever(Item):
 
 
 class Chair(Item):
-    def __init__(self):
-        super().__init__(name=["Chair"], can_pick_up=False,
-                         description="A standard, wooden chair.")
+    def __init__(self, description="A standard, wooden chair."):
+        super().__init__(name=["Chair", "Seat"], can_pick_up=False,
+                         description=description)
 
     def interact(self, player):
         print("Surprisingly comfy.")
+
+
+class Screen(Item):
+    def __init__(self):
+        super().__init__(name=["Screen", "Movie Screen"], can_pick_up=False,
+                         description="A giant, white screen.")
+
+
+class Projector(Item):
+    def __init__(self):
+        super().__init__(name=["Projector"], can_pick_up=False,
+                         description="A cinematic projector resting on a tripod. It's made to "
+                                     "look like an old-timey projector, complete with rotating film reels and a wooden "
+                                     "finish. That being said, it looks like you can just insert a digital disk into "
+                                     "a slot on its back to get it going...")
+
+
+class MovieBox(Item):
+    def __init__(self, description="A cardboard box"):  # Description overridden to include what movies are in it
+        super().__init__(name=["Box"], can_pick_up=False, description=description)
+
+
+class MovieDisk(Item):
+    """ A movie disk for use in the movie theater projector """
+    def __init__(self, name=["MOVIE TITLE 1", "MOVIE TITLE ALTERNATIVE"], description="DESCRIPTION OF MOVIE"):
+        super().__init__(name=name, can_pick_up=True, description=description)
+
+    def use(self, item, player):
+        if "2001: a space odyssey" in [name.lower() for name in self.name]:
+            if "projector" in [name.lower() for name in item.name]:
+                print("You pop in 2001 and the projector buzzes to life. You give it a shot but the movie is "
+                      "pretty unbearable after the 10 minute monkey scene so you shut it off.")
+            else:
+                print("Nothing happens")
+        elif "star wars" in [name.lower() for name in self.name]:
+            if "projector" in [name.lower() for name in item.name]:
+                print("You pop in Star Wars and the projector buzzes to life. You take a seat and admire it. So ahead "
+                      "of its time.")
+            else:
+                print("Nothing happens")
+        elif "blade runner" in [name.lower() for name in self.name]:
+            if "projector" in [name.lower() for name in item.name]:
+                print("You pop in Blade Runner and the projector buzzes to life. The worldbuilding in this movie is "
+                      "almost unmatched. The set reminds you of modern day Hong Kong.")
+            else:
+                print("Nothing happens")
+        elif "sitting in the stars" in [name.lower() for name in self.name]:  # This is a made-up movie lul
+            if "projector" in [name.lower() for name in item.name]:
+                print("You pop in Sitting in the Stars and the projector buzzes to life. It's pretty good for a "
+                      "romantic-action-documentary-sci-fi-adventure-comedy-drama-horror flick.")
+            else:
+                print("Nothing happens")
 
 
 class Tile(Item):

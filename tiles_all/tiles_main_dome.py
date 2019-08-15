@@ -102,7 +102,7 @@ class Bar(Location):
                                      "long cabinet behind it. You half expect Frank Sinatra to walk in.",
                          items=[items.Chair(), items.DanceFloor(), items.Speaker(), items.Piano(), items.Booth(),
                                 items.Bar(), items.BarLock(), items.Cabinet()])
-                        #TODO: CABINET SHOULD MAYBE BE COVEED BY SOMETHING OTHER THAN A LOCK SO IT'S NOT REPETATIVE
+                        #TODO: CABINET SHOULD MAYBE BE COVEED BY SOMETHING OTHER THAN A LOCK SO IT'S NOT REPETITIVE
 
 
 class MovieTheater(Location):
@@ -111,7 +111,19 @@ class MovieTheater(Location):
                          connected=["HallH"],
                          description="The east wall is completely taken up by a massive digital screen. Facing "
                                      "the screen are rows of seats, separated into two sections by a narrow aisle. "
-                                     "At the back is a projector. Some discs lay neatly beneath it.")
+                                     "At the back is a projector. A box sits beneath it.",
+                         items=[items.Screen(), items.Projector(), items.Chair(description="A red-leather recliner."),
+                                items.MovieDisk(name=["2001: A Space Odyssey"], description=""
+                                    "Title: 2001: A Space Odyssey\n\tReleased: 4/3/1968\n\tDirector: Stanley Kubrick"),
+                                items.MovieDisk(name=["Star Wars"], description=""
+                                    "Title: Star Wars\n\tReleased: 5/25/1977\n\tDirector: George Lucas"),
+                                items.MovieDisk(name=["Sitting in the Stars"], description=""
+                                    "Title: Sitting in the Stars\n\tReleased: 3/27/2026\n\tDirector: Owen Murphy"),
+                                items.MovieDisk(name=["Blade Runner"], description=""
+                                    "Title: Blade Runner\n\tReleased: 6/25/1982\n\tDirector: Ridley Scott"),
+                                items.MovieBox(description="A cardboard storage box with slots to hold movies. "
+                                    "The slots are labeled:\n - 2001: A Space Odyssey\n - Star Wars\n - Sitting in "
+                                    "the Stars\n - Blade Runner")])
 
 
 class MaintenanceRoom(Location):

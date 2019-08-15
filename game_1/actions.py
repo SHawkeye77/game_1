@@ -270,7 +270,7 @@ def pick_up(player, argument, raw_argument):
             if item.can_pick_up:
                 player.inventory.append(item)  # Adds item to player inventory
                 del items_in_room[index]  # Removes item from room
-                print("Added " + raw_argument + " to your inventory.")
+                print("Added \"" + raw_argument + "\" to your inventory.")
             else:
                 print("You can't add that to your inventory.")
             return
