@@ -1,5 +1,5 @@
 TODO:
- - Add main area items and revise descriptions (continue from maintenance room, clockwise then inwards)
+ - Add main area items and revise descriptions (continue from maintenance room, clockwise, then inwards)
  - Do some of the "To Fix/Add" stuff below
 
 To Fix/Add:

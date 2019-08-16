@@ -132,7 +132,7 @@ class MaintenanceRoom(Location):
                          connected=["HallI"],
                          description="There's a wooden table near the entrance with a pair of computers on it. "
                                      "Maintenance supplies lie in shelves on the south and east sides of the room",
-                         items=[items.Table(), items.Computer(), items.Chair(),
+                         items=[items.Table(), items.Computer(), items.Chair(), items.WelcomeSign(),
                                 items.Tool(name=["Hammer"], description="A standard, metal hammer."),
                                 items.Tool(name=["Hammer"], description="A standard, metal hammer."),
                                 items.Tool(name=["Screwdriver"],
@@ -144,9 +144,8 @@ class MaintenanceRoom(Location):
                                 items.Tool(name=["Wrench"], description="Your standard wrench. "
                                                                         "No bigger than your hand."),
                                 items.Tool(name=["Wrench"], description="Your standard wrench. "
-                                                                        "No bigger than your hand.")
-                                ])
-                         # To Add: A sign that says welcome, and has supplies for you (as facilities manager)
+                                                                        "No bigger than your hand.")])
+                         # To do/add: Add to sign an explanation about 'welcome' supplies then add to room
                          #TODO: Maybe add (1) some easter egg since this is where you were technically supposed to work, (2) a login for maintenance?
 
 

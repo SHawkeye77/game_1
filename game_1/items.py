@@ -257,12 +257,22 @@ class MenuButton(Item):
 
     def interact(self, player):
         print("A familiar voice greets you...\n"
-              "\"Welcome to the UNEEA martian base cafeteria! Your menu for today is as follows:\n"
-              "For breakfast: scrambled eggs and fresh fruit!\n"
-              "For lunch: a scrumptious veggie and tofu wrap!\n"
-              "For dinner: mouth-watering lasagna!\n"
-              "For a snack: heart-healthy trail mix!\n"
-              "Enjoy and have a wonderful day here at UNEEA's martian base!\"")
+              "\"Welcome to the UNEEA martian base cafeteria! Your menu for today is as follows:"
+              "\n\tFor breakfast: scrambled eggs and fresh fruit!"
+              "\n\tFor lunch: a scrumptious veggie and tofu wrap!"
+              "\n\tFor dinner: mouth-watering lasagna!"
+              "\n\tFor a snack: heart-healthy trail mix!"
+              "\nEnjoy and have a wonderful day here at UNEEA's martian base!\"")
+
+
+class WelcomeSign(Item):
+    def __init__(self):
+        super().__init__(name=["Sign"], can_pick_up=False,
+                         description="It's a printed sign with a nice little welcome note:"
+                                     "\n\"Welcome to the martian base, Mr. Adams, and congratulations on being a "
+                                     "part of the biggest space-exploration mission in history! We hope that your "
+                                     "stay as security manager is comfortable, useful, and, most importantly, "
+                                     "enlightening.\"")
 
 
 class LeverB(Item):
