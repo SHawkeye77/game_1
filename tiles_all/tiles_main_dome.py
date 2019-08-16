@@ -118,7 +118,7 @@ class MovieTheater(Location):
                                 items.MovieDisk(name=["Star Wars"], description=""
                                     "Title: Star Wars\n\tReleased: 5/25/1977\n\tDirector: George Lucas"),
                                 items.MovieDisk(name=["Sitting in the Stars"], description=""
-                                    "Title: Sitting in the Stars\n\tReleased: 3/27/2026\n\tDirector: Owen Murphy"),
+                                    "Title: Sitting in the Stars\n\tReleased: 1/7/2034\n\tDirector: Owen Murphy"),
                                 items.MovieDisk(name=["Blade Runner"], description=""
                                     "Title: Blade Runner\n\tReleased: 6/25/1982\n\tDirector: Ridley Scott"),
                                 items.MovieBox(description="A cardboard storage box with slots to hold movies. "
@@ -131,8 +131,23 @@ class MaintenanceRoom(Location):
         super().__init__(x=x, y=y, name="Maintenance Room",
                          connected=["HallI"],
                          description="There's a wooden table near the entrance with a pair of computers on it. "
-                                     "Maintenance supplies lie in an opened closet on the south and east sides of the "
-                                     "room.")
+                                     "Maintenance supplies lie in shelves on the south and east sides of the room",
+                         items=[items.Table(), items.Computer(), items.Chair(),
+                                items.Tool(name=["Hammer"], description="A standard, metal hammer."),
+                                items.Tool(name=["Hammer"], description="A standard, metal hammer."),
+                                items.Tool(name=["Screwdriver"],
+                                           description="A metal screwdriver with a shank around 5 inches long."),
+                                items.Tool(name=["Screwdriver"],
+                                           description="A metal screwdriver with a shank around 5 inches long."),
+                                items.Tool(name=["Ladder"], description="A foldable ladder at least 6 feet in height.",
+                                           can_pick_up=False),
+                                items.Tool(name=["Wrench"], description="Your standard wrench. "
+                                                                        "No bigger than your hand."),
+                                items.Tool(name=["Wrench"], description="Your standard wrench. "
+                                                                        "No bigger than your hand.")
+                                ])
+                         # To Add: A sign that says welcome, and has supplies for you (as facilities manager)
+                         #TODO: Maybe add (1) some easter egg since this is where you were technically supposed to work, (2) a login for maintenance?
 
 
 class TerranCommodityStore(Location):

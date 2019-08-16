@@ -121,10 +121,15 @@ class GarageMaintenanceRoom(Location):
                          connected=["Garage"],
                          can_enter=True,
                          items=[items.Tool(name=["Hammer"], description="A standard, metal hammer."),
+                                items.Tool(name=["Hammer"], description="A standard, metal hammer."),
+                                items.Tool(name=["Screwdriver"],
+                                           description="A metal screwdriver with a shank around 5 inches long."),
                                 items.Tool(name=["Screwdriver"],
                                            description="A metal screwdriver with a shank around 5 inches long."),
                                 items.Tool(name=["Ladder"], description="A foldable ladder at least 6 feet in height.",
                                            can_pick_up=False),
+                                items.Tool(name=["Wrench"], description="Your standard wrench. "
+                                                                        "No bigger than your hand."),
                                 items.Tool(name=["Wrench"], description="Your standard wrench. "
                                                                         "No bigger than your hand.")])
 

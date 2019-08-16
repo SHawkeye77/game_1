@@ -1,5 +1,6 @@
 TODO:
- - Add main area items and revise descriptions (continue from maintenance room, clockwise)
+ - Add main area items and revise descriptions (continue from maintenance room, clockwise then inwards)
+ - Do some of the "To Fix/Add" stuff below
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
