@@ -272,7 +272,9 @@ class WelcomeSign(Item):
                                      "\n\"Welcome to the martian base, Mr. Adams, and congratulations on being a "
                                      "part of the biggest space-exploration mission in history! We hope that your "
                                      "stay as security manager is comfortable, useful, and, most importantly, "
-                                     "enlightening.\"")
+                                     "enlightening. You can find your secure base login on the back of this poster.\" "
+                                     "On the back of the poster it reads: \"u: MartianBaseUser143 "
+                                     "p: !zz5v2562\"")
 
 
 class LeverB(Item):

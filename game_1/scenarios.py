@@ -116,9 +116,51 @@ def computer_usage(player):
         if username == "luxxx825" and password == "gellerfan334!":
             computer_usage_communications_director()
             return
+        elif username == "MartianBaseUser143" and password == "!zz5v2562":
+            computer_usage_facilities_manager()
+            return
         elif password.lower() == "exit":
             print("You exit out of the computer.")
             return
+
+
+def computer_usage_facilities_manager():
+    print(lore.FAC_MAN_POST_LOGIN_GUI)
+    from_subpage = False
+    while True:
+        if from_subpage:
+            from_subpage = False
+            print(lore.FAC_MAN_POST_LOGIN_GUI)
+        clicked = input("What do you click? ").lower()
+        if clicked == "incomplete tasks":
+            print(lore.FAC_MAN_INCOMPLETE_TASKS)
+            while True:
+                clicked_again = input("What do you click? ").lower()
+                if clicked_again == "back":
+                    from_subpage = True
+                    break
+                elif clicked_again == "exit":
+                    print("You log out of the computer.")
+                    return
+                else:
+                    print("Not an available option...")
+        elif clicked == "completed tasks":
+            print(lore.FAC_MAN_COMPLETED_TASKS)
+            while True:
+                clicked_again = input("What do you click? ").lower()
+                if clicked_again == "back":
+                    from_subpage = True
+                    break
+                elif clicked_again == "exit":
+                    print("You log out of the computer.")
+                    return
+                else:
+                    print("Not an available option...")
+        elif clicked == "exit":
+            print("You log out of the computer.")
+            return
+        else:
+            print("Not an available option...")
 
 
 def computer_usage_communications_director():

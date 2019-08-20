@@ -131,7 +131,8 @@ class MaintenanceRoom(Location):
         super().__init__(x=x, y=y, name="Maintenance Room",
                          connected=["HallI"],
                          description="There's a wooden table near the entrance with a pair of computers on it. "
-                                     "Maintenance supplies lie in shelves on the south and east sides of the room",
+                                     "Maintenance supplies lie in shelves on the south and east sides of the room. "
+                                     "There's a sign taped up on the back wall.",
                          items=[items.Table(), items.Computer(), items.Chair(), items.WelcomeSign(),
                                 items.Tool(name=["Hammer"], description="A standard, metal hammer."),
                                 items.Tool(name=["Hammer"], description="A standard, metal hammer."),
@@ -145,8 +146,6 @@ class MaintenanceRoom(Location):
                                                                         "No bigger than your hand."),
                                 items.Tool(name=["Wrench"], description="Your standard wrench. "
                                                                         "No bigger than your hand.")])
-                         # To do/add: Add to sign an explanation about 'welcome' supplies then add to room
-                         #TODO: Maybe add (1) some easter egg since this is where you were technically supposed to work, (2) a login for maintenance?
 
 
 class TerranCommodityStore(Location):

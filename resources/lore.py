@@ -133,3 +133,58 @@ COMM_DIR_DRAFTS = \
     "|                                       | BACK | |\n" \
     "|                                        ⎻⎻⎻⎻⎻⎻  |\n" \
     " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"
+
+
+FAC_MAN_POST_LOGIN_GUI = \
+    " ________________________________________________ \n"\
+    "| USER: EZRA ADAMS                               |\n"\
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|   ________________       _______________       |\n"\
+    "|  |INCOMPLETE TASKS|     |COMPLETED TASKS|      |\n"\
+    "|   ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻       ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻       |\n"\
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n"\
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"
+
+FAC_MAN_INCOMPLETE_TASKS = \
+    " ________________________________________________ \n"\
+    "| USER: EZRA ADAMS                               |\n"\
+    "|                                                |\n" \
+    "| INCOMPLETE TASKS/EVENTS:                       |\n" \
+    "|                                                |\n" \
+    "| 1. MEET WITH COMMUNICATIONS DIRECTOR FOR       |\n"\
+    "|    PHOTOPROPULSION APPARATUS FIX.              |\n"\
+    "|    -> LOCATION: TERRA COMMUNICATIONS ROOM      |\n" \
+    "|    -> ASSIGNED BY: TERRA BASE                  |\n" \
+    "|    -> DUE/STARTS: ASAP                         |\n" \
+    "|    -> DESCRIPTION: ASSISTANCE REQUESTED ON     |\n" \
+    "|       MALFUNCTIONING COMMUNICATIONS EQUIPMENT. |\n" \
+    "|                                                |\n" \
+    "| 2. MARTIAN BASE ORIENTATION                    |\n" \
+    "|    -> LOCATION: MAINTENANCE ROOM               |\n" \
+    "|    -> ASSIGNED BY: MARTIAN BASE                |\n" \
+    "|    -> DUE/STARTS: 5/11/2045, 08:00 UTC         |\n"\
+    "|    -> DESCRIPTION: INTRODUCTION TO BASE        |\n" \
+    "|       DUTIES, TEAM INITIATION, EQUIPMENT       |\n" \
+    "|       OVERVIEW, ETC.                           |\n" \
+    "|                                                |\n" \
+    "|                                        ______  |\n" \
+    "|                                       | BACK | |\n" \
+    "|                                        ⎻⎻⎻⎻⎻⎻  |\n" \
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"
+
+FAC_MAN_COMPLETED_TASKS = \
+    " ________________________________________________ \n" \
+    "| USER: EZRA ADAMS                               |\n" \
+    "|                                                |\n" \
+    "| YOU HAVE NO COMPLETED TASKS.                   |\n" \
+    "| PLEASE WORK HARDER.                            |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                                |\n" \
+    "|                                        ______  |\n" \
+    "|                                       | BACK | |\n" \
+    "|                                        ⎻⎻⎻⎻⎻⎻  |\n" \
+    " ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻ \n"
