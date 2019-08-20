@@ -43,6 +43,21 @@ class Item:
         print("Nothing happens.")
 
 
+class ClothingRack(Item):
+    def __init__(self):
+        super().__init__(name=["Clothing Rack", "Rack"], can_pick_up=False,
+                         description="A long, silver clothing rack holding expensive designer clothes. The hanging "
+                                     "luxury items include _______, __________, __________, and more.")
+
+
+class TcsBookshelf(Item):
+    def __init__(self):
+        super().__init__(name=["Bookshelf"], can_pick_up=False,
+                         description="It's an old but beautiful bookshelf overflowing with texts. Looks like "
+                                     "they're all Terran classics. At a glance you notice The Nicomachean Ethics, "
+                                     "1984, War and Peace, Slaughterhouse-Five, and many more.")
+
+
 class DanceFloor(Item):
     def __init__(self):
         super().__init__(name=["Dance Floor", "Floor"], can_pick_up=False,
@@ -423,7 +438,7 @@ class SpiritualCenterBookshelf(Item):
 
 
 class Book(Item):
-    def __init__(self, name=["BOOK"], description="BOOK DESCRIPTION"):
+    def __init__(self, name=["BOOK"], description="BOOK DESCRIPTION"):  # Should always be overridden (obviously lol)
         super().__init__(name=name, description=description)
 
 

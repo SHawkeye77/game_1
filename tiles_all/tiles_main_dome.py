@@ -154,7 +154,21 @@ class TerranCommodityStore(Location):
                          connected=["ShoppingCenter"],
                          description="The store is divided into three sections: A jewelry counter with glass-"
                                      "enclosed trinkets, a well-stocked bookshelf labeled \"Terran Classics\", and "
-                                     "a clothing section with luxury apparel.")
+                                     "a clothing rack with luxury apparel.",
+                         items=[items.ClothingRack(), items.TcsBookshelf(),
+                                items.Book(name=["The Nicomachean Ethics"], description="Probably Aristotle's "
+                                           "best work. It's a tricky read but deeply thought-provoking."),
+                                items.Book(name=["1984"], description="A dystopian tale about freedom. "
+                                           "Looks like this one's a first edition."),
+                                items.Book(name=["War and Peace"], description="Just looking at the book makes "
+                                           "you drowsy."),
+                                items.Book(name=["Slaughterhouse-Five"], description="You remember reading this "
+                                           "back in high school. Wonder when Terra will get a base on Tralfamadore.")])
+"""
+                        Items to add: (1) jewelry counter, (2) a couple of jewelery items (can't be taken till glass is broken),
+                                      (7) A clothing rack, (8) a couple of luxury apparel.
+                        
+"""
 
 
 class ShoppingCenter(Location):
@@ -180,7 +194,7 @@ class SecurityOffice(Location):
         super().__init__(x=x, y=y, name="Security Office",
                          connected=["SecurityCenter"],
                          description="There's a circular table occupying most of the room. In the southeast corner is "
-                                     "a small cubicle with a cabinet and small computer. ")
+                                     "a small cubicle with a cabinet and small computer.")
 
 
 class StorageArea(Location):
