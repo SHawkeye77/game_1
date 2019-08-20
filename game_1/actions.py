@@ -128,8 +128,8 @@ def interact_with(arguments, player):
                 current_loc.items[i].interact(player)
                 return
     # If it's not in inventory or room
-    else:  # WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
-        print("'" + inputted_item + "' not in your inventory or anywhere nearby.")
+    else:  #TODO: POSSIBLE ERROR - WHAT IF THERE'S AN IDENTICALLY NAMED ITEM IN THE INVENTORY AND ROOM?
+        print("Can't do that")
     return
 
 
