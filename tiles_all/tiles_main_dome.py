@@ -163,11 +163,20 @@ class TerranCommodityStore(Location):
                                 items.Book(name=["War and Peace"], description="Just looking at the book makes "
                                            "you drowsy."),
                                 items.Book(name=["Slaughterhouse-Five"], description="You remember reading this "
-                                           "back in high school. Wonder when Terra will get a base on Tralfamadore.")])
+                                           "back in high school. Wonder when Terra will get a base on Tralfamadore."),
+                                items.Clothing(name=["Louis Vuitton Polo", "Polo"], description="A magenta "
+                                           "polo with \"LV\" embroidered across it repeatedly in a diagonal pattern. "
+                                           "The price tag reads $920 USD."),
+                                items.Clothing(name=["Gucci Jacket", "Jacket"], description="A mostly black bomber "
+                                           "jacket with \"GUCCI\" printed on its sleeves. On the back is a tiger and "
+                                           "the words \"L'Aveugle Par Amour\". The price tag reads $1,040 USD."),
+                                items.Clothing(name=["Versace Track Pants", "Pants", "Track Pants"], description=
+                                           "A pair of golden-silk track pants covered with a "
+                                           "Baroque-style print. The price tag reads $880 USD.")])
 """
-                        Items to add: (1) jewelry counter, (2) a couple of jewelery items (can't be taken till glass is broken),
-                                      (7) A clothing rack, (8) a couple of luxury apparel.
-                        
+                        Items to add: (1) jewelry counter, (2) a couple of jewelery items (can't be taken till glass is broken)
+                                    - Maybe its thick glass with a key (nowhere to be found) but screws hold it in that could be removed with a screwdriver.
+                                    - Just do when it breaks, add the jewelry items to the room.
 """
 
 

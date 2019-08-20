@@ -46,8 +46,14 @@ class Item:
 class ClothingRack(Item):
     def __init__(self):
         super().__init__(name=["Clothing Rack", "Rack"], can_pick_up=False,
-                         description="A long, silver clothing rack holding expensive designer clothes. The hanging "
-                                     "luxury items include _______, __________, __________, and more.")
+                         description="A long, silver clothing rack holding expensive designer clothes. A Gucci "
+                                     "jacket, Louis Vuitton polo, and a pair of Versace track pants, among "
+                                     "others things, catch your eye.")
+
+
+class Clothing(Item):
+    def __init__(self, name=["CLOTHING"], description="CLOTHES DESCRIPTION"):
+        super().__init__(name=name, can_pick_up=True, description=description)
 
 
 class TcsBookshelf(Item):
