@@ -43,6 +43,22 @@ class Item:
         print("Nothing happens.")
 
 
+class JewelryCounter(Item):
+    def __init__(self):
+        super().__init__(name=["Jewelry Counter", "Counter", "Glass"], can_pick_up=False,
+                         description="A very thick, glass case holding a variety of expensive items. "
+                                     "It's sealed shut by a handful of screws and a digital lock. Its contents include "
+                                     "a silver Rolex, a ring with a large, blue stone, a gold necklace, "
+                                     "and more.")
+
+
+class JewelryLock(Item):
+    def __init__(self):
+        super().__init__(name=["Lock", "Jewelry Lock"], can_pick_up=False,
+                         description="A thick, digital lock. Looks much more secure than the one from the Terra "
+                                     "Communications Room.")
+
+
 class ClothingRack(Item):
     def __init__(self):
         super().__init__(name=["Clothing Rack", "Rack"], can_pick_up=False,
@@ -644,6 +660,11 @@ class Tool(Item):
                                 items += [Booze(), Booze(), Booze()]  #TODO: POSSIBLY CHANGE THIS SO THERE'S DIFFERENT KINDS? =======================================
                             break
                     break
-
+        # Attempting to destroy jewelry counter glass with hammer
+        elif "hammer" in [name.lower() for name in self.name] and "jewelry counter" in [name.lower() for name in item.name]:
+            print("After a few blows it's clear this glass is too hard to be broken. Must be plexiglass.")
+        # Attempting to destroy jewelry counter glass with hammer
+        elif "hammer" in [name.lower() for name in self.name] and "jewelry lock" in [name.lower() for name in item.name]:
+            print("No luck, the lock holds strong.")
         else:
             print("Nothing happens")
