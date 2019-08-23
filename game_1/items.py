@@ -48,7 +48,7 @@ class JewelryCounter(Item):
         super().__init__(name=["Jewelry Counter", "Counter", "Glass"], can_pick_up=False,
                          description="A very thick, glass case holding a variety of expensive items. "
                                      "It's sealed shut by a handful of screws and a digital lock. Its contents include "
-                                     "a silver Rolex, a ring with a large, blue stone, a gold necklace, "
+                                     "a silver Rolex, a ring with a large, blue-ish stone, a gold necklace, "
                                      "and more.")
 
 
@@ -614,6 +614,14 @@ class Booze(Drink):
                          drink_response="Doesn't taste as good as it did back in college.")
 
 
+class Screw(Item):
+    def __init__(self):
+        super().__init__(name=["Screw", "Screws"], description="A 3 or 4 inch screw.", can_pick_up=False)
+
+    def interact(self, player):
+        print("It's too tight to twist with your hand.")
+
+
 class Mirror(Item):
     def __init__(self):
         super().__init__(name=["Mirror"],
@@ -666,5 +674,35 @@ class Tool(Item):
         # Attempting to destroy jewelry counter glass with hammer
         elif "hammer" in [name.lower() for name in self.name] and "jewelry lock" in [name.lower() for name in item.name]:
             print("No luck, the lock holds strong.")
+        # Screwdriver removing jewelry counter screws then updating description
+        elif "screwdriver" in [name.lower() for name in self.name] and "screw" in [name.lower() for name in item.name]:
+            print("Using the screwdriver, you're able to take the screws off, exposing the jewelry inside.")
+            for i, item in enumerate(world.tile_exists(player.location_x, player.location_y).items):
+                if "screw" in [name.lower() for name in item.name]:
+                    del world.tile_exists(player.location_x, player.location_y).items[i]  # Destroying screw
+                    for item in world.tile_exists(player.location_x, player.location_y).items:
+                        if "jewelry counter" in [item_name.lower() for item_name in item.name]:
+                            item.description = "A very thick, glass case holding a variety of expensive items. "\
+                                     "Its screws have been removed, exposing " \
+                                     "a silver Rolex, a ring with a large, blue-ish stone, a gold necklace, " \
+                                     "and more."
+                            world.tile_exists(player.location_x, player.location_y).items += [
+                                Jewelry(name=["Silver Rolex", "Rolex"], description="A silver Rolex watch. It tells "
+                                        "the time in UTC."),
+                                Jewelry(name=["Ring"], description="It's a bronze ring with a huge blue stone in "
+                                        "the center. It almost looks like sapphire but has a hint of green as well."),
+                                Jewelry(name=["Gold Necklace", "Necklace"], description="A gold, low-hanging "
+                                        "necklace. Looks like something a rapper would wear to a club.")]
+                            break
+                    break
         else:
             print("Nothing happens")
+
+
+class Jewelry(Item):
+    def __init__(self, name=[""], description="", interact_message="Nothing happens"):
+        self.interact_message = interact_message
+        super().__init__(name=name, description=description)
+
+    def interact(self, player):
+        print(self.interact_message)

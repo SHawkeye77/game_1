@@ -275,8 +275,7 @@ def pick_up(player, argument, raw_argument):
                 print("You can't add that to your inventory.")
             return
     if raw_argument:
-        print(
-            "There is no '" + raw_argument + "' here.")  # Only gets here if there's none of specified item in inventory
+        print("Can't do that")  # Only gets here if there's none of specified item in inventory
     else:
         print("What do you want to pick up?")  # If no argument is specified
     return
@@ -321,7 +320,7 @@ def examine(player, arguments, raw_argument):
     return
 
 
-def kill_player(player):
+def kill_player(player):  #TODO: REMOVE THIS =======================================================================================
     """
     Args:
         player (object): user's player object

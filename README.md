@@ -15,3 +15,9 @@ Once all of this is done, simply run the following to start playing:
 python3 ./game_1/game.py
 ```
 Enjoy :)
+
+### Irrelevant notes:
+ - This was made (mostly) from scratch using only my own self-taught python knowledge and plenty of stack overflow help.
+ - I started by following the guide below, but quickly ditched a lot of the ideas as I didn't like a lot of the ways it went about things.
+    - https://letstalkdata.com/2014/08/how-to-write-a-text-adventure-in-python/
+ - Thanks for reading!

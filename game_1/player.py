@@ -6,7 +6,8 @@ import random
 STARTING_HP = 100
 
 # List of starting items for the player
-STARTING_ITEMS = [items.Tool(name=["Hammer"], description="")]  # SHOULD BE CHANGED BACK AFTER TESTING
+STARTING_ITEMS = [items.Tool(name=["Hammer"], description="FOR TESTING"),
+                  items.Tool(name=["Screwdriver"], description="FOR TESTING")]  # SHOULD BE CHANGED BACK AFTER TESTING
 
 
 class Player:

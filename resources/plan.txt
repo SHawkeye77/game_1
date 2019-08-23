@@ -1,6 +1,7 @@
-TODO:
- - Add main area items and revise descriptions (continue from terran commodity store, clockwise, then inwards)
- - Do some of the "To Fix/Add" stuff below
+TODO (by beginning of school year, hopefully):
+ - Add main area items and revise descriptions (continue from shopping center, clockwise, then inwards)
+ - Figure out how to update description of rooms or items if items are picked up from it.
+    - Go through all rooms/items created thus far and implement this update.
 
 To Fix/Add:
  - How to update description of room or description of item if items are picked up from it?
@@ -12,6 +13,8 @@ To Fix/Add:
  - Add the lore I skipped:
    - Add/complete the 3 emails in TCR scenario
    - Add buttons and dials to TCR (once I figure out what they will actually do)
+ - Add action shortcuts
+
 
 
 Notes:
@@ -23,5 +26,19 @@ Notes:
 
 Ideas:
  - Could have some secret login you have to figure out that gives you info.
+ - Maybe it turns out something that seems useless, like one of the jewelry pieces, ends up having a key or is a key and lets you in somewhere, or has some info, etc.
  - ELIZA chatbot in mental health room.
    - Just download the java version of eliza and do os.system(filename.java) then os.system(filename) to run it (I think?)
+
+
+Notes from playing Zork:
+- Make it so if it’s the first time you enter an area it prints description. Otherwise just prints name.
+- Add action shortcuts
+- Certain locations that change what you can do or the output.
+- Zork seemed to have more rooms, less items
+- Zork has weapons. Kind of makes you feel powerful when entering the unknown…
+- They don’t provide a map, want you to make one as you go?
+- Had choices of buttons that you didn’t know immediately what they did. You had to figure out and/or remember what they did
+- Examine _______ doesn’t always return the a specific description of the item. Could sometimes have other clever stuff. E.g. in zork: examine mirror gives “an ugly person stares back at you”
+- Use sound effects instead of just description sometimes.
+    - Eg “press button” yields “click” instead of “you pressed the button”

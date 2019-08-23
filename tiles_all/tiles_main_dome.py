@@ -156,6 +156,7 @@ class TerranCommodityStore(Location):
                                      "enclosed trinkets, a well-stocked bookshelf labeled \"Terran Classics\", and "
                                      "a clothing rack with luxury apparel.",
                          items=[items.ClothingRack(), items.TcsBookshelf(), items.JewelryLock(), items.JewelryCounter(),
+                                items.Screw(),
                                 items.Book(name=["The Nicomachean Ethics"], description="Probably Aristotle's "
                                            "best work. It's a tricky read but deeply thought-provoking."),
                                 items.Book(name=["1984"], description="A dystopian tale about freedom. "
@@ -173,13 +174,6 @@ class TerranCommodityStore(Location):
                                 items.Clothing(name=["Versace Track Pants", "Pants", "Track Pants"], description=
                                            "A pair of golden-silk track pants covered with a "
                                            "Baroque-style print. The price tag reads $880 USD.")])
-"""
-                        Items to add: (2) blue stone ring, rolex, necklace (can't be taken till glass is broken)
-                                      (3) screws
-                                    - screws hold it in that could be removed with a screwdriver.
-                                    - When screws are gotten rid of, add the jewelry items to the room and update 
-                                      description of the counter and remove screws (so you can't keep adding the stuff).
-"""
 
 
 class ShoppingCenter(Location):
