@@ -14,6 +14,7 @@ To Fix/Add:
    - Add/complete the 3 emails in TCR scenario
    - Add buttons and dials to TCR (once I figure out what they will actually do)
  - Add action shortcuts
+ - Have user input a name and make that the player name
 
 
 
