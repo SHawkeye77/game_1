@@ -184,6 +184,7 @@ class ShoppingCenter(Location):
                                      "canned goods to space-travel staples like rice and beans. There's even a "
                                      "small section of drugs and pharmaceutical products at the back. A pay station "
                                      "guards the exit.")
+                         # TO ADD: Pay Station, "canned goods", Rice, Beans, Shel(f/ves), Soup, Drugs/drug counter (locked?), some simple drugs or weirdly marked drugs.
 
 
 class SecurityCenter(Location):
