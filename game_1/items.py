@@ -418,6 +418,45 @@ class LeverS(Item):
         print("After a few seconds, there's a slight rumbling from inside the tile followed by a *ding*")
 
 
+class Shelf(Item):
+    def __init__(self):
+        super().__init__(name=["Shelf", "Shelves"], can_pick_up=False,
+                         description="Basic, metal shelves containing canned and packages goods "
+                                     "including rice, beans, soup, and more")
+
+
+class PayStation(Item):
+    def __init__(self):
+        super().__init__(name=["Pay Station", "Slab", "Slabs", "Tile"], can_pick_up=False,
+                         description="Four silver slabs, no higher than waist height, surround a black, glowing "
+                                     "square tile.")
+
+    def interact(self, player):
+        print("You stand in the center of the slabs. A familiar voice greets you from the intercom above...\n"
+              "\"Greetings, Mr. Adams, I hope your shopping went well today...\n. . .\n"
+              "Your account has now been automatically charged for all items on your person. Have a wonderful day!\"")
+
+
+class HandScanner(Item):
+    def __init__(self):
+        super().__init__(name=["Hand Scanner", "Hand-Scanner", "Scanner"], can_pick_up=False,
+                         description="Four silver slabs, no higher than waist height, surround a black, glowing "
+                                     "square tile.")
+
+    def interact(self, player):
+        print("You place your hand in the hand-scanner. After a second of processing, a voice says:\n\"You have no "
+              "pharmaceuticals available for pickup at this time. Please check your prescription notice for details.\"")
+
+
+class DrugDispenser(Item):
+    def __init__(self):
+        super().__init__(name=["Drug Dispenser", "Dispenser"], can_pick_up=False,
+                         description="A huge black box that organizes and dispenses drugs for the base")
+
+    def interact(self, player):
+        print("Looks like you need to interact with the hand scanner to gain access.")
+
+
 class Food(Item):
     def __init__(self, name=["Food"], description="Some food...", eat_response="Tastes like chicken"):
         self.eat_response = eat_response

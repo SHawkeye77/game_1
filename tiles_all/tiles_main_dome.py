@@ -176,15 +176,33 @@ class TerranCommodityStore(Location):
                                            "Baroque-style print. The price tag reads $880 USD.")])
 
 
+#TODO: Maybe need more food variety in here?
 class ShoppingCenter(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Shopping Center",
                          connected=["HallJ"],
                          description="It's one of the largest rooms at the base. The shelves contain everything from "
                                      "canned goods to space-travel staples like rice and beans. There's even a "
-                                     "small section of drugs and pharmaceutical products at the back. A pay station "
-                                     "guards the exit.")
-                         # TO ADD: Pay Station, "canned goods", Rice, Beans, Shel(f/ves), Soup, Drugs/drug counter (locked?), some simple drugs or weirdly marked drugs.
+                                     "hand scanner connected to a drug dispenser at the back of the store. Four slabs "
+                                     "surrounding a black tile guard the exit. At the south end is a door "
+                                     "leading to the Terran Commodity Store.",
+                         items=[items.Shelf(), items.PayStation(), items.HandScanner(), items.DrugDispenser(),
+                                items.Food(name=["Rice"], description="A bag of rice", eat_response="*gulp*"),
+                                items.Food(name=["Rice"], description="A bag of rice", eat_response="*gulp*"),
+                                items.Food(name=["Rice"], description="A bag of rice", eat_response="*gulp*"),
+                                items.Food(name=["Beans"], description="The more you eat, the more...",
+                                           eat_response="*gulp*"),
+                                items.Food(name=["Beans"], description="The more you eat, the more...",
+                                           eat_response="*gulp*"),
+                                items.Food(name=["Beans"], description="The more you eat, the more...",
+                                           eat_response="*gulp*"),
+                                items.Food(name=["Soup"], description="Campbell's chunky! yum!", eat_response="*gulp*"
+                                           "\nCanned, room temperature soup from a can... my favorite..."),
+                                items.Food(name=["Soup"], description="Campbell's chunky! yum!", eat_response="*gulp*"
+                                           "\nCanned, room temperature soup from a can... my favorite..."),
+                                items.Food(name=["Soup"], description="Campbell's chunky! yum!", eat_response="*gulp*"
+                                           "\nCanned, room temperature soup from a can... my favorite...")
+                                ])
 
 
 class SecurityCenter(Location):
