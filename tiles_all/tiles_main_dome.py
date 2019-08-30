@@ -209,16 +209,21 @@ class SecurityCenter(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Security Center",
                          connected=["HallA", "SecurityOffice"],
-                         description="Below a flight of monitors displaying security feeds is an L-shaped table with "
-                                     "chairs tucked beneath it.")
+                         description="Below a flight of computer monitors displaying security feeds is an L-shaped "
+                                     "table with chairs tucked beneath it.",
+                         items=[items.Chair(), items.SecurityMonitor(),
+                                items.Table(description="An large, L-shaped table.")])
 
 
+#TODO: Add stuff to cabinet in here (could have to do with lore or could just be for fun/expansion)
 class SecurityOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Security Office",
                          connected=["SecurityCenter"],
                          description="There's a circular table occupying most of the room. In the southeast corner is "
-                                     "a small cubicle with a cabinet and small computer.")
+                                     "a cramped cubicle with a cabinet and a small computer.",
+                         items=[items.Table(description="A circular conference table."), items.Cubicle(),
+                                items.Computer(), items.Paperwork(), items.FilingCabinet(), items.Chair()])
 
 
 class StorageArea(Location):

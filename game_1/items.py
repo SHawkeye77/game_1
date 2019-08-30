@@ -575,10 +575,36 @@ class RowingMachine(Item):
         print("Now you're sweaty and your back is sore. Awesome.")
 
 
+#TODO: Could be a clue here that corresponds to which rooms are being shown on the monitor? Really shouldn't just be a red herring...
+class SecurityMonitor(Item):
+    def __init__(self):
+        super().__init__(name=["Monitor", "Monitors", "Security Monitor", "Security Monitors"], can_pick_up=False,
+                         description="There's 3 security monitors showing a hallway, a lounge, and a small shop.")
+
+
 class Table(Item):
     def __init__(self, description="A large table with a polished finish."):
         super().__init__(name=["Table"], can_pick_up=False,
                          description=description)
+
+
+class FilingCabinet(Item):
+    def __init__(self):
+        super().__init__(name=["Cabinet", "Filing Cabinet"], can_pick_up=False,
+                         description="Your typical office filing cabinet. Opening it reveals some paperwork.")
+
+
+class Paperwork(Item):
+    def __init__(self):
+        super().__init__(name=["Paperwork", "Unmarked Paperwork", "Paper", "Papers"], can_pick_up=True,
+                         description="Boring paperwork detailing legal procedures for theft, assault, "
+                                     "public disturbance, yada yada yada....")
+
+
+class Cubicle(Item):
+    def __init__(self):
+        super().__init__(name=["Cubicle"], can_pick_up=False,
+                         description="A small office cubicle with a computer and cabinet.")
 
 
 class Clock(Item):
