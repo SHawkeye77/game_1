@@ -233,7 +233,8 @@ class StorageArea(Location):
                          description="You're in a closet-sized entrance blocked off from a large storage area by "
                                      "clear plexiglass. There's a red button on the wall. The storage area is filled "
                                      "floor to ceiling with sealed crates.",
-                         items=[items.StorageAreaButton(), items.Plexiglass()])  #TODO: THE ROBOT COULD BE BROKEN IF I DON'T FEEL LIKE CODING IN THE STUFF OR IT COULD ONLY BE ABLE TO GRAB CERTAIN THINGS
+                         items=[items.StorageAreaButton(), items.Plexiglass()])
+
 
 class Lounge(Location):
     def __init__(self, x, y):
@@ -241,8 +242,10 @@ class Lounge(Location):
                          connected=["HallG"],
                          description="A cozy, airy room. The artificial bricks, laminate wood-look flooring, and "
                                      "electric fireplace are reminiscent of your family cabin back home. Scattered "
-                                     "around the room are bean-bag chairs, recliners, and even a couple massage "
-                                     "chairs. There's even a small oxygen bar in the corner.")
+                                     "around the room are bean-bag chairs, recliners, and a couple of massage "
+                                     "chairs. There's even a small oxygen bar in the corner.",
+                         items=[items.Fireplace(), items.MassageChair(), items.Recliner(), items.OxygenBar(),
+                                items.OxygenBarJar(), items.OxygenBarTube()])
 
 
 class Reception(Location):

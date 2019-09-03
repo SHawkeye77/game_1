@@ -1,5 +1,5 @@
 TODO (by beginning of school year, hopefully):
- - Add main area items and revise descriptions (continue from Lounge, clockwise, then inwards)
+ - Add hospital rooms and courtyard items
  - Figure out how to update description of rooms or items if items are picked up from it.
     - Go through all rooms/items created thus far and implement this update.
 
@@ -10,7 +10,7 @@ To Fix/Add:
  - Could add pencil and paper so you could write notes on it and store it in your inventory
  - Add sound effects and/or music?
  - Add a carry limit (6 items?) Can be increased by a bag maybe?
- - Go through tiles and items and look at any statements/ideas I missed labeled TODO (most are for lorer or expansion)
+ - Go through tiles and items and look at any statements/ideas I missed labeled TODO (most are for lore or expansion)
  - Add the lore I skipped:
    - Add/complete the 3 emails in TCR scenario
    - Add buttons and dials to TCR (once I figure out what they will actually do)

@@ -167,6 +167,68 @@ class StorageAreaButton(Item):
         scenarios.storage_area_robot(player)
 
 
+class Fireplace(Item):
+    def __init__(self):
+        super().__init__(name=["Fireplace", "Electric Fireplace"], can_pick_up=False,
+                         description="A long, curved electric fireplace that lines the entirety of the back wall.")
+
+    def interact(self, player):
+        print("You rub your hands together and face your palms towards the fireplace. The pleasant heat "
+              "reminds you of simpler days.")
+
+
+class BeanBagChair(Item):
+    def __init__(self):
+        super().__init__(name=["Bean-Bag Chair", "Bean Bag Chair", "Bean Bag", "Beanbag", "Bean-Bag"],
+                         can_pick_up=False, description="A green bean-bag chair.")
+
+    def interact(self, player):
+        print("You sit down and sink in. It's so comfy you could pass out right now...")
+
+
+class MassageChair(Item):
+    def __init__(self):
+        super().__init__(name=["Massage Chair", "Massage-Chair"], can_pick_up=False,
+                         description="A full body massage chair.")
+
+    def interact(self, player):
+        print("Looks crazy comfy, how is there no line? Oh wait, it's because the people at the base are most " 
+              "likely all dead...")
+
+
+class Recliner(Item):
+    def __init__(self):
+        super().__init__(name=["Recliner"], can_pick_up=False,
+                         description="A brown-leather recliner.")
+
+    def interact(self, player):
+        print("Comfy but sticky... ew")
+
+
+class OxygenBar(Item):
+    def __init__(self):
+        super().__init__(name=["Oxygen Bar", "Bar"], can_pick_up=False,
+                         description="A wooden bar. There're jars embedded in the wooden counter. Attached to them "
+                                     "are tubes.")
+
+
+class OxygenBarJar(Item):
+    def __init__(self):
+        super().__init__(name=["Jar", "Jars"], can_pick_up=False,
+                         description="Looks like a beaker straight out of a mad-scientist's "
+                                     "laboratory. Nothing visible is inside it, but there's a faint, pink glow.")
+
+
+class OxygenBarTube(Item):
+    def __init__(self):
+        super().__init__(name=["Tube", "Tubes"], can_pick_up=False,
+                         description="A clear tube coming from the top of a jar.")
+
+    def interact(self, player):
+        print("You stick the end of the tube in your nose and take a deep breath in. On the exhale you relax. "
+              "It's a relaxing peppermint flavor.")
+
+
 class Tablet(Item):
     def __init__(self):
         super().__init__(name=["Tablet"], can_pick_up=False,
