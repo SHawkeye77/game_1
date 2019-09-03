@@ -230,10 +230,10 @@ class StorageArea(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Storage Area",
                          connected=["HallD"],
-                         description="You're in a closet-sized entrance blocked off from a large storace area by "
+                         description="You're in a closet-sized entrance blocked off from a large storage area by "
                                      "clear plexiglass. There's a red button on the wall. The storage area is filled "
-                                     "floor to ceiling with sealed crates.")  #TODO: THE ROBOT COULD BE BROKEN IF I DON'T FEEL LIKE CODING IN THE STUFF OR IT COULD ONLY BE ABLE TO GRAB CERTAIN THINGS
-
+                                     "floor to ceiling with sealed crates.",
+                         items=[items.StorageAreaButton(), items.Plexiglass()])  #TODO: THE ROBOT COULD BE BROKEN IF I DON'T FEEL LIKE CODING IN THE STUFF OR IT COULD ONLY BE ABLE TO GRAB CERTAIN THINGS
 
 class Lounge(Location):
     def __init__(self, x, y):

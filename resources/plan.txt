@@ -1,5 +1,5 @@
 TODO (by beginning of school year, hopefully):
- - Add main area items and revise descriptions (continue from storage area, clockwise, then inwards)
+ - Add main area items and revise descriptions (continue from Lounge, clockwise, then inwards)
  - Figure out how to update description of rooms or items if items are picked up from it.
     - Go through all rooms/items created thus far and implement this update.
 

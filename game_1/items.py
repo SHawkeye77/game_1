@@ -52,6 +52,12 @@ class JewelryCounter(Item):
                                      "and more.")
 
 
+class Plexiglass(Item):
+    def __init__(self):
+        super().__init__(name=["Plexiglass", "Glass"], can_pick_up=False,
+                         description="Thick plexiglass. Looks too durable to break.")
+
+
 class JewelryLock(Item):
     def __init__(self):
         super().__init__(name=["Lock", "Jewelry Lock"], can_pick_up=False,
@@ -150,6 +156,15 @@ class Couch(Item):
 
     def interact(self, player):
         print("Huh, pretty comfy.")
+
+
+class StorageAreaButton(Item):
+    def __init__(self):
+        super().__init__(name=["Button", "Red Button"], can_pick_up=False,
+                         description="A red button about as big as your fist. Says \"Robotic Assistance\" on it...")
+
+    def interact(self, player):
+        scenarios.storage_area_robot(player)
 
 
 class Tablet(Item):

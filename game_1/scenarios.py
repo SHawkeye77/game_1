@@ -6,6 +6,25 @@ import items
 from resources import lore
 
 
+def storage_area_robot(player):  #TODO: Could have it so the robot actually retreives something. Could be either for a legit story thing or just a funny/fun thing...
+    """
+    Plays the scenario that happens when player presses red button to talk to robot in storage room
+    """
+    print("*Click*\nAs you press the button, A box to your left starts humming, and robotic arms and legs begin to "
+          "extend from it...\n\"Greetings, I am the UNEEA's storage retreival robot. "
+          "What item in storage can I fetch for you?\"")
+    while True:
+        response = input("").lower()
+        if response.strip() == "exit":
+            print("\"Thank you for stopping by. Please come back anytime!\""
+                  "\nThe robot tucks its arms and legs back into its body "
+                  "and returns to rest on the ground.")
+            break
+        else:
+            print("I am sorry, we either do not have that here, or you do not have adequate access to request "
+                  "retrieval. Can I get you something else? Otherwise, just say \"exit\" to leave me.")
+
+
 def detox_room_entrance():
     """
     Plays the scenario that happens when you enter the detox room immediately upon landing
