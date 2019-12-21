@@ -3,7 +3,16 @@ This module holds scenarios that the player can go through.
 """
 import world
 import items
+from resources.eliza import eliza
 from resources import lore
+
+def talk_to_eliza(player):
+    """
+    Plays the scenario that happens when player talks to the ELIZA head
+    """
+    print("You take a seat on the couch and eye the \'therapist\' head on "
+        "the wall. Soon, it speaks...")
+    eliza.main()  # Runs the eliza script I got from github
 
 
 def storage_area_robot(player):  #TODO: Could have it so the robot actually retreives something. Could be either for a legit story thing or just a funny/fun thing...

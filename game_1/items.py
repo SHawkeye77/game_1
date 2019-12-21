@@ -533,6 +533,12 @@ class DrugDispenser(Item):
     def interact(self, player):
         print("Looks like you need to interact with the hand scanner to gain access.")
 
+class Tray(Item):
+    def __init__(self):
+        super().__init__(name=["Tray", "Surgical Tray"], can_pick_up=False,
+            description="A silver surgical tray holding a variety of medical "
+            "instruments including a scalpel, tweezers, and a bone clamp.")
+
 
 class Food(Item):
     def __init__(self, name=["Food"], description="Some food...", eat_response="Tastes like chicken"):
@@ -737,17 +743,27 @@ class Transmitter(Item):
 class DeadCommunicationsDirector(Item):
     def __init__(self):
         super().__init__(name=["Communications Director", "Corpse"], can_pick_up=False,
-                         description="It is clear something awful happened to the director.\n"
-                                     "His skin is, for the most part, torn. While some tears look like cuts, others "
-                                     "are large enough to expose patches of his anatomy underneath... "
-                                     "The intact portions of the man's skin are not normal either; at these spots "
-                                     "the skin has clumped together and begun to sag from the man's body. "
-                                     "There seems to be a note, as well as what looks like a small key card poking out "
-                                     "of his breast pocket.")
+            description="It is clear something awful happened to the director.\n"
+                "His skin is, for the most part, torn. While some tears look like cuts, others "
+                "are large enough to expose patches of his anatomy underneath... "
+                "The intact portions of the man's skin are not normal either; at these spots "
+                "the skin has clumped together and begun to sag from the man's body. "
+                "There seems to be a note, as well as what looks like a small key card poking out "
+                "of his breast pocket.")
 
     def interact(self, player):
         print("Yeah right, no way I'm touching that.")
 
+class Corpse(Item):
+    def __init__(self):
+        super().__init__(name=["Corpse", "Corpses"], can_pick_up=False,
+            description="Each are in different stages of decay, but all seem "
+                "to have the same problem. Their skin has peeled away in some "
+                "sections while other parts have a surplus. Most are wearing "
+                "standard UNEEA uniforms. You start to gag and feel "
+                "light-headed.")
+    def interact(self, player):
+        print("Any closer you'll throw up... No thanks!")
 
 class Computer(Item):
     def __init__(self):
@@ -809,6 +825,15 @@ class Mirror(Item):
     def interact(self, player):
         print("There is an ugly person staring back at you.")
 
+class ELIZA_Chatbot(Item):
+    def __init__(self):
+        super().__init__(name=["Eliza", "Head", "Robotic Head", "Therapist"],
+            can_pick_up=False,
+            description="It's a robotic head resting body-less on the wall. "
+            "Every couple of seconds it says \n\"Hello, I am ELIZA, your base therapist. "
+            "How can I help you today?\"\n Looks like it wants to interact with you...")
+    def interact(self, player):
+        scenarios.talk_to_eliza(player)
 
 class Tool(Item):
     def __init__(self, name, description, can_pick_up=True):

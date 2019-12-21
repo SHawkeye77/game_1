@@ -250,38 +250,46 @@ class Lounge(Location):
 class Reception(Location):  
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Reception",
-                         connected=["HallI", "MentalHealthRoom", "SurgeryRoom", "EmergencyRoom"],
-                         description="A cute lobby with chairs and a reception desk.",
-                         items=[items.Chair(), items.Desk(), items.Photo(),
-                                items.Computer(), items.Bowl(), items.Mint(),
-                                items.Mint(), items.Mint(), items.Phone()])
-
+            connected=["HallI", "MentalHealthRoom", "SurgeryRoom", "EmergencyRoom"],
+            description="A cute lobby with chairs and a reception desk. Doors "
+                "to the emergency room, surgery room, and mental health room "
+                "are on each end of the room. Written on the ER door in "
+                "large, black lettering is: 'QUARENTINE - DO NOT ENTER'",
+            items=[items.Chair(), items.Desk(), items.Photo(), 
+                items.Computer(), items.Bowl(), items.Mint(), items.Mint(),
+                items.Mint(), items.Phone()])
 
 class EmergencyRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Emergency Room",
-                         connected=["Reception"],
-                         description="Tables are pushed to the side, making room for an open area where corpses "
-                                     "are now scattered. Blood clings to the tiles and the wretched stench of decaying "
-                                     "bodies punctuates the room.")
-
+            connected=["Reception"],
+            description="Tables are pushed to the side, making room for an open area where nearly 15 "
+                "corpses are haphazardly scattered. Blood clings to the tiles and the wretched stench of decaying "
+                "bodies punctuates the room.",
+            items=[items.Corpse(), items.Table()])
 
 class SurgeryRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Surgery Room",
-                         connected=["Reception"],
-                         description="A sterile, white room with a bank of lights attached to the ceiling. "
-                                     "There's a tray on top of a rolling table. A white cloth covers its contents. "
-                                     "A stainless-steel operating table sits in the center of the room. There's a "
-                                     "sink in the corner.")
-
+            connected=["Reception"], description=
+                "A sterile, white room with a bank of lights attached to the ceiling. "
+                "There's a surgical tray on top of a rolling table. "
+                "A stainless-steel operating table sits in the center of the room. There's a "
+                "sink in the corner.",
+            items=[items.Sink(), items.Table(description="A stainless-steel table large enough to fit human body..."),
+                items.Tray(), items.Tool(name=["Tweezers"],description="Silver tweezers"),
+                items.Tool(name=["Scalpel"],description="A silver scalpel with "
+                    " a blade around an inch and a half long."),
+                items.Tool(name=["Bone Clamp","Clamp"],description="A surgical "
+                    "bone clamp. Looks like a pair of scissors but with curved, blunt edges.")])
 
 class MentalHealthRoom(Location):
     def __init__(self, x, y):
-        super().__init__(x=x, y=y, name="MentalHealthRoom",
-                         connected=["Reception"],
-                         description="A couch sits across from a robotic head mounted on the wall. The head is "
-                                     "labeled \"ELIZA\"")
+        super().__init__(x=x, y=y, name="Mental Health Room",
+            connected=["Reception"],
+            description="A couch sits across from a robotic head mounted on the wall. "
+                "The head is labeled \"ELIZA\".",
+            items=[items.Couch(), items.ELIZA_Chatbot()])
 
 
 class Courtyard(Location):

@@ -18,6 +18,8 @@ Enjoy :)
 
 ### Irrelevant notes:
  - This was made (mostly) from scratch using only my own self-taught python knowledge and plenty of stack overflow help.
+ - The ELIZA chatbot (in ./game_1/resources) was cloned from the following repo (then modded a bit by myself):
+    - https://github.com/wadetb/eliza
  - I started by following the guide below, but quickly ditched a lot of the ideas as I didn't like a lot of the ways it went about things.
     - https://letstalkdata.com/2014/08/how-to-write-a-text-adventure-in-python/
  - Thanks for reading!
