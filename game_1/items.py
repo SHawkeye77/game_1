@@ -567,6 +567,31 @@ class SpiritualCenterFountain(Item):  #TODO: MAYBE IF YOU THROW A COIN IN SOMETH
                          description="Water flows from a high-up bowl, overflowing into larger bowls of increasing "
                                      "sizes below.")
 
+class CourtyardFountain(Item):
+    def __init__(self):
+        super().__init__(name=["Fountain"], can_pick_up=False,
+            description="The fountain is a map of the solar system. Water flows from a model of the Sun at "
+            "the top down over all the planets before being reclaimed in a small "
+            "pool at the bottom.")
+
+class Track(Item):
+    def __init__(self):
+        super().__init__(name=["Track", "Running Track"], can_pick_up=False,
+            description="A rubber track two lanes wide circles around the entire dome.")
+    def interact(self, player):
+        print("You stretch out the hammies and start jogging... Feels good to move "
+            "the legs after such a long rocket ride.")
+
+
+class Turf(Item):
+    def __init__(self):
+        super().__init__(name=["Turf", "Ground"], can_pick_up=False,
+            description="It's a cheap way to remind you of the green grass back "
+            "home, but it works.")
+    def interact(self, player):
+        print("You take a seat cross-legged on the ground and smile. It'd be fun "
+            "to have a picnic out here when this is all over...")
+
 
 class SpiritualCenterPond(Item):  #TODO: MAYBE IF YOU THROW A COIN IN SOMETHING HAPPENS??? ========================================
     def __init__(self):

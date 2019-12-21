@@ -291,14 +291,14 @@ class MentalHealthRoom(Location):
                 "The head is labeled \"ELIZA\".",
             items=[items.Couch(), items.ELIZA_Chatbot()])
 
-
 class Courtyard(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Courtyard",
-                         connected=["HallM", "HallN", "HallO", "HallP"],
-                         description="A wide open circular space capped only by the transparent, domed ceiling "
-                                     "far above. The ground is artificial turf and there's a large, stone fountain "
-                                     "flowing with water in the center.")
+            connected=["HallM", "HallN", "HallO", "HallP"],
+            description="A wide open circular space capped only by the transparent, domed ceiling "
+                "far above. The ground is artificial turf and there's a large, stone fountain "
+                "flowing in the center. Around the perimeter is a running track.",
+            items=[items.CourtyardFountain(), items.Turf(), items.Track()])
 
 
 class HallA(Location):
@@ -313,7 +313,7 @@ class HallA(Location):
 class HallB(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Hall B",
-                         connected=["HallA", "HallC", "HallM", "SpiritualCenter", ""],
+                         connected=["HallA", "HallC", "HallM", "SpiritualCenter"],
                          description="A white tube with wires and tubes running along the ceiling. On the wall, in "
                                      "large, black lettering it reads \"Hall B\". Automatic doors wait "
                                      "at both ends.")

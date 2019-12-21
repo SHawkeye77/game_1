@@ -1,5 +1,6 @@
 TODO (by beginning of school year, hopefully):
- - Add hospital rooms and courtyard items
+ - Come up with a general story outline (or at least a good chunk of one)
+ - Add a new dome! Sketch it out and make plans before actually coding. 
  - Figure out how to update description of rooms or items if items are picked up from it.
     - Go through all rooms/items created thus far and implement this update.
 
