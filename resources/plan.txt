@@ -16,6 +16,7 @@ To Fix/Add:
    - Add buttons and dials to TCR (once I figure out what they will actually do)
  - Add action shortcuts
  - Have user input a name and make that the player name
+ - Could have it so that when you try to take something, if its not in the room it checks if its in your inventory and if it is it says "<item> already in your inventory"
 
 
 
@@ -31,7 +32,7 @@ Ideas:
  - Maybe it turns out something that seems useless, like one of the jewelry pieces, ends up having a key or is a key and lets you in somewhere, or has some info, etc.
  - ELIZA chatbot in mental health room.
    - Just download the java version of eliza and do os.system(filename.java) then os.system(filename) to run it (I think?)
-
+ - Could make an ascii map and a "map" command that shows you where you are (in the current area) 
 
 Notes from playing Zork:
 - Make it so if it’s the first time you enter an area it prints description. Otherwise just prints name.

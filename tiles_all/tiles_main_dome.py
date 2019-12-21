@@ -247,12 +247,14 @@ class Lounge(Location):
                          items=[items.Fireplace(), items.MassageChair(), items.Recliner(), items.OxygenBar(),
                                 items.OxygenBarJar(), items.OxygenBarTube()])
 
-
-class Reception(Location):
+class Reception(Location):  
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Reception",
                          connected=["HallI", "MentalHealthRoom", "SurgeryRoom", "EmergencyRoom"],
-                         description="A cute lobby with chairs and a modest reception desk.")  #TODO: ADD A PHONE AND COMPUTER AND FRAMED PHOTO AND A BOWL OF MINTS ON THE DESK? ADD TO DESCRIPTION?
+                         description="A cute lobby with chairs and a reception desk.",
+                         items=[items.Chair(), items.Desk(), items.Photo(),
+                                items.Computer(), items.Bowl(), items.Mint(),
+                                items.Mint(), items.Mint(), items.Phone()])
 
 
 class EmergencyRoom(Location):

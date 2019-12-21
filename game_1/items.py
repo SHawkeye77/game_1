@@ -651,6 +651,17 @@ class RowingMachine(Item):
     def interact(self, player):
         print("Now you're sweaty and your back is sore. Awesome.")
 
+class Phone(Item):
+    def __init__(self):
+        super().__init__(name=["Phone"], can_pick_up=False,
+                         description="A landline; it looks like a slab of "
+                         "metal.")
+
+    def interact(self, player):
+        print("You pick up the phone only to hear the dial tone. Pressing "
+            "buttons does nothing. Phone lines must have been disconnected...")
+
+
 
 #TODO: Could be a clue here that corresponds to which rooms are being shown on the monitor? Really shouldn't just be a red herring...
 class SecurityMonitor(Item):
@@ -664,6 +675,31 @@ class Table(Item):
         super().__init__(name=["Table"], can_pick_up=False,
                          description=description)
 
+class Desk(Item):
+    def __init__(self, description=
+        "A small office desk. Probably the office space for the receptionist. "
+        "Next to their computer sits a bowl of mints as well as a phone and "
+        "a framed photo."):
+        super().__init__(name=["Desk"], can_pick_up=False,
+                         description=description)
+
+class Bowl(Item):
+    def __init__(self, description=
+        "A small bowl with a few mints in it"):
+        super().__init__(name=["Bowl","Bowl of Mints"], can_pick_up=False,
+                         description=description)
+
+class Mint(Food):
+    def __init__(self):
+        super().__init__(name=["Mint", "Mints"],description="An individually "
+            "wrapped mint.", eat_response="Your breath smells great now! +5"
+            "confidence points!") 
+
+class Photo(Item):  # Receptionist's photo
+    def __init__(self, description=
+        "It's a selfie featuring a boy around 10 and his father."):
+        super().__init__(name=["Photo", "Family Photo", "Framed Photo"], 
+                         can_pick_up=True, description=description)
 
 class FilingCabinet(Item):
     def __init__(self):

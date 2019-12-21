@@ -10,7 +10,7 @@ def storage_area_robot(player):  #TODO: Could have it so the robot actually retr
     """
     Plays the scenario that happens when player presses red button to talk to robot in storage room
     """
-    print("*Click*\nAs you press the button, A box to your left starts humming, and robotic arms and legs begin to "
+    print("*Click*\nAs you press the button, a box to your left starts humming, and robotic arms and legs begin to "
           "extend from it...\n\"Greetings, I am the UNEEA's storage retreival robot. "
           "What item in storage can I fetch for you?\"")
     while True:

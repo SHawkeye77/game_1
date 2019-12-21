@@ -71,7 +71,7 @@ def parse_args(user_input, player):
         actions.examine(player, arguments, raw_argument)
     elif command == "enter":
         actions.enter(player, argument, raw_argument)
-    elif command == "kill" and argument == "myself":
+    elif (command == "kill" and argument == "myself") or (command == "kms"):
         actions.kill_player(player)
     elif command == "drink":
         actions.drink(player, argument, raw_argument)
