@@ -21,6 +21,7 @@ class Location:
         print("Location: " + self.name + "\n" + self.description)
 
 
-# These are imported so that any file importing "tiles.py" can have access to all tiles classes
+# Imported so that any file importing "tiles.py" can have access to all tiles classes
 from tiles_all.tiles_landing_dome import *
 from tiles_all.tiles_main_dome import *
+from tiles_all.tiles_research_dome import *

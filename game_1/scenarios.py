@@ -261,9 +261,9 @@ def apm_terminal(player):
     if current_terminal == "APM Terminal A":
         available_options += ["Terminal B"]
     elif current_terminal == "APM Terminal B":
-        available_options += ["Terminal A"]
+        available_options += ["Terminal A", "Terminal C"]
     elif current_terminal == "APM Terminal C":
-        available_options += [""]
+        available_options += ["Terminal B"]
     elif current_terminal == "APM Terminal D":
         available_options += [""]
     available_options += ["Remain Here", "What Is This"]

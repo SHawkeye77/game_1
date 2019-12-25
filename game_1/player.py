@@ -6,8 +6,10 @@ import random
 STARTING_HP = 100
 
 # List of starting items for the player
+# SHOULD BE CHANGED BACK AFTER TESTING
 STARTING_ITEMS = [items.Tool(name=["Hammer"], description="FOR TESTING"),
-                  items.Tool(name=["Screwdriver"], description="FOR TESTING")]  # SHOULD BE CHANGED BACK AFTER TESTING
+                  items.Tool(name=["Screwdriver"], description="FOR TESTING"),
+                  items.APMPass()]
 
 
 class Player:
