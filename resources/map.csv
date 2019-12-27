@@ -8,6 +8,6 @@ HallK,HallP,Courtyard,HallN,HallE,,TerranCommodityStore,SecurityCenter,SecurityO
 HallJ,,HallO,,HallF,,ShoppingCenter,Gym,StorageArea,EmergencyRoom,Reception,MentalHealthRoom
 ,HallI,HallH,HallG,,,,,,,,
 ,,,,,,,,,,,
-,,Office1,Office2,ApmTerminalC,Lab1,Lab2,,,,,
+,,ZloOffice,GomezOffice,ApmTerminalC,ZloLab,GomezLab,,,,,
 ,,ConferenceRoom,OfficeHall,MainHall,LabHall,LabBathroom,,,,,
-,,,Office3,DrillControlRoom,Lab3,ExtractContainmentArea,,,,,
+,,,AchebeOffice,DrillControlRoom,AchebeLab,ExtractContainmentArea,,,,,

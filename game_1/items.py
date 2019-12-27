@@ -737,19 +737,16 @@ class FilingCabinet(Item):
         super().__init__(name=["Cabinet", "Filing Cabinet"], can_pick_up=False,
                          description="Your typical office filing cabinet. Opening it reveals some paperwork.")
 
-
 class Paperwork(Item):
     def __init__(self):
         super().__init__(name=["Paperwork", "Unmarked Paperwork", "Paper", "Papers"], can_pick_up=True,
                          description="Boring paperwork detailing legal procedures for theft, assault, "
                                      "public disturbance, yada yada yada....")
 
-
 class Cubicle(Item):
     def __init__(self):
         super().__init__(name=["Cubicle"], can_pick_up=False,
                          description="A small office cubicle with a computer and cabinet.")
-
 
 class Clock(Item):
     def __init__(self, time_location="Minneapolis"):
@@ -757,13 +754,11 @@ class Clock(Item):
         super().__init__(name=[time_location + " Clock"], can_pick_up=True,
                          description="A traditional-looking clock set to " + self.time_location + " local time.")
 
-
 class Transmitter(Item):
     def __init__(self):
         super().__init__(name=["Transmitter"], can_pick_up=False,
                          description="A metallic, tapering cylinder pointing up towards the sky. In the center you "
                                      "can see its photopropulsion apparatus. Looks like it's been tampered with...")
-
 
 class DeadCommunicationsDirector(Item):
     def __init__(self):
@@ -800,7 +795,6 @@ class Computer(Item):
         print("You pull up a chair and begin working at the computer...")
         scenarios.computer_usage(player)
 
-
 class Bench(Item):
     def __init__(self, description="A long bench, wide enough to fit around four people."):
         super().__init__(name=["Bench"], can_pick_up=False,
@@ -809,13 +803,11 @@ class Bench(Item):
     def interact(self, player):
         print("It's not too comfy. Better than standing, though.")
 
-
 class Plant(Item):
     def __init__(self):
         super().__init__(name=["Plant", "Potted Plant"],
                          description="Looks like a Ficus Danielle, similar-looking to one at your apartment on Terra. "
                                      "It's clearly fake.")
-
 
 class Drink(Item):
     def __init__(self, name, description, drink_response="*gulp*"):
@@ -825,13 +817,11 @@ class Drink(Item):
     def drink(self):
         print(self.drink_response)
 
-
 # TODO: MAYBE MAKE IT SO THAT IF YOU DRINK TOO MANY SOMETHING HAPPENS TO YOU TO MAKE YOU "DRUNK" IN GAME ===============================
 class Booze(Drink):
     def __init__(self):
         super().__init__(name=["Booze"], description="A handle of 80-proof Henny",
                          drink_response="Doesn't taste as good as it did back in college.")
-
 
 class Screw(Item):
     def __init__(self):
@@ -839,7 +829,6 @@ class Screw(Item):
 
     def interact(self, player):
         print("It's too tight to twist with your hand.")
-
 
 class Mirror(Item):
     def __init__(self):
@@ -925,7 +914,6 @@ class Tool(Item):
                     break
         else:
             print("Nothing happens")
-
 
 class Jewelry(Item):
     def __init__(self, name=[""], description="", interact_message="Nothing happens"):
