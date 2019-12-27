@@ -4,7 +4,6 @@ the 'research dome' section
 """
 
 from tiles import Location
-import items, scenarios
 
 
 class ApmTerminalC(Location):

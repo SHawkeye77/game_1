@@ -1,6 +1,4 @@
 """ Module for dealing with the world we created """
-""" NOTE: It now deals in csv files for reading it. 
-"""
 
 _world = {}  # Dictionary that will map coordinate pair to a tile
 START_ROOM_NAME = "ApmTerminalB"  #TODO: SHOULD BE SWITCHED BACK TO "LandingPad" AFTER TESTING

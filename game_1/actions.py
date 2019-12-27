@@ -2,7 +2,6 @@
 This module provides methods that are called and do a specific action that the user specifies they want to do.
 """
 import world
-import items  # BETTER WAY TO DO THIS?
 from tiles import *  # BETTER WAY TO DO THIS?
 
 

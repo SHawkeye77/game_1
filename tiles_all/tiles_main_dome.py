@@ -1,7 +1,7 @@
 """ This module holds all the specific tile classes for tiles in the 'landing base' section """
 
 from tiles import Location
-import items, scenarios
+import items
 
 
 class ApmTerminalB(Location):
