@@ -6,7 +6,8 @@ the 'research dome' section
 from tiles import Location
 import items
 
-# TO ADD: Tablet, Bench
+
+# ITEMS: ALREADY COMPLETED!
 class ApmTerminalC(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="APM Terminal C",
@@ -15,7 +16,7 @@ class ApmTerminalC(Location):
                         "on a stand. Nearby are some benches.",
             items=[items.Tablet(), items.Bench()])
 
-# TO ADD: Table, chairs, projector
+# ITEMS: Table, chairs, projector
 class ConferenceRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Conference Room",
@@ -24,30 +25,40 @@ class ConferenceRoom(Location):
                 "landscape outside. An ovoidal table sits at the center of the room surrounded by a handful of office "
                 "chairs. A projector points to the eastern wall.")
 
+
+# ITEMS: Computer, Desk, Chair, Bookshelf, Books, Armchair, Coffee Table, Czechoslovakian map, Framed Nobel Prize
 class ZloOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Zlo Office",
             connected=["OfficeHall"],
-            description="ZloOffice DESCRIPTION HERE")
+            description="A neat office with a sizable computer desk and office chair resting behind it. Mounted on the "
+                        "wall is a map and framed award. On the other side of the room sits a bookshelf flanked by "
+                        "two armchairs and a coffee table.")
 
+# ITEMS: Cognac bottle, 2 Glasses, shelf, Scattered Papers, Computer, Desk, newton's cradle, espresso machine, Chair
 class GomezOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Gomez Office",
             connected=["OfficeHall"],
-            description="GomezOffice DESCRIPTION HERE")
+            description="A messy, cramped office with a computer desk and chair behind it. Resting on a shelf on the "
+                        "far side is a bottle of cognac and two glasses.")
+            # ON THE TABLE (IN IT'S DESCRIPTION): On the desk is a computer surrounded by a scattering of papers, a newton's cradle, and an espresso machine.
 
+
+# ITEMS: PhD certificate, Drawer, Books/other stuff? (in drawers), Star Wars signed poster, Desk, family photo, Computer,
 class AchebeOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Achebe Office",
             connected=["OfficeHall"],
-            description="AchebeOffice DESCRIPTION HERE")
+            description="A cramped but tidy office. A rolling chair sits behind a computer desk with drawers attached "
+                        "to its sides. Hanging on the wall is a framed certificate as well as an old movie poster.")
 
 class OfficeHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Office Hall",
             connected=["ZloOffice","GomezOffice","AchebeOffice","ConferenceRoom","MainHall"],
-            description="It's essentially a large, white tube. There are doors to the offices as well as the "
-                "conference room here.")
+            description="It's essentially a large, white tube. There are doors to the offices and conference room "
+                "here. A sign on the door to the southeastern office reads \"KNOCK BEFORE ENTERING\".")
 
 class MainHall(Location):
     def __init__(self, x, y):
