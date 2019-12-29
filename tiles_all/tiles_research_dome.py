@@ -53,55 +53,69 @@ class AchebeOffice(Location):
             description="A cramped but tidy office. A rolling chair sits behind a computer desk with drawers attached "
                         "to its sides. Hanging on the wall is a framed certificate as well as an old movie poster.")
 
+
+# ITEMS: Sign (that says \"KNOCK BEFORE ENTERING\")
 class OfficeHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Office Hall",
             connected=["ZloOffice","GomezOffice","AchebeOffice","ConferenceRoom","MainHall"],
-            description="It's essentially a large, white tube. There are doors to the offices and conference room "
-                "here. A sign on the door to the southeastern office reads \"KNOCK BEFORE ENTERING\".")
+            description="A white, cylindrical tube. There are doors to the offices and conference room. "
+                        "A sign is tacked on to the door to the southeastern office.")
 
+# ITEMS: NONE
 class MainHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Main Hall",
             connected=["OfficeHall","ApmTerminalC","LabHall","DrillControlRoom"],
-            description="MainHall DESCRIPTION HERE")
+            description="A rectangular, white prism. To the east is the lab wing, and to the west is the offices.")
 
+# ITEMS: Computers, Whiteboard (you can write on it), chairs, table, Holes and drill (for 'examine'ing)
+# Note: If user tries to 'interact with drill' have it print "The drill looks to be electronically operated"
 class DrillControlRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Drill Control Room",
             connected=["MainHall"],
-            description="DrillControlRoom DESCRIPTION HERE")
-
+            description="A glass wall exposes the outside, where a metal arm connects to a massive drill. It looks "
+                        "to have made hundreds of perforations into the Martian soil. Inside, chairs sit behind an "
+                        "array of computers. On the western wall hangs a whiteboard.")
+# ITEMS: NONE
 class LabHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab Hall",
             connected=["MainHall","Lab1","Lab2","Lab3","ExtractContainmentArea","LabBathroom"],
-            description="LabHall DESCRIPTION HERE")
+            description="A white, cylindrical tube. There are doors to the labs, bathroom, and extract containment "
+                        "room.")
 
+# ITEMS: NONE
 class LabBathroom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab Bathroom",
             connected=["LabHall"],
-            description="LabBathroom DESCRIPTION HERE")
+            description="A single bathroom stall with a toilet, mirror, and sink.",
+            items=[items.Mirror(), items.Sink(), items.Toilet()])
 
+# ITEMS: 
 class ZloLab(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab 1",
             connected=["LabHall"],
             description="Lab1 DESCRIPTION HERE")
 
+# ITEMS:
 class GomezLab(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab 2",
             connected=["LabHall"],
             description="Lab2 DESCRIPTION HERE")
 
+# ITEMS:
 class AchebeLab(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab 3",
             connected=["LabHall"],
             description="Lab3 DESCRIPTION HERE")
 
+# ITEMS:
 class ExtractContainmentArea(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Extract Containment Area",
