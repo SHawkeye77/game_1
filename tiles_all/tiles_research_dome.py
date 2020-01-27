@@ -62,7 +62,7 @@ class OfficeHall(Location):
             description="A white, cylindrical tube. There are doors to the offices and conference room. "
                         "A sign is tacked on to the door to the southeastern office.")
 
-# ITEMS: NONE
+# ITEMS: ALREADY COMPLETED! (NONE)
 class MainHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Main Hall",
@@ -78,15 +78,16 @@ class DrillControlRoom(Location):
             description="A glass wall exposes the outside, where a metal arm connects to a massive drill. It looks "
                         "to have made hundreds of perforations into the Martian soil. Inside, chairs sit behind an "
                         "array of computers. On the western wall hangs a whiteboard.")
-# ITEMS: NONE
+
+# ITEMS: Sign (that says \"KNOCK BEFORE ENTERING\") (for zlo's lab)
 class LabHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab Hall",
             connected=["MainHall","Lab1","Lab2","Lab3","ExtractContainmentArea","LabBathroom"],
             description="A white, cylindrical tube. There are doors to the labs, bathroom, and extract containment "
-                        "room.")
+                        "room. A sign is tacked on the door to the southwestern office.")
 
-# ITEMS: NONE
+# ITEMS: ALREADY COMPLETED!
 class LabBathroom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab Bathroom",
@@ -94,30 +95,46 @@ class LabBathroom(Location):
             description="A single bathroom stall with a toilet, mirror, and sink.",
             items=[items.Mirror(), items.Sink(), items.Toilet()])
 
-# ITEMS: 
+# ITEMS: table, stool, microscope, tank (holding microorganisms), beaker, strainer, Czech Republic (also Czechloslovakian) flag
 class ZloLab(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab 1",
             connected=["LabHall"],
-            description="Lab1 DESCRIPTION HERE")
+            description="There's one large, rectangular table at the center. On it sits a massive microscope, some beakers, and a strainer. "
+                        "On the south end of the room is a container that looks like a fishtank, filled with two or three inches of "
+                        "a viscous, gray liquid. A flag hangs on one end of the room.")
 
-# ITEMS:
+# ITEMS: Tables, stools, beakers, 3 bowls, 2 canisters of liquid (interactable?), sink, papers
 class GomezLab(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab 2",
             connected=["LabHall"],
-            description="Lab2 DESCRIPTION HERE")
+            description="The layout reminds you of a high school chemistry lab. There are two long tables and a couple of stools. On one table "
+                        "there's lab supplies including beakers and a few large bowls. "
+                        "Mounted on the wall are two large canisters filled with liquid." 
+                        "On the other table there's a built-in sink, surrounded by a scattering of papers.")
+        # one pitcher is really hot, one really cold (temperatures are regulated by tubes going into the wall)
 
-# ITEMS:
+# ITEMS: Tables, stools, beakers, gas stove, rock pick, containers, scale, posters (enterprise, millenium falcoln, YBN Lorkeer [made up])
 class AchebeLab(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab 3",
             connected=["LabHall"],
-            description="Lab3 DESCRIPTION HERE")
+            description="The layout reminds you of a high school chemistry lab. There are two long tables and a couple of stools. On a table "
+                        "sits lab supplies including beakers, a rock pick, some containers, a scale, and "
+                        "what looks like a gas stove. Some posters hang on the wall.")
 
-# ITEMS:
+
+# ITEMS: Tube, containment isolator, containers, shelves
 class ExtractContainmentArea(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Extract Containment Area",
             connected=["LabHall"],
-            description="ExtractContainmentArea DESCRIPTION HERE")
+            description="The majority of the room is dozens of drawers on shelves. A tube, which looks "
+                        "accessible by the main drill, connects the drilling area to "
+                        "a large, transparent box, labeled \'Containment Isolator\'.")
+        # "CONTAINMENT ISOLATOR" - A SEALED, TRANSPARENT BOX WITH GLOVES EMBEDDED IN IT SO YOU CAN MEDDLE WITH WHAT'S INSIDE WITHOUT INFECTING IT
+
+
+
+
