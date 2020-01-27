@@ -16,7 +16,7 @@ python3 ./game_1/game.py
 ```
 Enjoy :)
 
-### Irrelevant notes:
+### Some Notes:
  - This was made (mostly) from scratch using only my own self-taught python knowledge and plenty of stack overflow help.
  - The ELIZA chatbot (in ./game_1/resources) was cloned from the following repo (then modded a bit by myself):
     - https://github.com/wadetb/eliza
