@@ -1,7 +1,7 @@
 """ Module for dealing with the world we created """
 
 _world = {}  # Dictionary that will map coordinate pair to a tile
-START_ROOM_NAME = "ApmTerminalB"  #TODO: SHOULD BE SWITCHED BACK TO "LandingPad" AFTER TESTING
+START_ROOM_NAME = "ConferenceRoom"  #TODO: SHOULD BE SWITCHED BACK TO "LandingPad" AFTER TESTING
 starting_position = (0, 0)  # (x,y) tuple that will be set to the coordinates of the starting room
 
 

@@ -176,6 +176,36 @@ class Fireplace(Item):
         print("You rub your hands together and face your palms towards the fireplace. The pleasant heat "
               "reminds you of simpler days.")
 
+class Chair(Item):
+    def __init__(self, description="A standard, wooden chair."):
+        super().__init__(name=["Chair", "Seat"], can_pick_up=False,
+                         description=description)
+
+    def interact(self, player):
+        print("Surprisingly comfy.")
+
+class ArmChair(Item):
+    def __init__(self):
+        super().__init__(name=["Armchair", "Arm Chair", "Comfy Chair", 
+            "Lounge Chair"], can_pick_up=False, description="A red-checkered "
+            "armchair. Looks pretty comfy!")
+
+    def interact(self, player):
+        print("Ah, just as comfy as it looked!")
+
+class NobelPrize(Item):
+    def __init__(self):
+        super().__init__(name=["Award", "Framed Award", "Nobel Prize"],
+            can_pick_up=True, description="It's a golden coin about the size "
+            "of two quarters. It's engraved with the portrait of a man "
+            "and the phrases \"Nat. MDCCCXXXIII Ob. MDCCCXCVI\" and "
+            "\"ALFR. NOBEL\"")
+
+    def interact(self, player):
+        print("Flipping it over you can see the inscriptions on the back: "
+            "\"Inventas vitam iuvat excoluisse per artes\", "
+            "\"REG. ACAD. SCIENT. SUEC.\", \"Erik Lindberg\", and \"O. ZLO "
+            "MMXXX\"")
 
 class BeanBagChair(Item):
     def __init__(self):
@@ -283,16 +313,6 @@ class GarageLever(Item):
     def interact(self, player):
         scenarios.opened_garage(player, self)
 
-
-class Chair(Item):
-    def __init__(self, description="A standard, wooden chair."):
-        super().__init__(name=["Chair", "Seat"], can_pick_up=False,
-                         description=description)
-
-    def interact(self, player):
-        print("Surprisingly comfy.")
-
-
 class Screen(Item):
     def __init__(self):
         super().__init__(name=["Screen", "Movie Screen"], can_pick_up=False,
@@ -300,12 +320,18 @@ class Screen(Item):
 
 
 class Projector(Item):
-    def __init__(self):
+    def __init__(self, description="A cinematic projector resting on a tripod. It's made to "
+        "look like an old-timey projector, complete with rotating film reels and a wooden "
+        "finish. That being said, it looks like you can just insert a digital disk into "
+        "a slot on its back to get it going..."):
         super().__init__(name=["Projector"], can_pick_up=False,
-                         description="A cinematic projector resting on a tripod. It's made to "
-                                     "look like an old-timey projector, complete with rotating film reels and a wooden "
-                                     "finish. That being said, it looks like you can just insert a digital disk into "
-                                     "a slot on its back to get it going...")
+            description=description)
+
+class Map(Item):
+    def __init__(self, description="A huge map nailed into the wall. "
+        "Its description reads: \"Czechoslovakia 1970\"."):
+        super().__init__(name=["Map", "Czechoslovakia Map"], 
+            can_pick_up=False, description=description)
 
 
 class MovieBox(Item):

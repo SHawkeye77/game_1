@@ -4,36 +4,47 @@ the 'research dome' section
 """
 
 from tiles import Location
-import items
+import items as i
 
 
-# ITEMS: ALREADY COMPLETED!
 class ApmTerminalC(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="APM Terminal C",
             connected=["MainHall"],
-            description="The APM enters this curved room from its western side. Just right of the track is a tablet "
-                        "on a stand. Nearby are some benches.",
-            items=[items.Tablet(), items.Bench()])
+            description="The APM enters this curved room from its western "
+                "side. Just right of the track is a tablet on a stand. Nearby "
+                "are some benches.",
+            items=[i.Tablet(), i.Bench()])
 
-# ITEMS: Table, chairs, projector
 class ConferenceRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Conference Room",
             connected=["OfficeHall"],
-            description="A large meeting room with a glass wall, exposing attendees to a beautiful view of the martian "
-                "landscape outside. An ovoidal table sits at the center of the room surrounded by a handful of office "
-                "chairs. A projector points to the eastern wall.")
+            description="A large meeting room with a glass wall, exposing "
+                "attendees to a beautiful view of the martian landscape "
+                "outside. An ovoidal table sits at the center of the room "
+                "surrounded by a handful of office chairs. A "
+                "projector points to the eastern wall.",
+            items=[i.Table(description="A long, ovoidal table. It has a "
+                "gray finish"), i.Chair(description="A black swivel "
+                "chair"), i.Projector(description="A sleek, white "
+                "projector")])
 
 
-# ITEMS: Computer, Desk, Chair, Bookshelf, Books, Armchair, Coffee Table, Czechoslovakian map, Framed Nobel Prize
+# ITEMS: Bookshelf, Books
 class ZloOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Zlo Office",
             connected=["OfficeHall"],
-            description="A neat office with a sizable computer desk and office chair resting behind it. Mounted on the "
-                        "wall is a map and framed award. On the other side of the room sits a bookshelf flanked by "
-                        "two armchairs and a coffee table.")
+            description="A neat office with a sizable computer desk and "
+                "office chair resting behind it. Mounted on the "
+                "wall is a map and framed award. On the other side of the "
+                "room sits a bookshelf flanked by two armchairs and a "
+                "coffee table.",
+            items=[i.Computer(), i.Desk(description="A large computer desk."),
+                i.Chair(description="A nice office chair"), i.Armchair(),
+                i.NobelPrize(), i.Map(), i.Table(description="A wooden "
+                "coffee table. The surface sits at about knee height")])
 
 # ITEMS: Cognac bottle, 2 Glasses, shelf, Scattered Papers, Computer, Desk, newton's cradle, espresso machine, Chair
 class GomezOffice(Location):
@@ -93,7 +104,7 @@ class LabBathroom(Location):
         super().__init__(x=x, y=y, name="Lab Bathroom",
             connected=["LabHall"],
             description="A single bathroom stall with a toilet, mirror, and sink.",
-            items=[items.Mirror(), items.Sink(), items.Toilet()])
+            items=[i.Mirror(), i.Sink(), i.Toilet()])
 
 # ITEMS: table, stool, microscope, tank (holding microorganisms), beaker, strainer, Czech Republic (also Czechloslovakian) flag
 class ZloLab(Location):
