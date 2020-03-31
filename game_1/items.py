@@ -25,7 +25,7 @@ class Item:
         e.g. use key on door
 
         Args:
-            item (object): other item we are going to use the current (self) item on.
+            item (list of objects): other item we are going to use the current (self) item on.
             player (object): current user's player object
         Returns:
             N/A but uses self object on item object
@@ -68,15 +68,24 @@ class JewelryLock(Item):
 class ClothingRack(Item):
     def __init__(self):
         super().__init__(name=["Clothing Rack", "Rack"], can_pick_up=False,
-                         description="A long, silver clothing rack holding expensive designer clothes. A Gucci "
-                                     "jacket, Louis Vuitton polo, and a pair of Versace track pants, among "
-                                     "others things, catch your eye.")
+            description="A long, silver clothing rack holding expensive designer clothes. A Gucci "
+                "jacket, Louis Vuitton polo, and a pair of Versace track pants, among "
+                "others things, catch your eye.")
 
+class WetWipes(Item):
+    def __init__(self):
+        super().__init__(name=["Wet Wipes", "Wipes"], can_pick_up=True,
+            description="A pack of antibacterial wet wipes")
 
 class Clothing(Item):
     def __init__(self, name=["CLOTHING"], description="CLOTHES DESCRIPTION"):
         super().__init__(name=name, can_pick_up=True, description=description)
 
+class ZloBookshelf(Item):
+    def __init__(self):
+        super().__init__(name=["Bookshelf"], description="A small bookshelf "
+            "with three shelves. The first to catch your eye are: "
+            "Ningen Shikkaku, The Jungle, and Povidky z pekla a jine.")
 
 class TcsBookshelf(Item):
     def __init__(self):
@@ -85,6 +94,36 @@ class TcsBookshelf(Item):
                                      "they're all Terran classics. At a glance you notice The Nicomachean Ethics, "
                                      "1984, War and Peace, Slaughterhouse-Five, and many more.")
 
+class Drawers(Item):
+    def __init__(self, description="A set of desk drawers."):
+        super().__init__(name=["Drawers","Drawer"],can_pick_up=False,
+            description=description)
+
+    def interact(self, player):
+        print("You open up the drawers. Inside, there are some post-it "
+            "notes, wet wipes, and a book with the title: \"The Sirens of "
+            "Titan\".")
+
+class RussianNestingDoll(Item):
+    def __init__(self):
+        self.times_opened = 0
+        self.layers = 5
+        super().__init__(name=["Russian Nesting Doll", "Nesting Doll", "Doll"],
+            can_pick_up=True, description="A nesting doll. A faded drawing "
+            "of a babushka is on it.")
+
+    def interact(self, player):
+        self.times_opened += 1
+        if (self.times_opened >= self.layers):
+            print("TODO") # PRESENT PLAYER WITH SOMETHING THATS HIDING IN THE CENTER!!!!!!!!!!!!!!!!!!!!
+        else:
+            print("You remove a layer from the doll. Another babushka smiles "
+                "back at you.")
+
+class WhiskeyGlass(Item):
+    def __init__(self):
+        super().__init__(name=["Whiskey Glass", "Glass"], can_pick_up=True,
+            description="A small glass for booze")
 
 class DanceFloor(Item):
     def __init__(self):
@@ -278,13 +317,6 @@ class APMPass(Item):
             scenarios.apm_terminal(player)
         else:
             print("Nothing happens.")
-
-
-class Note(Item):
-    """ A slip of paper with info on it """
-    def __init__(self, description):
-        super().__init__(name=["Note"], description=description)
-
 
 class Rover(Item):
     def __init__(self, locked=True, player_inside=False):
@@ -577,6 +609,18 @@ class Food(Item):
         """
         print(self.eat_response)
 
+class AchebePhd(Item):
+    def __init__(self):
+        super().__init__(name=["PhD Certificate", "Certificate"],
+            description="A framed, mechanical engineering PhD Certificate "
+            "from University College London", can_pick_up=True)
+
+class Altoids(Food):
+    def __init__(self):
+        super().__init__(name=["Tin of Altoids", "Altoids"],
+            description="A small red tin labeled \"ALTOIDS - CURIOUSLY "
+            "STRONG MINTS\"", eat_response="Curiously strong! Yum!")
+
 
 class Cushion(Item):
     def __init__(self):
@@ -631,9 +675,9 @@ class SpiritualCenterBookshelf(Item):
         super().__init__(name=["Bookshelf"], can_pick_up=False,
                          description="A dark, wooden bookshelf filled with religious texts.")  #TODO: MAYBE LIST SOME ACTUAL TEXTS? NEEDS TO BE UPDATED IF SOME ARE TAKEN THEN...
 
-
 class Book(Item):
-    def __init__(self, name=["BOOK"], description="BOOK DESCRIPTION"):  # Should always be overridden (obviously lol)
+    # Should always be overridden (obviously lol)
+    def __init__(self, name=["BOOK"], description="BOOK DESCRIPTION"):  
         super().__init__(name=name, description=description)
 
 
@@ -690,6 +734,15 @@ class Treadmill(Item):
     def interact(self, player):
         print("You adjust the dials and go for a quick jog. A few minutes later you end sweaty, huffing and puffing.")
 
+class Poster(Item):
+    def __init__(self):
+        super().__init__(name=["Movie Poster", "Poster", "Star Wars Poster"],
+            can_pick_up=True, description="It's in another language, but it "
+            "depicts a man on a hill next to a woman and two robots. "
+            "A dark head looms behind them. The signature "
+            "says \"Carrie Fisher\".")
+
+
 
 class Bike(Item):
     def __init__(self):
@@ -728,8 +781,9 @@ class SecurityMonitor(Item):
 
 
 class Table(Item):
-    def __init__(self, description="A large table with a polished finish."):
-        super().__init__(name=["Table"], can_pick_up=False,
+    def __init__(self, description="A large table with a polished finish.",
+        name=["Table"]):
+        super().__init__(name=name, can_pick_up=False,
                          description=description)
 
 class Desk(Item):
@@ -752,22 +806,48 @@ class Mint(Food):
             "wrapped mint.", eat_response="Your breath smells great now! +5"
             "confidence points!") 
 
-class Photo(Item):  # Receptionist's photo
-    def __init__(self, description=
-        "It's a selfie featuring a boy around 10 and his father."):
-        super().__init__(name=["Photo", "Family Photo", "Framed Photo"], 
-                         can_pick_up=True, description=description)
+class Photo(Item):
+    def __init__(self, description= "It's a selfie featuring a boy around "
+        "10 and his father."):
+        super().__init__(name=["Photo", "Framed Photo"], 
+            can_pick_up=True, description=description)
+
+class Pen(Item):
+    def __init__(self, description="A gold and black ballpoint pen. It "
+        "says \"Montblanc\" on it."):
+        super().__init__(name=["Pen"], can_pick_up=True, description=\
+            description)
+
+    def use(self, item, player):
+        if "paper" in [name.lower() for name in item.name]:
+            w = input("What do you want to write on the paper? ")
+            print("You write \"" + w + "\" on the paper.")
+        else:
+            print("Nothing happens.")
 
 class FilingCabinet(Item):
     def __init__(self):
         super().__init__(name=["Cabinet", "Filing Cabinet"], can_pick_up=False,
-                         description="Your typical office filing cabinet. Opening it reveals some paperwork.")
+            description="Your typical office filing cabinet. Opening it "
+            "reveals some paperwork.")
 
+# TODO: could have all markable (with a pen/pencil) items inherit from a class called "Markable" which has a method that updates their description if they're written on
 class Paperwork(Item):
     def __init__(self):
-        super().__init__(name=["Paperwork", "Unmarked Paperwork", "Paper", "Papers"], can_pick_up=True,
-                         description="Boring paperwork detailing legal procedures for theft, assault, "
-                                     "public disturbance, yada yada yada....")
+        super().__init__(name=["Paperwork", "Unmarked Paperwork", "Paper", \
+            "Papers"], can_pick_up=True, description="Boring paperwork "
+            "detailing legal procedures for theft, assault, "
+            "public disturbance, yada yada yada....")
+
+class PostItNotes(Item):
+    def __init__(self):
+        super().__init__(name=["Post-It Notes", "Post It Notes", "Post It"],
+            can_pick_up=True, description="A set of yellow Post-It notes")
+
+class Note(Item):
+    """ A slip of paper with info on it """
+    def __init__(self, description):
+        super().__init__(name=["Note"], description=description)
 
 class Cubicle(Item):
     def __init__(self):
@@ -815,7 +895,7 @@ class Computer(Item):
     def __init__(self):
         super().__init__(name=["Computer"], can_pick_up=False,
                          description="A white, touch-screen monitor attached to the wall by a rotating beam. "
-                                     "It's about a meter wide and a centimeter deep. It's turned on.")
+                                     "It's about a half-meter wide and a centimeter deep. It's turned on.")
 
     def interact(self, player):
         print("You pull up a chair and begin working at the computer...")
@@ -845,9 +925,11 @@ class Drink(Item):
 
 # TODO: MAYBE MAKE IT SO THAT IF YOU DRINK TOO MANY SOMETHING HAPPENS TO YOU TO MAKE YOU "DRUNK" IN GAME ===============================
 class Booze(Drink):
-    def __init__(self):
-        super().__init__(name=["Booze"], description="A handle of 80-proof Henny",
-                         drink_response="Doesn't taste as good as it did back in college.")
+    def __init__(self, name=["Booze"], description="A handle of 80-proof "
+        "Henny", drink_response="Doesn't taste as good as it did "
+        "back in college."):
+        super().__init__(name=name,description=description,
+            drink_response=drink_response)
 
 class Screw(Item):
     def __init__(self):

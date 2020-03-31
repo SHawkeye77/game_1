@@ -30,8 +30,7 @@ class ConferenceRoom(Location):
                 "chair"), i.Projector(description="A sleek, white "
                 "projector")])
 
-
-# ITEMS: Bookshelf, Books
+# TODO: Modify russian nesting doll (in items.py) to add something at the center!!!!!!!!!!!!!!!!!!!!!!!!!
 class ZloOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Zlo Office",
@@ -40,30 +39,60 @@ class ZloOffice(Location):
                 "office chair resting behind it. Mounted on the "
                 "wall is a map and framed award. On the other side of the "
                 "room sits a bookshelf flanked by two armchairs and a "
-                "coffee table.",
+                "coffee table. On it sits a Russian nesting doll.",
             items=[i.Computer(), i.Desk(description="A large computer desk."),
-                i.Chair(description="A nice office chair"), i.Armchair(),
-                i.NobelPrize(), i.Map(), i.Table(description="A wooden "
-                "coffee table. The surface sits at about knee height")])
+                i.Chair(description="A nice office chair"), i.ArmChair(),
+                i.NobelPrize(), i.Map(), i.Table(name=["Table","Coffee Table"],
+                description="A wooden coffee table. The surface sits "
+                "at about knee height"), i.ZloBookshelf(),
+                i.Book(name=["Ningen Shikkaku"], description="It's all in "
+                "Japanese. Only thing you can decipher is the author's name: "
+                "\"Osamu Dazai\""), i.Book(name=["The Jungle"],description=""
+                "\"Chapter 1... It was four o'clock when the ceremony was "
+                "over and the carriages began to arrive. There had been a "
+                "crowd following all the way\" it continues... "
+                "You think you may have read this back in high school."), 
+                i.Book(name=["Povidky z pekla a jine", "Povidsky"], 
+                description="Its all in some Eastern-European "
+                "looking language. Author seems to be Marie Majerova."),
+                i.RussianNestingDoll()])
 
-# ITEMS: Cognac bottle, 2 Glasses, shelf, Scattered Papers, Computer, Desk, newton's cradle, espresso machine, Chair
-class GomezOffice(Location):
-    def __init__(self, x, y):
-        super().__init__(x=x, y=y, name="Gomez Office",
-            connected=["OfficeHall"],
-            description="A messy, cramped office with a computer desk and chair behind it. Resting on a shelf on the "
-                        "far side is a bottle of cognac and two glasses.")
-            # ON THE TABLE (IN IT'S DESCRIPTION): On the desk is a computer surrounded by a scattering of papers, a newton's cradle, and an espresso machine.
-
-
-# ITEMS: PhD certificate, Drawer, Books/other stuff? (in drawers), Star Wars signed poster, Desk, family photo, Computer,
 class AchebeOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Achebe Office",
             connected=["OfficeHall"],
-            description="A cramped but tidy office. A rolling chair sits behind a computer desk with drawers attached "
-                        "to its sides. Hanging on the wall is a framed certificate as well as an old movie poster.")
+            description="A cramped but tidy office. A rolling chair sits "
+                "behind a computer desk with drawers attached "
+                "to its sides. Hanging on the wall is a framed certificate "
+                "as well as an old movie poster.",
+            items=[i.Poster(), i.Altoids(), i.Altoids(), i.Altoids(),
+                i.Computer(), i.AchebePhd(),i.Drawers(), i.Desk(description=\
+                "A small office Desk. Neatly placed next to the computer sits "
+                "a framed photo, a box of tissues, a pen, and a tin of "
+                "Altoids."), i.Photo(description="A picture of three young "
+                "women at a pier."), i.Pen(), i.PostItNotes(), i.WetWipes(),
+                i.Book(name=["The Sirens of Titan"], description="\"Every "
+                "one now knows how to find the meaning of life within "
+                "himself. But mankind wasn't always so lucky. Less than a "
+                "century ago men and women did not have easy access to "
+                "the puzzle boxes within them...\" it continues on but "
+                "you stop reading."), i.Chair(description="A standard "
+                "rolling chair.")])
 
+# 2 Glasses, shelf, Scattered Papers (with coffee stains on them), 
+# Computer, Desk, newton's cradle, espresso machine, Chair, C.D Oro scarf
+class GomezOffice(Location):
+    def __init__(self, x, y):
+        super().__init__(x=x, y=y, name="Gomez Office",
+            connected=["OfficeHall"],
+            description="A messy, cramped office with a computer desk piled "
+                "high with clutter. Resting on a shelf is a bottle and two "
+                "glasses. Hanging up behind it is a scarf.",
+            items=[i.Booze(name=["Bottle","Tequila"], description="About a "
+                "liter of an oaky liquid. It's labeled \"Casamigos "
+                "Reposado\".")])
+    # ON THE TABLE (IN IT'S DESCRIPTION): On the desk is a computer surrounded 
+    # by a scattering of papers, a newton's cradle, and an espresso machine.
 
 # ITEMS: Sign (that says \"KNOCK BEFORE ENTERING\")
 class OfficeHall(Location):
