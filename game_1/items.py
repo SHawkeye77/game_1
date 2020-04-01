@@ -47,7 +47,8 @@ class Item:
 
 
 # By importing all these, file can have access to all items by simply
-# including this one
+# including this one. The below files each import items_general.py (so it's
+# not included here)
 from items_all.items_landing_dome import *
 from items_all.items_main_dome import *
 from items_all.items_research_dome import *
