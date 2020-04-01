@@ -21,7 +21,8 @@ class SpiritualCenter(Location):
                                      "tiny fountain pools into a small pond. There's a bookshelf on one wall. "
                                      "Connected on the east of the room are two personal booths.",
                          items=[items.Chair(), items.Cushion(), items.SpiritualCenterFountain(),
-                                items.SpiritualCenterPond(), items.SpiritualCenterBookshelf(),
+                                items.SpiritualCenterPond(), items.Bookshelf(description="A dark, "
+                                    "wooden bookshelf filled with religious texts."),
                                 items.Book(name=["The Bible", "Bible"],
                                            description="1:1 In the beginning God created the heaven and the earth.\n"
                                                        "1:2 And the earth was without form, and void; and darkness was "
@@ -155,7 +156,12 @@ class TerranCommodityStore(Location):
                          description="The store is divided into three sections: A jewelry counter with glass-"
                                      "enclosed trinkets, a well-stocked bookshelf labeled \"Terran Classics\", and "
                                      "a clothing rack with luxury apparel.",
-                         items=[items.ClothingRack(), items.TcsBookshelf(), items.JewelryLock(), items.JewelryCounter(),
+                         items=[items.ClothingRack(), items.Bookshelf("It's an old but beautiful bookshelf "
+                                "overflowing with texts. Looks like "
+                                "they're all Terran classics. At a glance you notice "
+                                "The Nicomachean Ethics, "
+                                "1984, War and Peace, Slaughterhouse-Five, and many more."),
+                                items.JewelryLock(), items.JewelryCounter(),
                                 items.Screw(),
                                 items.Book(name=["The Nicomachean Ethics"], description="Probably Aristotle's "
                                            "best work. It's a tricky read but deeply thought-provoking."),
@@ -245,7 +251,7 @@ class Lounge(Location):
                                      "around the room are bean-bag chairs, recliners, and a couple of massage "
                                      "chairs. There's even a small oxygen bar in the corner.",
                          items=[items.Fireplace(), items.MassageChair(), items.Recliner(), items.OxygenBar(),
-                                items.OxygenBarJar(), items.OxygenBarTube()])
+                                items.OxygenBarJar(), items.OxygenBarTube(), items.BeanBagChair()])
 
 class Reception(Location):  
     def __init__(self, x, y):
@@ -255,8 +261,13 @@ class Reception(Location):
                 "to the emergency room, surgery room, and mental health room "
                 "are on each end of the room. Written on the ER door in "
                 "large, black lettering is: 'QUARENTINE - DO NOT ENTER'",
-            items=[items.Chair(), items.Desk(), items.Photo(), 
-                items.Computer(), items.Bowl(), items.Mint(), items.Mint(),
+            items=[items.Chair(), items.Desk(description="A small office "
+                "desk. Probably the office space for the receptionist. "
+                "Next to their computer sits a bowl of mints as well as a "
+                "phone and a framed photo."), items.Photo(description=\
+                "It's a selfie featuring a boy around 10 and his father."), 
+                items.Computer(), items.Bowl(description="A small bowl "
+                "with a few mints in it"), items.Mint(), items.Mint(),
                 items.Mint(), items.Phone()])
 
 class EmergencyRoom(Location):

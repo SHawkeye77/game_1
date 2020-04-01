@@ -44,7 +44,10 @@ class ZloOffice(Location):
                 i.Chair(description="A nice office chair"), i.ArmChair(),
                 i.NobelPrize(), i.Map(), i.Table(name=["Table","Coffee Table"],
                 description="A wooden coffee table. The surface sits "
-                "at about knee height"), i.ZloBookshelf(),
+                "at about knee height"), i.Bookshelf(description=
+                "A small bookshelf with three shelves. The first to "
+                "catch your eye are: Ningen Shikkaku, The Jungle, "
+                "and Povidky z pekla a jine."),
                 i.Book(name=["Ningen Shikkaku"], description="It's all in "
                 "Japanese. Only thing you can decipher is the author's name: "
                 "\"Osamu Dazai\""), i.Book(name=["The Jungle"],description=""
