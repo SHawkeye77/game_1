@@ -101,7 +101,7 @@ class RussianNestingDoll(Item):
     def interact(self, player):
         self.times_opened += 1
         if (self.times_opened >= self.layers):
-            print("TODO") # PRESENT PLAYER WITH SOMETHING THATS HIDING IN THE CENTER!!!!!!!!!!!!!!!!!!!!
+            print("TODO") # PRESENT PLAYER WITH SOMETHING THAT'S HIDING IN THE CENTER!!!!!!!!!!!!!!!!!!!!
         else:
             print("You remove a layer from the doll. Another babushka smiles "
                 "back at you.")
@@ -112,4 +112,34 @@ class Map(Item):
         super().__init__(name=["Map", "Czechoslovakia Map"], 
             can_pick_up=False, description=description)
 
+class NewtonsCradle(Item):
+    def __init__(self):
+        super().__init__(name=["Newtons Cradle", "Newton's Cradle", "Cradle"], can_pick_up=True,
+            description="The five-ball classic physics toy")
+    def interact(self, player):
+        print("You pull back and let go one of the balls.\nTick - Tick - Tick - Tick..."
+        "\nThe motion slowly fades out...")
 
+class Scarf(Item):
+    def __init__(self, description=""):
+        super().__init__(name=["Scarf", "C.D. Oro Scarf"], can_pick_up=True, description=description)
+    def interact(self, player):
+        print("You wave it around your head like a football ultra.")
+
+class EspressoMachine(Item):
+    def __init__(self):
+        super().__init__(name=["Espresso Machine", "Espresso"], can_pick_up=False,
+            description="A black Nespresso espresso machine. Looks like it takes espresso pods, none of which "
+            "seem to be anywhere nearby. Shame, you could use a shot...")
+    def interact(self, player):
+        print("You turn it on and within seconds hot water begins to flow out, tainting the already "
+        "coffee-stained papers even more.")
+
+class ScatteredPapers(Item):
+    def __init__(self):
+        super().__init__(name=["Scattered Papers", "Papers", "Notes", "Scattering of Papers"], can_pick_up=False,
+            description="An unorganized jumble of research notes and legal paperwork. Most are coffee-stained.")
+    def interact(self, player):
+        print("Picking up a sheet you start reading:\n\"AN ANALYSIS OF EXTREME SURVIVAL CAPABILITY ASSETS IN "
+        "TARDIGRADES\"\nConfusing... You pick up another:\n\"TERRAN ITEM RETRIEVEMENT REQUEST FORM\"\n"
+        "It's not filled out.")

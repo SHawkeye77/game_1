@@ -12,7 +12,7 @@ To Fix/Add:
  - Could add pencil and paper so you could write notes on it and store it in your inventory
  - Add sound effects and/or music?
  - Add a carry limit (6 items?) Can be increased by a bag maybe?
- - Go through tiles and items and look at any statements/ideas I missed labeled TODO (most are for lore or expansion)
+ - Go through tiles and items and look at any statements/ideas I missed labeled "TODO" (most are for lore or expansion)
  - Add the lore I skipped:
    - Add/complete the 3 emails in TCR scenario
    - Add buttons and dials to TCR (once I figure out what they will actually do)
@@ -32,8 +32,6 @@ Notes:
 Ideas:
  - Could have some secret login you have to figure out that gives you info.
  - Maybe it turns out something that seems useless, like one of the jewelry pieces, ends up having a key or is a key and lets you in somewhere, or has some info, etc.
- - ELIZA chatbot in mental health room.
-   - Just download the java version of eliza and do os.system(filename.java) then os.system(filename) to run it (I think?)
  - Could make an ascii map and a "map" command that shows you where you are (in the current area) 
 
 Notes from playing Zork:

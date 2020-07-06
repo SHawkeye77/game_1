@@ -16,6 +16,7 @@ class ApmTerminalC(Location):
                 "are some benches.",
             items=[i.Tablet(), i.Bench()])
 
+
 class ConferenceRoom(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Conference Room",
@@ -29,6 +30,7 @@ class ConferenceRoom(Location):
                 "gray finish"), i.Chair(description="A black swivel "
                 "chair"), i.Projector(description="A sleek, white "
                 "projector")])
+
 
 # TODO: Modify russian nesting doll (in items.py) to add something at the center!!!!!!!!!!!!!!!!!!!!!!!!!
 class ZloOffice(Location):
@@ -50,7 +52,7 @@ class ZloOffice(Location):
                 "and Povidky z pekla a jine."),
                 i.Book(name=["Ningen Shikkaku"], description="It's all in "
                 "Japanese. Only thing you can decipher is the author's name: "
-                "\"Osamu Dazai\""), i.Book(name=["The Jungle"],description=""
+                "\"Osamu Dazai\""), i.Book(name=["The Jungle"], description=""
                 "\"Chapter 1... It was four o'clock when the ceremony was "
                 "over and the carriages began to arrive. There had been a "
                 "crowd following all the way\" it continues... "
@@ -59,6 +61,7 @@ class ZloOffice(Location):
                 description="Its all in some Eastern-European "
                 "looking language. Author seems to be Marie Majerova."),
                 i.RussianNestingDoll()])
+
 
 class AchebeOffice(Location):
     def __init__(self, x, y):
@@ -82,8 +85,7 @@ class AchebeOffice(Location):
                 "you stop reading."), i.Chair(description="A standard "
                 "rolling chair.")])
 
-# 2 Glasses, shelf, Scattered Papers (with coffee stains on them), 
-# Computer, Desk, newton's cradle, espresso machine, Chair, C.D Oro scarf
+
 class GomezOffice(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Gomez Office",
@@ -91,21 +93,25 @@ class GomezOffice(Location):
             description="A messy, cramped office with a computer desk piled "
                 "high with clutter. Resting on a shelf is a bottle and two "
                 "glasses. Hanging up behind it is a scarf.",
-            items=[i.Booze(name=["Bottle","Tequila"], description="About a "
+            items=[i.Booze(name=["Bottle", "Tequila"], description="About a "
                 "liter of an oaky liquid. It's labeled \"Casamigos "
-                "Reposado\".")])
-    # ON THE TABLE (IN IT'S DESCRIPTION): On the desk is a computer surrounded 
-    # by a scattering of papers, a newton's cradle, and an espresso machine.
+                "Reposado\"."), i.Glass(), i.Glass(), i.Shelf(description="A stained wooden "
+                "shelf at about shoulder height. On it sits a bottle and two glasses."),
+                i.Computer(), i.Chair(description="A leather office chair"),
+                i.Desk(description="A typical, wooden office desk. On the desk is a computer surrounded "
+                "by a scattering of papers, a newton's cradle, and an espresso machine."), i.NewtonsCradle(),
+                i.Scarf("It's a yellow and blue football scarf. \"C.D. Oro\" is inscribed on it."),
+                i.EspressoMachine(), i.ScatteredPapers()])
 
-# ITEMS: Sign (that says \"KNOCK BEFORE ENTERING\")
+
 class OfficeHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Office Hall",
             connected=["ZloOffice","GomezOffice","AchebeOffice","ConferenceRoom","MainHall"],
             description="A white, cylindrical tube. There are doors to the offices and conference room. "
-                        "A sign is tacked on to the door to the southeastern office.")
+                "A sign is tacked on to the door to the southeastern office.",
+            items=[i.Sign(desciption="\"\nKNOCK BEFORE ENTERING\nZAKLEPAT PŘED VSTUPEM\"")])
 
-# ITEMS: ALREADY COMPLETED! (NONE)
 class MainHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Main Hall",
@@ -122,13 +128,14 @@ class DrillControlRoom(Location):
                         "to have made hundreds of perforations into the Martian soil. Inside, chairs sit behind an "
                         "array of computers. On the western wall hangs a whiteboard.")
 
-# ITEMS: Sign (that says \"KNOCK BEFORE ENTERING\") (for zlo's lab)
+# ITEMS: ALREADY COMPLETED!
 class LabHall(Location):
     def __init__(self, x, y):
         super().__init__(x=x, y=y, name="Lab Hall",
             connected=["MainHall","Lab1","Lab2","Lab3","ExtractContainmentArea","LabBathroom"],
             description="A white, cylindrical tube. There are doors to the labs, bathroom, and extract containment "
-                        "room. A sign is tacked on the door to the southwestern office.")
+                        "room. A sign is tacked on the door to the southwestern office.",
+            items=[i.Sign(desciption="\"\nKNOCK BEFORE ENTERING\nZAKLEPAT PŘED VSTUPEM\"")])
 
 # ITEMS: ALREADY COMPLETED!
 class LabBathroom(Location):

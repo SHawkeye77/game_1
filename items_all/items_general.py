@@ -203,3 +203,19 @@ class Tool(Item):
                     break
         else:
             print("Nothing happens")
+
+
+class Shelf(Item):
+    def __init__(self, description=""):
+        super().__init__(name=["Shelf"], can_pick_up=False, description=description)
+
+
+class Glass(Item):
+    def __init__(self, description="A small whiskey glass"):
+        super().__init__(name=["Glass", "Cup"],
+            can_pick_up=True, description=description)
+
+class Sign(Item):
+    def __init__(self, desciption="\"...\""):
+        super().__init__(name=["Sign"], can_pick_up=False, description=desciption)
+
